@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiiCafe — Cà phê ngon. Không gian đẹp. Trải nghiệm khác biệt.</title>
+  <meta name="description" content="AiiCafe — Không gian cà phê, ẩm thực sáng tạo, workshop và lớp học. Thưởng thức · Khám phá · Sáng tạo.">
+  <!-- Preconnect & DNS prefetch for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+  <!-- Preload critical video (hero) -->
+  <link rel="preload" href="assets/videos/video1.mp4" as="video" type="video/mp4">
+
+  <!-- Preload critical images (logo) -->
+  <link rel="preload" href="assets/images/Asset_9.png" as="image">
+  <link rel="preload" href="assets/images/Asset_6.png" as="image">
+
+  <!-- Cache control -->
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+  <meta http-equiv="Expires" content="Thu, 27 Feb 2027 00:00:00 GMT">
+
+  <!-- Fonts — async load with preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    /* ========================================
+       CSS VARIABLES — Brand Colors
+       ======================================== */
+    :root {
+      --blue-navy: #0A1629;
+      --blue-brand: #2B6CB0;
+      --golden: #F4C76A;
+      --golden-dark: #D4A843;
+      --black: #161616;
+      --cream: #F2EBE3;
+      --cream-light: #FAF7F2;
+      --white: #FFFFFF;
+      --text-primary: #0A1629;
+      --text-secondary: #5A6478;
+      --text-light: rgba(255,255,255,0.7);
+      --shadow-sm: 0 1px 3px rgba(10,22,41,0.06);
+      --shadow-md: 0 4px 12px rgba(10,22,41,0.08);
+      --shadow-lg: 0 8px 30px rgba(10,22,41,0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 100px;
+      --navbar-height: 64px;
+      --subnav-height: 52px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--cream-light);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: color var(--transition); }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--blue-navy);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--golden-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--golden);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 8px;
+    }
+
+    .section-header .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--blue-navy);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      transition: all var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-brand);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: transparent;
+      color: var(--blue-navy);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1.5px solid rgba(10,22,41,0.2);
+      border-radius: var(--radius-full);
+      transition: all var(--transition);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--blue-navy);
+      background: rgba(10,22,41,0.03);
+      transform: translateY(-1px);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal.visible { transition: none; }
+      * { animation-duration: 0s !important; transition-duration: 0s !important; }
+    }
+
+    /* ========================================
+       NAVBAR
+       ======================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 24px;
+      height: var(--navbar-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all var(--transition);
+    }
+
+    .navbar.scrolled {
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1001;
+    }
+
+    .navbar-brand img {
+      height: 36px;
+      width: auto;
+      transition: opacity var(--transition);
+    }
+
+    .navbar-brand .logo-white { display: block; }
+    .navbar-brand .logo-blue { display: none; }
+    .navbar.scrolled .navbar-brand .logo-white { display: none; }
+    .navbar.scrolled .navbar-brand .logo-blue { display: block; }
+
+    .navbar-brand span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      transition: color var(--transition);
+    }
+
+    .navbar.scrolled .navbar-brand span {
+      color: var(--blue-navy);
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .navbar-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .navbar-links a:hover { color: var(--white); }
+
+    .navbar.scrolled .navbar-links a {
+      color: var(--text-secondary);
+    }
+
+    .navbar.scrolled .navbar-links a:hover {
+      color: var(--blue-navy);
+    }
+
+    .navbar-cta {
+      padding: 9px 22px !important;
+      background: var(--blue-navy) !important;
+      color: var(--white) !important;
+      border-radius: var(--radius-full) !important;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      transition: all var(--transition) !important;
+    }
+
+    .navbar-cta:hover {
+      background: var(--blue-brand) !important;
+      transform: translateY(-1px);
+    }
+
+    .navbar.scrolled .navbar-cta {
+      background: var(--blue-navy) !important;
+      color: var(--white) !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1001;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .navbar.scrolled .hamburger span {
+      background: var(--blue-navy);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--white);
+      padding: 80px 32px 40px;
+      transition: right var(--transition);
+      z-index: 1000;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu.open { right: 0; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border-bottom: 1px solid rgba(10,22,41,0.06);
+    }
+
+    .mobile-menu .navbar-cta {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .mobile-overlay.active { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: block; }
+    }
+
+    /* ========================================
+       HAPPENING NOW BAR
+       ======================================== */
+    .happening-bar {
+      position: fixed;
+      top: var(--navbar-height);
+      left: 0;
+      width: 100%;
+      height: 36px;
+      background: rgba(244,199,106,0.15);
+      border-bottom: 1px solid rgba(244,199,106,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-36px);
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .happening-bar.visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .happening-bar .marquee-wrap {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .happening-bar .marquee-content {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee 25s linear infinite;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      gap: 40px;
+      padding-left: 100%;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .happening-bar .close-btn {
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .happening-bar .close-btn:hover { color: var(--text-primary); }
+
+    /* ========================================
+       SECTION 1: HERO
+       ======================================== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(10,22,41,0.3) 0%,
+        rgba(10,22,41,0.35) 50%,
+        rgba(10,22,41,0.5) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 720px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-pill {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-full);
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .hero-pill:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: var(--golden);
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(244,199,106,0.15);
+    }
+
+    /* Mute button */
+    .hero-mute {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: all var(--transition);
+    }
+
+    .hero-mute:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .hero-mute svg { width: 18px; height: 18px; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: bounce 2s ease-in-out infinite;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .scroll-indicator svg { width: 24px; height: 24px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ========================================
+       SECTION 2: SUB-NAVIGATION (Sticky)
+       ======================================== */
+    .sub-nav {
+      position: sticky;
+      top: var(--navbar-height);
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid rgba(10,22,41,0.06);
+      height: var(--subnav-height);
+    }
+
+    .sub-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      height: 100%;
+    }
+
+    .sub-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 0 4px;
+      height: 100%;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .sub-nav-item:hover {
+      color: var(--blue-navy);
+    }
+
+    .sub-nav-item.active {
+      color: var(--blue-navy);
+      border-bottom-color: var(--golden);
+    }
+
+    @media (max-width: 640px) {
+      .sub-nav-inner { gap: 20px; }
+      .sub-nav-item { font-size: 0.8rem; }
+    }
+
+    /* ========================================
+       SECTION 3: CAFE & CUISINE
+       ======================================== */
+    .cafe-section {
+      background: var(--cream-light);
+      padding: 80px 0;
+    }
+
+    /* Part A: Coffee */
+    .cafe-coffee {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .cafe-video-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 16/9;
+    }
+
+    .cafe-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10,22,41,0.2);
+      opacity: 0;
+      transition: opacity var(--transition);
+      cursor: pointer;
+    }
+
+    .video-play-overlay:hover { opacity: 1; }
+
+    .video-play-overlay .play-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-navy);
+    }
+
+    .cafe-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .cafe-info p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .drink-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .drink-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .drink-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .drink-card .drink-emoji {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .drink-card .drink-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .drink-card .drink-price {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* Part B: Food carousel */
+    .food-section-header {
+      margin-bottom: 32px;
+    }
+
+    .food-section-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .food-carousel-wrap {
+      position: relative;
+    }
+
+    .food-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+      cursor: grab;
+    }
+
+    .food-carousel::-webkit-scrollbar { display: none; }
+    .food-carousel.dragging { cursor: grabbing; scroll-snap-type: none; }
+
+    .food-card {
+      flex: 0 0 220px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      scroll-snap-align: start;
+      transition: all var(--transition);
+    }
+
+    .food-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .food-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .food-card-body {
+      padding: 14px 16px 18px;
+    }
+
+    .food-card-body h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .food-card-body .food-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .food-tag.bestseller { background: rgba(244,199,106,0.2); color: #B8860B; }
+    .food-tag.new { background: rgba(43,108,176,0.1); color: var(--blue-brand); }
+    .food-tag.healthy { background: rgba(72,187,120,0.1); color: #2F855A; }
+    .food-tag.kids { background: rgba(237,137,154,0.15); color: #C53D6F; }
+    .food-tag.special { background: rgba(244,199,106,0.2); color: #B8860B; }
+
+    .food-card-body .food-price {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .food-carousel-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(10,22,41,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--blue-navy);
+      color: var(--blue-navy);
+    }
+
+    @media (max-width: 768px) {
+      .cafe-coffee {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .food-card { flex: 0 0 180px; }
+    }
+
+    /* ========================================
+       SECTION 4: TIMELINE
+       ======================================== */
+    .timeline-section {
+      background: var(--white);
+      padding: 80px 0;
+    }
+
+    .timeline-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    .timeline-item {
+      text-align: center;
+    }
+
+    .timeline-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue-navy);
+      margin-bottom: 12px;
+    }
+
+    .timeline-time::after {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--golden);
+      margin: 8px auto 0;
+    }
+
+    .timeline-video-wrap {
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-width: 160px;
+      margin: 0 auto 12px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .timeline-caption {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile timeline */
+    @media (max-width: 768px) {
+      .timeline-track {
+        grid-template-columns: 1fr;
+        gap: 0;
+        position: relative;
+        padding-left: 40px;
+      }
+
+      .timeline-track::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(10,22,41,0.08);
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        text-align: left;
+        padding-bottom: 32px;
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -29px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--golden);
+        border: 2px solid var(--white);
+      }
+
+      .timeline-time { margin-bottom: 0; }
+      .timeline-time::after { display: none; }
+
+      .timeline-video-wrap {
+        max-width: 120px;
+        margin: 0;
+      }
+
+      .timeline-caption {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* ========================================
+       SECTION 5: VIDEO SHOWCASE
+       ======================================== */
+    .showcase-section {
+      background: var(--cream);
+      padding: 80px 0;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(10,22,41,0.05);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .filter-tab:hover { color: var(--blue-navy); background: rgba(10,22,41,0.08); }
+
+    .filter-tab.active {
+      background: var(--blue-navy);
+      color: var(--white);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .showcase-item {
+      aspect-ratio: 9/16;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .showcase-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .showcase-item.hidden {
+      display: none;
+    }
+
+    .showcase-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .showcase-item .item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 40px 12px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.5));
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .showcase-item .item-caption {
+      font-size: 0.78rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .showcase-item .item-heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .showcase-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .showcase-cta p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .social-icons {
+      display: inline-flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(10,22,41,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: var(--blue-navy);
+      color: var(--white);
+    }
+
+    .social-icons a svg { width: 16px; height: 16px; }
+
+    @media (max-width: 1024px) {
+      .showcase-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ========================================
+       SECTION 6: SCHEDULE
+       ======================================== */
+    .schedule-section {
+      background: var(--white);
+      padding: 80px 0;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      border: 1px solid rgba(10,22,41,0.04);
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .event-card.hidden { display: none; }
+
+    .event-card-video {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .event-card-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .event-card-body {
+      padding: 20px;
+    }
+
+    .event-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--golden-dark);
+      margin-bottom: 6px;
+    }
+
+    .event-card-body h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .event-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .event-slots {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .event-slots.plenty { background: rgba(72,187,120,0.1); color: #2F855A; }
+    .event-slots.limited { background: rgba(237,137,54,0.1); color: #C05621; }
+
+    .event-register {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: var(--blue-navy);
+      color: var(--white);
+      text-align: center;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+
+    .event-register:hover { background: var(--blue-brand); }
+
+    @media (max-width: 1024px) {
+      .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .schedule-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       SECTION 7: FOOTER
+       ======================================== */
+    .footer {
+      background: var(--black);
+      padding: 60px 0 0;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand img {
+      height: 32px;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .footer-brand .brand-tagline {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all var(--transition);
+    }
+
+    .footer-social a:hover {
+      color: var(--golden);
+      border-color: var(--golden);
+    }
+
+    .footer-social a svg { width: 16px; height: 16px; }
+
+    .footer-col h5 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--golden); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom a { margin-left: 16px; }
+    .footer-bottom a:hover { color: var(--golden); }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       FLOATING CTA (Mobile)
+       ======================================== */
+    .floating-cta {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .floating-cta a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      background: var(--blue-navy);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(10,22,41,0.3);
+      transition: all var(--transition);
+    }
+
+    .floating-cta a:hover {
+      background: var(--blue-brand);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .floating-cta { display: block; }
+      .floating-cta.hidden { display: none; }
+    }
+
+    /* ========================================
+       PERFORMANCE — contain, will-change
+       ======================================== */
+    .showcase-item,
+    .food-card,
+    .event-card,
+    .drink-card,
+    .timeline-item {
+      contain: layout style paint;
+    }
+
+    .navbar {
+      will-change: background-color, backdrop-filter;
+      contain: layout style;
+    }
+
+    .happening-bar {
+      will-change: transform, opacity;
+    }
+
+    video {
+      content-visibility: auto;
+      contain-intrinsic-size: 320px 180px;
+    }
+
+    .showcase-item video {
+      contain-intrinsic-size: 270px 480px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================
+       NAVBAR
+       ======================================== -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a href="#" class="navbar-brand">
+        <img src="assets/images/Asset_9.png" alt="AiiCafe Logo" class="logo-white">
+        <img src="assets/images/Asset_6.png" alt="AiiCafe Logo" class="logo-blue">
+        <span>AiiCafe</span>
+      </a>
+
+      <div class="navbar-links" role="navigation">
+        <a href="#cafe">Dịch vụ</a>
+        <a href="#experience">Trải nghiệm</a>
+        <a href="#schedule">Lịch tuần</a>
+        <a href="#contact">Liên hệ</a>
+        <a href="#" class="navbar-cta">Đặt bàn</a>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+      <a href="#cafe">Dịch vụ</a>
+      <a href="#experience">Trải nghiệm</a>
+      <a href="#schedule">Lịch tuần</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="#" class="navbar-cta">Đặt bàn</a>
+    </div>
+  </header>
+
+  <!-- ========================================
+       HAPPENING NOW BAR
+       ======================================== -->
+  <div class="happening-bar" id="happeningBar" role="status">
+    <div class="marquee-wrap">
+      <div class="marquee-content">
+        <span>🟢 Đang mở · Happy Hour mua 1 tặng 1 đến 14:00 · Lớp rèn chữ 15:00 còn 2 slot</span>
+        <span>🟢 Đang mở · Happy Hour mua 1 tặng 1 đến 14:00 · Lớp rèn chữ 15:00 còn 2 slot</span>
+      </div>
+    </div>
+    <button class="close-btn" id="happeningClose" aria-label="Đóng thông báo">&times;</button>
+  </div>
+
+  <main>
+    <!-- ========================================
+         SECTION 1: HERO
+         ======================================== -->
+    <section class="hero" id="hero">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high">
+        <source src="assets/videos/video1.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Cà phê ngon. Không gian đẹp.<br>Trải nghiệm khác biệt.</h1>
+        <p class="hero-subtitle">Thưởng thức · Khám phá · Sáng tạo</p>
+
+        <div class="hero-pills">
+          <a href="#cafe" class="hero-pill">Uống cà phê ☕</a>
+          <a href="#food" class="hero-pill">Ăn gì đó 🍽️</a>
+          <a href="#kids" class="hero-pill">Lớp cho bé 👧</a>
+          <a href="#work" class="hero-pill">Làm việc & Học 💻</a>
+        </div>
+      </div>
+
+      <!-- Mute/Unmute -->
+      <button class="hero-mute" id="muteBtn" aria-label="Bật/Tắt tiếng video">
+        <svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="1" y1="1" x2="23" y2="23"></line>
+          <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+          <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2c0 .55-.06 1.08-.18 1.6"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+        <svg id="unmuteIcon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+      </button>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 2: SUB-NAVIGATION
+         ======================================== -->
+    <nav class="sub-nav" id="subNav" aria-label="Section navigation">
+      <div class="sub-nav-inner container">
+        <a href="#cafe" class="sub-nav-item active" data-section="cafe">☕ Cà phê đặc sản</a>
+        <a href="#food" class="sub-nav-item" data-section="food">🍽️ Ẩm thực sáng tạo</a>
+        <a href="#schedule" class="sub-nav-item" data-section="schedule">📚 Workshop & Lớp học</a>
+      </div>
+    </nav>
+
+    <!-- ========================================
+         SECTION 3: CAFE & CUISINE
+         ======================================== -->
+    <section class="cafe-section" id="cafe">
+      <div class="container">
+        <!-- Part A: Coffee -->
+        <div class="cafe-coffee reveal">
+          <div class="cafe-video-wrap">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <div class="video-play-overlay" role="button" aria-label="Play/Pause video">
+              <div class="play-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="cafe-info">
+            <div class="section-label">Cà phê đặc sản</div>
+            <h3>Mỗi tách là một câu chuyện</h3>
+            <p>Hạt cà phê Arabica được chọn lọc từ cao nguyên Việt Nam, rang thủ công theo profile riêng. Từ espresso đậm đà đến cold brew thanh mát.</p>
+
+            <div class="drink-grid">
+              <div class="drink-card">
+                <div class="drink-emoji">☕</div>
+                <div class="drink-name">Espresso</div>
+                <div class="drink-price">45k</div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-emoji">🧊</div>
+                <div class="drink-name">Cold Brew</div>
+                <div class="drink-price">55k</div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-emoji">🍵</div>
+                <div class="drink-name">Matcha Latte</div>
+                <div class="drink-price">60k</div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-emoji">🥛</div>
+                <div class="drink-name">Cappuccino</div>
+                <div class="drink-price">50k</div>
+              </div>
+            </div>
+
+            <a href="#" class="btn-secondary">Xem full menu →</a>
+          </div>
+        </div>
+
+        <!-- Part B: Food -->
+        <div id="food" class="reveal">
+          <div class="food-section-header">
+            <div class="section-label">Ẩm thực sáng tạo</div>
+            <h3>Không chỉ có cà phê</h3>
+          </div>
+
+          <div class="food-carousel-wrap">
+            <div class="food-carousel" id="foodCarousel">
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #F6D365 0%, #FDA085 100%);">🍳</div>
+                <div class="food-card-body">
+                  <h4>Egg Benedict</h4>
+                  <span class="food-tag bestseller">Best seller</span>
+                  <div class="food-price">89k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #A8E063 0%, #56AB2F 100%);">🥑</div>
+                <div class="food-card-body">
+                  <h4>Avocado Toast</h4>
+                  <span class="food-tag healthy">Healthy</span>
+                  <div class="food-price">75k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);">🥖</div>
+                <div class="food-card-body">
+                  <h4>Bánh mì chảo</h4>
+                  <span class="food-tag special">Đặc biệt</span>
+                  <div class="food-price">65k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #FFECD2 0%, #FCB69F 100%);">🥞</div>
+                <div class="food-card-body">
+                  <h4>Pancake Stack</h4>
+                  <span class="food-tag kids">Kids love</span>
+                  <div class="food-price">69k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%);">🍜</div>
+                <div class="food-card-body">
+                  <h4>Phở cuốn</h4>
+                  <span class="food-tag new">Mới</span>
+                  <div class="food-price">55k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #89F7FE 0%, #66A6FF 100%);">🥗</div>
+                <div class="food-card-body">
+                  <h4>Salad Bowl</h4>
+                  <span class="food-tag healthy">Healthy</span>
+                  <div class="food-price">79k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #FFB347 0%, #FFCC33 100%);">🧇</div>
+                <div class="food-card-body">
+                  <h4>Waffle & Berries</h4>
+                  <span class="food-tag bestseller">Best seller</span>
+                  <div class="food-price">72k</div>
+                </div>
+              </div>
+              <div class="food-card">
+                <div class="food-card-img" style="background: linear-gradient(135deg, #A1C4FD 0%, #C2E9FB 100%);">🍰</div>
+                <div class="food-card-body">
+                  <h4>Tiramisu</h4>
+                  <span class="food-tag special">Đặc biệt</span>
+                  <div class="food-price">68k</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="food-carousel-nav">
+              <button class="carousel-btn" id="carouselPrev" aria-label="Trước">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="carousel-btn" id="carouselNext" aria-label="Sau">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <a href="#" class="btn-secondary">Xem full menu →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 4: TIMELINE — Một ngày ở AiiCafe
+         ======================================== -->
+    <section class="timeline-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content: center;">Trải nghiệm</div>
+          <h2>Một ngày ở AiiCafe</h2>
+          <p class="subtitle">Từ ly cà phê sáng đến buổi tối sáng tạo</p>
+        </div>
+
+        <div class="timeline-track reveal">
+          <div class="timeline-item">
+            <div class="timeline-time">7:00</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Espresso đầu ngày</div>
+          </div>
+
+          <div class="timeline-item" id="kids">
+            <div class="timeline-time">9:30</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Lớp rèn chữ cho bé</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">11:30</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Brunch cuối tuần</div>
+          </div>
+
+          <div class="timeline-item" id="work">
+            <div class="timeline-time">14:00</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Workshop & Co-working</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">17:00</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Cà phê chiều & đọc sách</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">19:30</div>
+            <div class="timeline-video-wrap">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="timeline-caption">Demo Day sản phẩm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 5: VIDEO SHOWCASE
+         ======================================== -->
+    <section class="showcase-section" id="showcase">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Khoảnh khắc AiiCafe</h2>
+          <p class="subtitle">Khách hàng chia sẻ trải nghiệm tại đây</p>
+        </div>
+
+        <div class="filter-tabs reveal" id="showcaseFilter" role="tablist">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+          <button class="filter-tab" data-filter="cafe" role="tab">Cà phê</button>
+          <button class="filter-tab" data-filter="food" role="tab">Ẩm thực</button>
+          <button class="filter-tab" data-filter="class" role="tab">Lớp học</button>
+          <button class="filter-tab" data-filter="event" role="tab">Sự kiện</button>
+          <button class="filter-tab" data-filter="kids" role="tab">Kids</button>
+        </div>
+
+        <div class="showcase-grid" id="showcaseGrid">
+          <!-- Video items -->
+          <div class="showcase-item" data-category="cafe">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video1.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">☕ Espresso art buổi sáng</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="food">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🍽️ Brunch đặc biệt</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="class">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">📚 Workshop cuối tuần</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="event">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video4.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🎤 Demo Day</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="cafe">
+            <video muted loop playsinline preload="none">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">☕ Cold brew on ice</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="cafe">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video1.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">☕ Latte art</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="food">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🍽️ Avocado toast</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="kids">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">👧 Lớp rèn chữ</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="food">
+            <video muted loop playsinline preload="none">
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🍰 Tiramisu handmade</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="event">
+            <video muted loop playsinline preload="none" loading="lazy">
+              <source src="assets/videos/video4.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🎉 Coffee cupping</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="kids">
+            <video muted loop playsinline preload="none">
+              <source src="assets/videos/video4.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">🎨 Art class cho bé</span>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-category="class">
+            <video muted loop playsinline preload="none">
+              <source src="assets/videos/video1.mp4" type="video/mp4">
+            </video>
+            <span class="item-heart">♡</span>
+            <div class="item-overlay">
+              <span class="item-caption">💡 AI Workshop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-cta reveal">
+          <p>Chia sẻ khoảnh khắc của bạn — tag #AiiCafe ☕</p>
+          <div class="social-icons">
+            <a href="#" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.87a8.28 8.28 0 004.76 1.49V6.91a4.84 4.84 0 01-1-.22z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 6: SCHEDULE
+         ======================================== -->
+    <section class="schedule-section" id="schedule">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Tuần này ở AiiCafe</h2>
+          <p class="subtitle">Đăng ký ngay — số lượng có hạn</p>
+        </div>
+
+        <div class="filter-tabs reveal" id="scheduleFilter" role="tablist">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+          <button class="filter-tab" data-filter="kids" role="tab">Cho bé</button>
+          <button class="filter-tab" data-filter="adult" role="tab">Cho người lớn</button>
+        </div>
+
+        <div class="schedule-grid" id="scheduleGrid">
+          <div class="event-card reveal" data-category="kids">
+            <div class="event-card-video">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="event-card-body">
+              <div class="event-date">Thứ 3, 9:30</div>
+              <h4>Lớp rèn chữ đẹp (5-7 tuổi)</h4>
+              <p class="event-desc">Bé luyện viết chữ chuẩn với cô Minh Anh</p>
+              <span class="event-slots plenty">Còn 4 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="event-card-body">
+              <div class="event-date">Thứ 4, 14:00</div>
+              <h4>Workshop AI cơ bản</h4>
+              <p class="event-desc">Tìm hiểu ChatGPT & ứng dụng thực tế</p>
+              <span class="event-slots plenty">Còn 6 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-category="kids">
+            <div class="event-card-video">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="event-card-body">
+              <div class="event-date">Thứ 5, 10:00</div>
+              <h4>Toán tư duy quốc tế (8-10 tuổi)</h4>
+              <p class="event-desc">Phương pháp Singapore Math</p>
+              <span class="event-slots limited">Còn 2 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="event-card-body">
+              <div class="event-date">Thứ 6, 18:00</div>
+              <h4>Coffee Cupping Experience</h4>
+              <p class="event-desc">Thử 5 loại cà phê đặc sản cùng barista</p>
+              <span class="event-slots plenty">Còn 8 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video">
+              <video muted loop playsinline preload="none" loading="lazy">
+                <source src="assets/videos/video4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="event-card-body">
+              <div class="event-date">Thứ 7, 15:00</div>
+              <h4>Demo Day — Sản phẩm sáng tạo</h4>
+              <p class="event-desc">Trình bày ý tưởng & nhận feedback từ mentor</p>
+              <span class="event-slots plenty">Còn 10 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       SECTION 7: FOOTER
+       ======================================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/Asset_9.png" alt="AiiCafe Logo">
+          <div class="brand-name">AiiCafe</div>
+          <p class="brand-tagline">Không gian cà phê, sáng tạo và học hỏi.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.87a8.28 8.28 0 004.76 1.49V6.91a4.84 4.84 0 01-1-.22z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Dịch vụ</h5>
+          <a href="#cafe">Cà phê đặc sản</a>
+          <a href="#food">Menu ẩm thực</a>
+          <a href="#schedule">Workshop & Lớp học</a>
+          <a href="#work">Co-working</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Khám phá</h5>
+          <a href="#schedule">Lịch sự kiện</a>
+          <a href="#">Đặt bàn</a>
+          <a href="#">Membership</a>
+          <a href="#">Blog</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Liên hệ</h5>
+          <p>📍 123 Đường ABC, Quận 1, TP.HCM</p>
+          <p>📧 hello@aiicafe.vn</p>
+          <p>📞 0900 xxx xxx</p>
+          <p>🕐 7:00 - 22:00 hàng ngày</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 AiiCafe. All rights reserved.</span>
+        <div>
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Điều khoản</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       FLOATING CTA (Mobile)
+       ======================================== -->
+  <div class="floating-cta hidden" id="floatingCta">
+    <a href="#">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Đặt bàn
+    </a>
+  </div>
+
+  <!-- ========================================
+       JAVASCRIPT
+       ======================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ---- 1. NAVBAR SCROLL EFFECT ----
+      const navbar = document.getElementById('navbar');
+      const happeningBar = document.getElementById('happeningBar');
+      let happeningDismissed = false;
+
+      function handleNavbarScroll() {
+        const scrollY = window.scrollY;
+        if (scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
+        // Happening bar: show after scrolling past hero
+        if (!happeningDismissed && scrollY > window.innerHeight * 0.8) {
+          happeningBar.classList.add('visible');
+        } else {
+          happeningBar.classList.remove('visible');
+        }
+
+        // Floating CTA (mobile)
+        const floatingCta = document.getElementById('floatingCta');
+        if (scrollY > 300) {
+          floatingCta.classList.remove('hidden');
+        } else {
+          floatingCta.classList.add('hidden');
+        }
+      }
+
+      window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+
+      // ---- 2. HAPPENING BAR DISMISS ----
+      document.getElementById('happeningClose').addEventListener('click', function() {
+        happeningDismissed = true;
+        happeningBar.classList.remove('visible');
+      });
+
+      // ---- 3. MUTE/UNMUTE HERO VIDEO ----
+      const heroVideo = document.getElementById('heroVideo');
+      const muteBtn = document.getElementById('muteBtn');
+      const muteIcon = document.getElementById('muteIcon');
+      const unmuteIcon = document.getElementById('unmuteIcon');
+
+      muteBtn.addEventListener('click', function() {
+        heroVideo.muted = !heroVideo.muted;
+        if (heroVideo.muted) {
+          muteIcon.style.display = 'block';
+          unmuteIcon.style.display = 'none';
+        } else {
+          muteIcon.style.display = 'none';
+          unmuteIcon.style.display = 'block';
+        }
+      });
+
+      // ---- 4. VIDEO AUTOPLAY/PAUSE VIA INTERSECTIONOBSERVER ----
+      const videoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(function() {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      // Observe all non-hero videos
+      document.querySelectorAll('video:not(.hero-video)').forEach(function(video) {
+        videoObserver.observe(video);
+      });
+
+      // ---- 5. VIDEO PLAY/PAUSE ON CLICK (Showcase + Cafe) ----
+      document.querySelectorAll('.video-play-overlay').forEach(function(overlay) {
+        overlay.addEventListener('click', function() {
+          const video = this.parentElement.querySelector('video');
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      });
+
+      document.querySelectorAll('.showcase-item video').forEach(function(video) {
+        video.addEventListener('click', function() {
+          if (this.paused) {
+            this.play();
+          } else {
+            this.pause();
+          }
+        });
+      });
+
+      // ---- 6. STICKY SUB-NAV SCROLL SPY ----
+      const subNavItems = document.querySelectorAll('.sub-nav-item');
+      const spySections = [
+        { id: 'cafe', el: document.getElementById('cafe') },
+        { id: 'food', el: document.getElementById('food') },
+        { id: 'schedule', el: document.getElementById('schedule') }
+      ];
+
+      function updateScrollSpy() {
+        const scrollPos = window.scrollY + 150;
+        let activeId = 'cafe';
+
+        spySections.forEach(function(sec) {
+          if (sec.el && sec.el.offsetTop <= scrollPos) {
+            activeId = sec.id;
+          }
+        });
+
+        subNavItems.forEach(function(item) {
+          item.classList.toggle('active', item.dataset.section === activeId);
+        });
+      }
+
+      window.addEventListener('scroll', updateScrollSpy, { passive: true });
+
+      // ---- 7. SHOWCASE FILTER ----
+      document.getElementById('showcaseFilter').addEventListener('click', function(e) {
+        const tab = e.target.closest('.filter-tab');
+        if (!tab) return;
+
+        this.querySelectorAll('.filter-tab').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const filter = tab.dataset.filter;
+        document.querySelectorAll('#showcaseGrid .showcase-item').forEach(function(item) {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+
+      // ---- 8. SCHEDULE FILTER ----
+      document.getElementById('scheduleFilter').addEventListener('click', function(e) {
+        const tab = e.target.closest('.filter-tab');
+        if (!tab) return;
+
+        this.querySelectorAll('.filter-tab').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const filter = tab.dataset.filter;
+        document.querySelectorAll('#scheduleGrid .event-card').forEach(function(card) {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+
+      // ---- 9. FOOD CAROUSEL DRAG SCROLL ----
+      const carousel = document.getElementById('foodCarousel');
+      let isDragging = false;
+      let startX, scrollLeft;
+
+      carousel.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        carousel.classList.add('dragging');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('mouseleave', function() {
+        isDragging = false;
+        carousel.classList.remove('dragging');
+      });
+
+      carousel.addEventListener('mouseup', function() {
+        isDragging = false;
+        carousel.classList.remove('dragging');
+      });
+
+      carousel.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        var x = e.pageX - carousel.offsetLeft;
+        var walk = (x - startX) * 1.5;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+
+      // Carousel nav buttons
+      document.getElementById('carouselPrev').addEventListener('click', function() {
+        carousel.scrollBy({ left: -240, behavior: 'smooth' });
+      });
+
+      document.getElementById('carouselNext').addEventListener('click', function() {
+        carousel.scrollBy({ left: 240, behavior: 'smooth' });
+      });
+
+      // ---- 10. MOBILE HAMBURGER MENU ----
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+
+      function toggleMobileMenu() {
+        const isOpen = mobileMenu.classList.contains('open');
+        mobileMenu.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+
+        if (!isOpen) {
+          mobileOverlay.style.display = 'block';
+          requestAnimationFrame(function() {
+            mobileOverlay.classList.add('active');
+          });
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileOverlay.classList.remove('active');
+          setTimeout(function() { mobileOverlay.style.display = 'none'; }, 300);
+          document.body.style.overflow = '';
+        }
+      }
+
+      hamburgerBtn.addEventListener('click', toggleMobileMenu);
+      mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (mobileMenu.classList.contains('open')) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // ---- 11. SCROLL REVEAL ANIMATION ----
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry, index) {
+          if (entry.isIntersecting) {
+            // Stagger delay for grid items
+            const parent = entry.target.closest('.showcase-grid, .schedule-grid, .timeline-track, .drink-grid');
+            if (parent) {
+              const siblings = Array.from(parent.querySelectorAll('.reveal'));
+              var i = siblings.indexOf(entry.target);
+              entry.target.style.transitionDelay = (i * 60) + 'ms';
+            }
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // ---- 12. SMOOTH SCROLL FOR ANCHOR LINKS ----
+      document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            var offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--subnav-height')) + 10;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // ---- 13. LAZY LOAD VIDEOS — only load src when near viewport ----
+      var lazyVideoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var video = entry.target;
+            // Set preload to metadata so browser fetches just enough to play
+            video.preload = 'metadata';
+            lazyVideoObserver.unobserve(video);
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+
+      document.querySelectorAll('video[preload="none"]').forEach(function(video) {
+        lazyVideoObserver.observe(video);
+      });
+
+      // ---- 14. REGISTER SERVICE WORKER (for caching when served via HTTP) ----
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        navigator.serviceWorker.register('sw.js').catch(function() {});
+      }
+
+    })();
+  </script>
+</body>
+</html>

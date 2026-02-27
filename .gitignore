@@ -1,0 +1,19 @@
+# Original source files in root (already copied to assets/)
+/AiiCafe*.mov
+/AiiCafe*.MP4
+/AiiCafe*.MOV
+/AiiHouse_Template.pptx
+/Asset*.png
+/Color Pallate.png
+/Large 16oz.png
+/Medium 12oz.png
+/Mockup.png
+/Small 8oz.png
+/Workingfile.ai
+
+# MOV originals in assets (converted to mp4)
+assets/videos/*.mov
+
+# OS
+.DS_Store
+Thumbs.db
