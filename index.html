@@ -10,9 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Preload hero video + poster (critical) -->
-  <link rel="preload" href="assets/videos/opt/hero.mp4" as="video" type="video/mp4">
-  <link rel="preload" href="assets/videos/opt/poster2.jpg" as="image">
+  <!-- Preload critical assets -->
+  <link rel="preload" href="assets/videos/opt/poster2.jpg" as="image" fetchpriority="high">
   <link rel="preload" href="assets/images/Asset_9.png" as="image">
 
   <!-- Cache control -->
@@ -113,7 +112,7 @@
     .happening-bar .close-btn{padding:0 12px;height:100%;display:flex;align-items:center;color:var(--text-secondary);font-size:.85rem;flex-shrink:0}
 
     /* ---- HERO ---- */
-    .hero{position:relative;width:100%;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0A1629}
+    .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0A1629}
     .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
     .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(10,22,41,.3) 0%,rgba(10,22,41,.35) 50%,rgba(10,22,41,.5) 100%);z-index:1}
     .hero-content{position:relative;z-index:2;text-align:center;max-width:720px;padding:0 20px}
@@ -179,7 +178,7 @@
     .timeline-time{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--blue-navy);margin-bottom:12px}
     .timeline-time::after{content:'';display:block;width:8px;height:8px;border-radius:50%;background:var(--golden);margin:8px auto 0}
     .timeline-video-wrap{width:100%;aspect-ratio:9/16;max-width:160px;margin:0 auto 12px;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--cream)}
-    .timeline-video-wrap video{width:100%;height:100%;object-fit:cover}
+    .timeline-video-wrap img,.timeline-video-wrap video{width:100%;height:100%;object-fit:cover}
     .timeline-caption{font-size:.82rem;font-weight:500;color:var(--text-secondary)}
     @media(max-width:768px){
       .timeline-track{grid-template-columns:1fr;gap:0;padding-left:40px;position:relative}
@@ -375,12 +374,12 @@
           <p class="subtitle">Từ ly cà phê sáng đến buổi tối sáng tạo</p>
         </div>
         <div class="timeline-track reveal">
-          <div class="timeline-item"><div class="timeline-time">7:00</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video></div><div class="timeline-caption">Espresso đầu ngày</div></div>
-          <div class="timeline-item" id="kids"><div class="timeline-time">9:30</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster2.jpg" data-src="assets/videos/opt/v2.mp4"></video></div><div class="timeline-caption">Lớp rèn chữ cho bé</div></div>
-          <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster3.jpg" data-src="assets/videos/opt/v3.mp4"></video></div><div class="timeline-caption">Brunch cuối tuần</div></div>
-          <div class="timeline-item" id="work"><div class="timeline-time">14:00</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster4.jpg" data-src="assets/videos/opt/v4.mp4"></video></div><div class="timeline-caption">Workshop & Co-working</div></div>
-          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video></div><div class="timeline-caption">Cà phê chiều & đọc sách</div></div>
-          <div class="timeline-item"><div class="timeline-time">19:30</div><div class="timeline-video-wrap"><video muted loop playsinline poster="assets/videos/opt/poster2.jpg" data-src="assets/videos/opt/v2.mp4"></video></div><div class="timeline-caption">Demo Day sản phẩm</div></div>
+          <div class="timeline-item"><div class="timeline-time">7:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Espresso đầu ngày" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Espresso đầu ngày</div></div>
+          <div class="timeline-item" id="kids"><div class="timeline-time">9:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Lớp rèn chữ cho bé" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Lớp rèn chữ cho bé</div></div>
+          <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster3.jpg" alt="Brunch cuối tuần" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Brunch cuối tuần</div></div>
+          <div class="timeline-item" id="work"><div class="timeline-time">14:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster4.jpg" alt="Workshop" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Workshop & Co-working</div></div>
+          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Cà phê chiều" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Cà phê chiều & đọc sách</div></div>
+          <div class="timeline-item"><div class="timeline-time">19:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Demo Day sản phẩm</div></div>
         </div>
       </div>
     </section>
@@ -398,18 +397,18 @@
           <button class="filter-tab" data-filter="kids" role="tab">Kids</button>
         </div>
         <div class="showcase-grid" id="showcaseGrid">
-          <div class="showcase-item" data-category="cafe"><video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Espresso art buổi sáng</span></div></div>
-          <div class="showcase-item" data-category="food"><video muted loop playsinline poster="assets/videos/opt/poster2.jpg" data-src="assets/videos/opt/v2.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍽️ Brunch đặc biệt</span></div></div>
-          <div class="showcase-item" data-category="class"><video muted loop playsinline poster="assets/videos/opt/poster3.jpg" data-src="assets/videos/opt/v3.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">📚 Workshop cuối tuần</span></div></div>
-          <div class="showcase-item" data-category="event"><video muted loop playsinline poster="assets/videos/opt/poster4.jpg" data-src="assets/videos/opt/v4.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎤 Demo Day</span></div></div>
-          <div class="showcase-item" data-category="cafe"><video muted loop playsinline poster="assets/videos/opt/poster2.jpg" data-src="assets/videos/opt/v2.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Cold brew on ice</span></div></div>
-          <div class="showcase-item" data-category="cafe"><video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Latte art</span></div></div>
-          <div class="showcase-item" data-category="food"><video muted loop playsinline poster="assets/videos/opt/poster3.jpg" data-src="assets/videos/opt/v3.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍽️ Avocado toast</span></div></div>
-          <div class="showcase-item" data-category="kids"><video muted loop playsinline poster="assets/videos/opt/poster4.jpg" data-src="assets/videos/opt/v4.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">👧 Lớp rèn chữ</span></div></div>
-          <div class="showcase-item" data-category="food"><video muted loop playsinline poster="assets/videos/opt/poster2.jpg" data-src="assets/videos/opt/v2.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍰 Tiramisu handmade</span></div></div>
-          <div class="showcase-item" data-category="event"><video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎉 Coffee cupping</span></div></div>
-          <div class="showcase-item" data-category="kids"><video muted loop playsinline poster="assets/videos/opt/poster3.jpg" data-src="assets/videos/opt/v3.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎨 Art class cho bé</span></div></div>
-          <div class="showcase-item" data-category="class"><video muted loop playsinline poster="assets/videos/opt/poster4.jpg" data-src="assets/videos/opt/v4.mp4"></video><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">💡 AI Workshop</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Espresso art" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Espresso art buổi sáng</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Brunch" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍽️ Brunch đặc biệt</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Workshop" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">📚 Workshop cuối tuần</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="Demo Day" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎤 Demo Day</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Cold brew" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Cold brew on ice</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Latte art" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">☕ Latte art</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Avocado toast" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍽️ Avocado toast</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="Lớp rèn chữ" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">👧 Lớp rèn chữ</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Tiramisu" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🍰 Tiramisu handmade</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Coffee cupping" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎉 Coffee cupping</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Art class" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">🎨 Art class cho bé</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="AI Workshop" loading="lazy" width="360" height="640"><span class="item-heart">♡</span><div class="item-overlay"><span class="item-caption">💡 AI Workshop</span></div></div>
         </div>
         <div class="showcase-cta reveal">
           <p>Chia sẻ khoảnh khắc của bạn — tag #AiiCafe ☕</p>
@@ -499,29 +498,32 @@
       unmuteIcon.style.display=heroVid.muted?'none':'block';
     };
 
-    // 4. LAZY VIDEO LOADING + autoplay/pause via IntersectionObserver
-    // Videos use data-src — only loads when near viewport
-    var lazyObs=new IntersectionObserver(function(entries){
+    // 4. LAZY VIDEO for cafe section (only 1 video with data-src)
+    var cafeVidObs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         var vid=e.target;
         if(e.isIntersecting){
-          // Load src if not yet loaded
-          if(!vid.src&&vid.dataset.src){
-            vid.src=vid.dataset.src;
-            vid.load();
-          }
+          if(!vid.src&&vid.dataset.src){vid.src=vid.dataset.src;vid.load()}
           vid.play().catch(function(){});
-        }else{
-          vid.pause();
-        }
+        }else{vid.pause()}
       });
     },{threshold:0.2,rootMargin:'200px 0px'});
+    document.querySelectorAll('video[data-src]').forEach(function(v){cafeVidObs.observe(v)});
 
-    document.querySelectorAll('video[data-src]').forEach(function(v){lazyObs.observe(v)});
-
-    // 5. Click play/pause on showcase videos
-    document.querySelectorAll('.showcase-item video').forEach(function(v){
-      v.addEventListener('click',function(){this.paused?this.play():this.pause()});
+    // 5. Showcase: click poster img → replace with video (on demand)
+    document.querySelectorAll('.showcase-item[data-video]').forEach(function(item){
+      item.addEventListener('click',function(){
+        if(item.querySelector('video'))return; // already has video
+        var src=item.dataset.video;
+        var vid=document.createElement('video');
+        vid.muted=true;vid.loop=true;vid.playsInline=true;vid.autoplay=true;
+        vid.src=src;
+        vid.style.cssText='width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0';
+        var img=item.querySelector('img');
+        if(img)img.style.display='none';
+        item.insertBefore(vid,item.firstChild);
+        vid.play().catch(function(){});
+      });
     });
 
     // 6. Scroll spy for sub-nav
