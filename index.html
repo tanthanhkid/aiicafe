@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Preload critical assets -->
-  <link rel="preload" href="assets/videos/opt/poster2.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/videos/opt/poster-hero.jpg" as="image" fetchpriority="high">
   <link rel="preload" href="assets/images/Asset_9.png" as="image">
 
   <!-- Cache control -->
@@ -286,9 +286,10 @@
   </div>
 
   <main>
-    <!-- HERO — uses opt/hero.mp4 (720p, no audio, 3.1MB) -->
+    <!-- HERO — 1280x720, 24fps, no audio, ~1.2MB -->
     <section class="hero" id="hero">
-      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/videos/opt/poster2.jpg">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/videos/opt/poster-hero.jpg">
+        <source src="assets/videos/opt/hero.webm" type="video/webm">
         <source src="assets/videos/opt/hero.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
