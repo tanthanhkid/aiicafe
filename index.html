@@ -6,17 +6,21 @@
   <title>AiiCafe — Where love brews and dreams grow</title>
   <meta name="description" content="AiiCafe — Không gian cà phê giáo dục cho mọi gia đình. Nơi mỗi tách cà phê kể một câu chuyện về yêu thương.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link rel="preload" href="assets/videos/opt/poster-chero.jpg" as="image" fetchpriority="high" media="(min-width:769px)">
   <link rel="preload" href="assets/videos/opt/poster-mhero.jpg" as="image" fetchpriority="high" media="(max-width:768px)">
   <link rel="preload" href="assets/images/Asset_9.png" as="image">
-
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/fonts/Fraunces-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin>
 
   <style>
+    @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Variable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+    @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Italic-Variable.ttf') format('truetype');font-weight:100 900;font-style:italic;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+
     :root {
       --navy: #0F1E44;
       --navy-light: #1A2D5A;
@@ -49,7 +53,7 @@
 
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:var(--text-body);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:var(--text-body);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     img{max-width:100%;height:auto;display:block}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     button{border:none;background:none;cursor:pointer;font-family:inherit}
@@ -60,7 +64,7 @@
 
     .container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
 
-    h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.2;color:var(--navy)}
+    h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;line-height:1.2;color:var(--navy)}
     h2{font-size:clamp(1.75rem,3.5vw,2.5rem)}
 
     /* Brand icon helper */
@@ -100,8 +104,7 @@
     .navbar-brand img{height:38px;width:auto}
     .navbar-brand .logo-white{display:block}.navbar-brand .logo-blue{display:none}
     .navbar.scrolled .logo-white{display:none}.navbar.scrolled .logo-blue{display:block}
-    .navbar-brand span{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;color:var(--white);transition:color var(--ease)}
-    .navbar.scrolled .navbar-brand span{color:var(--navy)}
+    .navbar-brand img{height:38px;width:auto}
     .navbar-links{display:flex;align-items:center;gap:32px}
     .navbar-links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.8);transition:color var(--ease)}
     .navbar-links a:hover{color:#fff}
@@ -158,7 +161,10 @@
     .story-text h2{margin-bottom:20px}
     .story-text h2 em{font-style:italic;color:var(--golden-hover)}
     .story-text .lead{font-size:1.05rem;color:var(--text-body);line-height:1.8;margin-bottom:24px}
-    .story-text blockquote{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:var(--navy);padding-left:20px;border-left:3px solid var(--golden);line-height:1.6;margin-bottom:28px}
+    .story-text blockquote{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;color:var(--navy);padding-left:20px;border-left:3px solid var(--golden);line-height:1.6;margin-bottom:28px}
+    .mission-text{font-size:1.15rem;line-height:1.9}
+    .mission-text .mt-navy{color:var(--navy);font-weight:700}
+    .mission-text .mt-golden{color:var(--golden-hover);font-weight:700}
     @media(max-width:768px){.story-grid{grid-template-columns:1fr;gap:40px}.story-visual-accent{width:90px;height:90px;bottom:-10px;right:-10px}.story-visual-accent .brand-icon{width:36px;height:36px}}
 
     /* ---- VALUES (C.A.R.E.S) ---- */
@@ -167,23 +173,23 @@
     .values-section .section-header .subtitle{color:rgba(255,255,255,.5)}
     .values-section .section-label{color:var(--golden)}
     .values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-    .value-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:all var(--ease);position:relative;overflow:hidden}
-    .value-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px);border-color:rgba(239,193,75,.3)}
-    .value-card-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+    .value-card{border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:all var(--ease);position:relative;overflow:hidden;color:var(--white)}
+    .value-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .value-card-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.2)}
     .value-card-icon .brand-icon{width:28px;height:28px}
+    .value-card-icon .brand-icon svg{fill:#fff}
     .value-card h4{font-size:1rem;color:var(--white);margin-bottom:4px}
-    .value-card .value-vn{font-size:.8rem;color:var(--golden);font-weight:600;margin-bottom:12px}
-    .value-card p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6}
-    .value-card:nth-child(1) .value-card-icon{background:rgba(255,49,49,.15)}
-    .value-card:nth-child(1) .brand-icon svg{fill:#FF6B6B}
-    .value-card:nth-child(2) .value-card-icon{background:rgba(66,165,245,.15)}
-    .value-card:nth-child(2) .brand-icon svg{fill:#42A5F5}
-    .value-card:nth-child(3) .value-card-icon{background:rgba(76,175,114,.15)}
-    .value-card:nth-child(3) .brand-icon svg{fill:#66BB6A}
-    .value-card:nth-child(4) .value-card-icon{background:var(--golden-light)}
-    .value-card:nth-child(4) .brand-icon svg{fill:var(--golden)}
-    .value-card:nth-child(5) .value-card-icon{background:rgba(255,138,34,.15)}
-    .value-card:nth-child(5) .brand-icon svg{fill:#FF8A22}
+    .value-card .value-vn{font-size:.8rem;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:12px}
+    .value-card p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.6}
+    .value-card:nth-child(1){background:#D94452}
+    .value-card:nth-child(2){background:var(--golden)}
+    .value-card:nth-child(2) h4,.value-card:nth-child(2) .value-vn{color:var(--navy)}
+    .value-card:nth-child(2) p{color:rgba(15,30,68,.7)}
+    .value-card:nth-child(2) .value-card-icon{background:rgba(15,30,68,.15)}
+    .value-card:nth-child(2) .value-card-icon .brand-icon svg{fill:var(--navy)}
+    .value-card:nth-child(3){background:#7B4FB5}
+    .value-card:nth-child(4){background:#1A3068}
+    .value-card:nth-child(5){background:#3A8F5C}
     /* Deco */
     .values-section .deco-bookmark{position:absolute;top:40px;right:60px;width:40px;height:52px;background:rgba(239,193,75,.08);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%)}
     .values-section .deco-circle{position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;border:2px solid rgba(255,255,255,.04)}
@@ -238,17 +244,18 @@
     .food-carousel.dragging{cursor:grabbing;scroll-snap-type:none}
     .food-card{flex:0 0 220px;background:var(--cream);border-radius:var(--radius-lg);overflow:hidden;scroll-snap-align:start;transition:all var(--ease);border:1px solid transparent}
     .food-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:rgba(239,193,75,.2)}
-    .food-card-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
-    .food-card-img .brand-icon{width:48px;height:48px;opacity:.7}
+    .food-card-img{width:100%;aspect-ratio:1;overflow:hidden;position:relative}
+    .food-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+    .food-card:hover .food-card-img img{transform:scale(1.06)}
+    .food-tag{position:absolute;top:12px;left:12px;z-index:1;display:inline-block;padding:6px 16px;border-radius:var(--radius-full);font-size:.75rem;font-weight:700;letter-spacing:.02em}
+    .food-tag.bestseller{background:var(--golden);color:var(--white)}
+    .food-tag.new{background:var(--white);color:var(--navy)}
+    .food-tag.healthy{background:#4CAF72;color:var(--white)}
+    .food-tag.kids{background:#FF5757;color:var(--white)}
+    .food-tag.special{background:var(--golden);color:var(--white)}
     .food-card-body{padding:14px 16px 18px}
-    .food-card-body h4{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:6px;color:var(--navy)}
-    .food-tag{display:inline-block;padding:3px 10px;border-radius:var(--radius-full);font-size:.7rem;font-weight:700;margin-bottom:6px}
-    .food-tag.bestseller{background:var(--golden-light);color:var(--golden-hover)}
-    .food-tag.new{background:rgba(15,30,68,.06);color:var(--navy)}
-    .food-tag.healthy{background:rgba(76,175,114,.1);color:#2F855A}
-    .food-tag.kids{background:rgba(255,49,49,.08);color:#C53D6F}
-    .food-tag.special{background:var(--golden-light);color:var(--golden-hover)}
-    .food-card-body .food-price{font-size:.85rem;font-weight:700;color:var(--navy)}
+    .food-card-body h4{font-family:'Be Vietnam Pro',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:8px;color:var(--navy)}
+    .food-card-body .food-price{font-size:1.1rem;font-weight:800;color:var(--golden)}
     .food-carousel-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
     .carousel-btn{width:44px;height:44px;border-radius:50%;border:2px solid rgba(15,30,68,.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--ease)}
     .carousel-btn:hover{border-color:var(--navy);color:var(--navy);background:var(--cream)}
@@ -258,7 +265,7 @@
     .timeline-section{background:var(--cream);padding:100px 0}
     .timeline-track{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
     .timeline-item{text-align:center}
-    .timeline-time{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+    .timeline-time{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
     .timeline-time::after{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--golden);margin:10px auto 0;box-shadow:0 0 0 4px var(--golden-light)}
     .timeline-video-wrap{width:100%;aspect-ratio:9/16;max-width:160px;margin:0 auto 12px;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--cream-dark)}
     .timeline-video-wrap img,.timeline-video-wrap video{width:100%;height:100%;object-fit:cover}
@@ -328,21 +335,18 @@
     .cta-inner p{color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
     .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
     .cta-banner .deco-house{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:220px;height:200px;background:rgba(239,193,75,.06);clip-path:polygon(50% 0%,100% 40%,100% 100%,0 100%,0 40%)}
-    .cta-banner .deco-clover{position:absolute;left:60px;bottom:20px;width:60px;height:60px;opacity:.06}
-    .cta-banner .deco-clover svg{fill:#fff;width:100%;height:100%}
 
     /* ---- FOOTER ---- */
-    .footer{background:var(--black);padding:72px 0 0;color:rgba(255,255,255,.45)}
+    .footer{background:var(--navy);padding:72px 0 0;color:rgba(255,255,255,.5)}
     .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px}
-    .footer-brand img{height:36px;margin-bottom:10px}
-    .footer-brand .brand-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:10px}
+    .footer-brand img{height:46px;width:auto;object-fit:contain;margin-bottom:16px}
     .footer-brand .brand-tagline{font-size:.88rem;line-height:1.6;margin-bottom:8px}
-    .footer-brand .brand-slogan{font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--golden);margin-bottom:24px}
+    .footer-brand .brand-slogan{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--golden);margin-bottom:24px}
     .footer-social{display:flex;gap:10px}
     .footer-social a{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);transition:all var(--ease)}
     .footer-social a:hover{color:var(--golden);border-color:var(--golden)}
     .footer-social a svg{width:16px;height:16px}
-    .footer-col h5{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+    .footer-col h5{font-family:'Be Vietnam Pro',sans-serif;font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
     .footer-col a,.footer-col p{display:block;font-size:.88rem;margin-bottom:12px;transition:color var(--ease)}
     .footer-col a:hover{color:var(--golden)}
     .footer-col .footer-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;font-size:.88rem}
@@ -414,7 +418,6 @@
       <a href="#" class="navbar-brand">
         <img src="assets/images/Asset_9.png" alt="AiiCafe Logo" class="logo-white" width="114" height="38">
         <img src="assets/images/Asset_6.png" alt="AiiCafe Logo" class="logo-blue" width="114" height="38">
-        <span>AiiCafe</span>
       </a>
       <div class="navbar-links">
         <a href="#story">Câu chuyện</a>
@@ -454,7 +457,7 @@
           <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
           Where love brews and dreams grow
         </div>
-        <h1>Nơi mỗi tách cà phê<br>kể một câu chuyện về <em>yêu thương</em></h1>
+        <h1>Nơi <em>mỗi tách cà phê</em><br>kể một câu chuyện về<br><em>yêu thương</em></h1>
         <p class="hero-subtitle">Không gian cà phê giáo dục cho mọi gia đình. Nơi thế hệ tương lai được ươm mầm từ những điều giản dị nhất.</p>
         <div class="hero-actions">
           <a href="#cafe" class="btn-primary">
@@ -492,7 +495,8 @@
               Câu chuyện AiiCafe
             </div>
             <h2>Cà phê &ndash; Tri thức &ndash; <em>Nuôi dưỡng</em></h2>
-            <p class="lead">AiiCafe &ndash; nơi mỗi tách cà phê kể một câu chuyện về yêu thương. Là thương hiệu cà phê thuộc hệ sinh thái AiiHouse, AiiCafe kiến tạo không gian nơi phụ huynh thư thái, các con khám phá, và cả gia đình cùng lớn lên.</p>
+            <p class="lead mission-text">Biến <strong class="mt-navy">mỗi khoảnh khắc gia đình</strong> thành <strong class="mt-golden">cơ hội ươm mầm</strong> qua <strong class="mt-navy">một ly cà phê</strong>, <strong class="mt-golden">một trải nghiệm mới</strong>, <strong class="mt-navy">một tài năng được thắp sáng</strong>.</p>
+            <p class="lead">Là thương hiệu cà phê thuộc hệ sinh thái AiiHouse, AiiCafe kiến tạo không gian nơi phụ huynh thư thái, các con khám phá, và cả gia đình cùng lớn lên.</p>
             <blockquote>&ldquo;Bởi tại AiiCafe, chúng tôi tin: mỗi thiên thần nhỏ đều mang trong mình ánh sáng riêng. Việc của chúng tôi chỉ đơn giản là giúp ánh sáng ấy toả sáng.&rdquo;</blockquote>
             <a href="#audience" class="btn-outline">
               Tìm hiểu thêm
@@ -654,14 +658,14 @@
             <h3>Không chỉ có cà phê</h3>
           </div>
           <div class="food-carousel" id="foodCarousel">
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#FDF0D5,#EFC14B)"><span class="brand-icon"><svg><use href="#ic-flower"/></svg></span></div><div class="food-card-body"><h4>Egg Benedict</h4><span class="food-tag bestseller">Best seller</span><div class="food-price">89k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#E8F5E9,#81C784)"><span class="brand-icon"><svg><use href="#ic-clover"/></svg></span></div><div class="food-card-body"><h4>Avocado Toast</h4><span class="food-tag healthy">Healthy</span><div class="food-price">75k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#FFF3E0,#FFB74D)"><span class="brand-icon"><svg><use href="#ic-house"/></svg></span></div><div class="food-card-body"><h4>Bánh mì chảo</h4><span class="food-tag special">Đặc biệt</span><div class="food-price">65k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#FDF0D5,#FFCC80)"><span class="brand-icon"><svg><use href="#ic-heart"/></svg></span></div><div class="food-card-body"><h4>Pancake Stack</h4><span class="food-tag kids">Kids love</span><div class="food-price">69k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#E3F2FD,#90CAF9)"><span class="brand-icon"><svg><use href="#ic-drop"/></svg></span></div><div class="food-card-body"><h4>Phở cuốn</h4><span class="food-tag new">Mới</span><div class="food-price">55k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)"><span class="brand-icon"><svg><use href="#ic-clover"/></svg></span></div><div class="food-card-body"><h4>Salad Bowl</h4><span class="food-tag healthy">Healthy</span><div class="food-price">79k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#FDF0D5,#FFE082)"><span class="brand-icon"><svg><use href="#ic-flower"/></svg></span></div><div class="food-card-body"><h4>Waffle &amp; Berries</h4><span class="food-tag bestseller">Best seller</span><div class="food-price">72k</div></div></div>
-            <div class="food-card"><div class="food-card-img" style="background:linear-gradient(135deg,#FBE9E7,#FFAB91)"><span class="brand-icon"><svg><use href="#ic-heart"/></svg></span></div><div class="food-card-body"><h4>Tiramisu</h4><span class="food-tag special">Đặc biệt</span><div class="food-price">68k</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/egg-benedict.jpg" alt="Egg Benedict" loading="lazy"></div><div class="food-card-body"><h4>Egg Benedict</h4><div class="food-price">89.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/avocado-toast.jpg" alt="Avocado Toast" loading="lazy"></div><div class="food-card-body"><h4>Avocado Toast</h4><div class="food-price">75.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/banh-mi-chao.jpg" alt="Bánh mì chảo" loading="lazy"></div><div class="food-card-body"><h4>Bánh mì chảo</h4><div class="food-price">65.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag kids">Kids Love</span><img src="assets/images/food/pancake.jpg" alt="Pancake Stack" loading="lazy"></div><div class="food-card-body"><h4>Pancake Stack</h4><div class="food-price">69.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag new">Mới</span><img src="assets/images/food/pho-cuon.jpg" alt="Phở cuốn" loading="lazy"></div><div class="food-card-body"><h4>Phở cuốn</h4><div class="food-price">55.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/salad-bowl.jpg" alt="Salad Bowl" loading="lazy"></div><div class="food-card-body"><h4>Salad Bowl</h4><div class="food-price">79.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/waffle.jpg" alt="Waffle &amp; Berries" loading="lazy"></div><div class="food-card-body"><h4>Waffle &amp; Berries</h4><div class="food-price">72.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/tiramisu.jpg" alt="Tiramisu" loading="lazy"></div><div class="food-card-body"><h4>Tiramisu</h4><div class="food-price">68.000 VND</div></div></div>
           </div>
           <div class="food-carousel-nav">
             <button class="carousel-btn" id="carouselPrev" aria-label="Trước"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -816,7 +820,6 @@
     <!-- CTA BANNER -->
     <section class="cta-banner">
       <div class="deco-house"></div>
-      <div class="deco-clover"><svg viewBox="0 0 24 24"><use href="#ic-clover"/></svg></div>
       <div class="container">
         <div class="cta-inner reveal">
           <h2>Sẵn sàng trải nghiệm <em>AiiCafe</em>?</h2>
@@ -841,8 +844,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/Asset_9.png" alt="AiiCafe" width="114" height="38">
-          <div class="brand-name">AiiCafe</div>
+          <img src="assets/images/Asset_9.png" alt="AiiCafe" height="46">
           <p class="brand-tagline">Không gian cà phê giáo dục cho mọi gia đình.</p>
           <p class="brand-slogan">&ldquo;Where love brews and dreams grow&rdquo;</p>
           <div class="footer-social">
