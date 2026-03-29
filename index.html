@@ -368,6 +368,72 @@
     /* Performance */
     .navbar{will-change:background-color;contain:layout style}
     video{content-visibility:auto;contain-intrinsic-size:270px 480px}
+
+    /* Reservation Modal */
+    .reservation-overlay{position:fixed;inset:0;background:rgba(15,30,68,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s ease}
+    .reservation-overlay.active{display:flex;opacity:1}
+    .reservation-modal{background:var(--cream);border-radius:var(--radius-xl);max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(15,30,68,.2);transform:translateY(24px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);position:relative}
+    .reservation-overlay.active .reservation-modal{transform:translateY(0)}
+    .reservation-modal-header{padding:28px 28px 0;display:flex;align-items:flex-start;justify-content:space-between}
+    .reservation-modal-header .header-text h3{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--navy);font-weight:700}
+    .reservation-modal-header .header-text p{font-size:.9rem;color:var(--text-muted);margin-top:4px}
+    .reservation-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(15,30,68,.06);transition:all var(--ease);flex-shrink:0;margin-left:12px;cursor:pointer}
+    .reservation-close:hover{background:rgba(15,30,68,.12)}
+    .reservation-close svg{width:18px;height:18px;stroke:var(--navy);stroke-width:2.5;fill:none}
+    .reservation-form{padding:24px 28px 28px}
+    .reservation-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .reservation-form .form-group{margin-bottom:16px}
+    .reservation-form label{display:block;font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.02em}
+    .reservation-form label .required{color:var(--red-accent)}
+    .reservation-form input,.reservation-form select,.reservation-form textarea{width:100%;padding:12px 14px;border:1.5px solid rgba(15,30,68,.12);border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;color:var(--text-primary);background:var(--white);transition:border-color var(--ease),box-shadow var(--ease);outline:none}
+    .reservation-form input:focus,.reservation-form select:focus,.reservation-form textarea:focus{border-color:var(--golden);box-shadow:0 0 0 3px rgba(239,193,75,.12)}
+    .reservation-form input.error,.reservation-form select.error{border-color:var(--red-accent)}
+    .reservation-form .error-msg{font-size:.75rem;color:var(--red-accent);margin-top:4px;display:none}
+    .reservation-form .error-msg.show{display:block}
+    .reservation-form textarea{resize:vertical;min-height:72px}
+    .reservation-form .form-submit{margin-top:8px}
+    .reservation-form .form-submit .btn-primary{width:100%;justify-content:center;padding:16px;font-size:.95rem}
+    .reservation-success{display:none;text-align:center;padding:48px 28px}
+    .reservation-success.active{display:block}
+    .reservation-success .success-icon{width:64px;height:64px;margin:0 auto 20px;background:rgba(239,193,75,.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .reservation-success .success-icon svg{width:32px;height:32px;stroke:var(--golden-hover);stroke-width:2.5;fill:none}
+    .reservation-success h3{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:var(--navy);margin-bottom:8px}
+    .reservation-success p{color:var(--text-muted);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+    .reservation-success .btn-primary{display:inline-flex}
+    @media(max-width:480px){
+      .reservation-form .form-row{grid-template-columns:1fr}
+      .reservation-modal-header{padding:20px 20px 0}
+      .reservation-form{padding:20px}
+      .reservation-success{padding:36px 20px}
+    }
+
+    /* ---- BOOKING SECTION ---- */
+    .booking-section{padding:100px 0;background:var(--navy);position:relative;overflow:hidden}
+    .booking-section::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;background:radial-gradient(circle,rgba(239,193,75,.07) 0%,transparent 70%);pointer-events:none}
+    .booking-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(239,193,75,.05) 0%,transparent 70%);pointer-events:none}
+    .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+    .booking-info .section-label{color:var(--golden)}
+    .booking-info h2{color:var(--white);margin-bottom:16px}
+    .booking-info h2 em{color:var(--golden);font-style:italic}
+    .booking-info>p{color:rgba(255,255,255,.65);font-size:.97rem;line-height:1.75}
+    .booking-features{margin-top:36px;display:flex;flex-direction:column;gap:14px}
+    .booking-feature{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.8)}
+    .booking-feature-icon{width:40px;height:40px;background:rgba(239,193,75,.1);border:1px solid rgba(239,193,75,.2);border-radius:var(--radius-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .booking-feature-icon svg{width:18px;height:18px;stroke:var(--golden);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .booking-feature span{font-size:.88rem;line-height:1.4}
+    .booking-form-card{background:var(--cream);border-radius:var(--radius-xl);padding:36px 36px 40px;box-shadow:0 32px 72px rgba(0,0,0,.35);position:relative;z-index:1}
+    .booking-form-card .bfc-header{margin-bottom:24px}
+    .booking-form-card .bfc-header h3{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;color:var(--navy);font-weight:700;margin-bottom:4px}
+    .booking-form-card .bfc-header p{font-size:.82rem;color:var(--text-muted)}
+    .booking-form-card .reservation-form{padding:0}
+    .bs-success{display:none;text-align:center;padding:24px 0}
+    .bs-success.active{display:block}
+    .bs-success .bs-success-icon{width:72px;height:72px;margin:0 auto 20px;background:rgba(239,193,75,.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .bs-success .bs-success-icon svg{width:36px;height:36px;stroke:var(--golden-hover);stroke-width:2.5;fill:none}
+    .bs-success h3{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:var(--navy);margin-bottom:8px}
+    .bs-success p{color:var(--text-muted);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+    @media(max-width:900px){.booking-grid{grid-template-columns:1fr;gap:48px}}
+    @media(max-width:768px){.booking-section{padding:72px 0}.booking-form-card{padding:28px 24px 32px}}
   </style>
 </head>
 
@@ -425,7 +491,7 @@
         <a href="#experience">Trải nghiệm</a>
         <a href="#schedule">Lịch tuần</a>
         <a href="#contact">Liên hệ</a>
-        <a href="#" class="navbar-cta">Đặt bàn</a>
+        <a href="#booking" class="navbar-cta">Đặt bàn</a>
       </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </nav>
@@ -436,7 +502,7 @@
       <a href="#experience">Trải nghiệm</a>
       <a href="#schedule">Lịch tuần</a>
       <a href="#contact">Liên hệ</a>
-      <a href="#" class="navbar-cta">Đặt bàn</a>
+      <a href="#booking" class="navbar-cta">Đặt bàn</a>
     </div>
   </header>
 
@@ -825,7 +891,7 @@
           <h2>Sẵn sàng trải nghiệm <em>AiiCafe</em>?</h2>
           <p>Đặt bàn ngay để tận hưởng không gian cà phê giáo dục độc đáo nhất Việt Nam.</p>
           <div class="cta-actions">
-            <a href="#" class="btn-primary">
+            <a href="#booking" class="btn-primary">
               <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
               Đặt bàn ngay
             </a>
@@ -833,6 +899,140 @@
               <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-phone"/></svg>
               Gọi ngay
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="booking-grid">
+          <!-- Left: Info -->
+          <div class="booking-info reveal">
+            <div class="section-label">
+              <span class="brand-icon"><svg><use href="#ic-pin"/></svg></span>
+              ĐẶT BÀN
+            </div>
+            <h2>Đặt bàn tại<br><em>AiiCafe</em></h2>
+            <p>Đặt trước để có trải nghiệm tốt nhất. Chúng tôi sẽ xác nhận và liên hệ lại với bạn trong vòng 30 phút.</p>
+            <div class="booking-features">
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.97.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.84.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <span>Xác nhận qua điện thoại trong 30 phút</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span>Mở cửa 7:00 – 22:00 tất cả các ngày trong tuần</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <span>Phù hợp cho gia đình, nhóm bạn & sự kiện</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span>Không gian an toàn & thân thiện cho trẻ em</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form Card -->
+          <div class="booking-form-card reveal reveal-delay-1">
+            <div class="bfc-header">
+              <h3>Điền thông tin đặt bàn</h3>
+              <p>Tất cả trường có dấu <span style="color:var(--red-accent)">*</span> là bắt buộc</p>
+            </div>
+
+            <form class="reservation-form" id="bookingSectionForm" novalidate>
+              <div class="form-group">
+                <label>Họ và tên <span class="required">*</span></label>
+                <input type="text" id="bsName" placeholder="Nguyễn Văn A" required>
+                <div class="error-msg" id="bsErrName">Vui lòng nhập họ tên (ít nhất 2 ký tự)</div>
+              </div>
+              <div class="form-group">
+                <label>Số điện thoại <span class="required">*</span></label>
+                <input type="tel" id="bsPhone" placeholder="0901 234 567" required>
+                <div class="error-msg" id="bsErrPhone">Vui lòng nhập số điện thoại hợp lệ (VD: 0901234567)</div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Ngày đặt <span class="required">*</span></label>
+                  <input type="date" id="bsDate" required>
+                  <div class="error-msg" id="bsErrDate">Vui lòng chọn ngày</div>
+                </div>
+                <div class="form-group">
+                  <label>Giờ đến <span class="required">*</span></label>
+                  <select id="bsTime" required>
+                    <option value="">Chọn giờ</option>
+                    <option>7:00</option><option>7:30</option>
+                    <option>8:00</option><option>8:30</option>
+                    <option>9:00</option><option>9:30</option>
+                    <option>10:00</option><option>10:30</option>
+                    <option>11:00</option><option>11:30</option>
+                    <option>12:00</option><option>12:30</option>
+                    <option>13:00</option><option>13:30</option>
+                    <option>14:00</option><option>14:30</option>
+                    <option>15:00</option><option>15:30</option>
+                    <option>16:00</option><option>16:30</option>
+                    <option>17:00</option><option>17:30</option>
+                    <option>18:00</option><option>18:30</option>
+                    <option>19:00</option><option>19:30</option>
+                    <option>20:00</option><option>20:30</option>
+                    <option>21:00</option>
+                  </select>
+                  <div class="error-msg" id="bsErrTime">Vui lòng chọn giờ</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Số khách <span class="required">*</span></label>
+                  <select id="bsGuests" required>
+                    <option value="">Chọn</option>
+                    <option>1</option><option>2</option><option>3</option><option>4</option>
+                    <option>5</option><option>6</option><option>7</option><option>8</option>
+                    <option>9</option><option>10</option>
+                    <option value="11-15">11–15 khách</option>
+                    <option value="16-20">16–20 khách</option>
+                  </select>
+                  <div class="error-msg" id="bsErrGuests">Vui lòng chọn số khách</div>
+                </div>
+                <div class="form-group">
+                  <label>Khu vực</label>
+                  <select id="bsArea">
+                    <option value="indoor">Trong nhà</option>
+                    <option value="outdoor">Ngoài trời</option>
+                    <option value="kids">Khu vui chơi trẻ em</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Ghi chú</label>
+                <textarea id="bsNote" placeholder="Yêu cầu đặc biệt: sinh nhật, ghế trẻ em, dị ứng thực phẩm..."></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn-primary">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
+                  Xác nhận đặt bàn
+                </button>
+              </div>
+            </form>
+
+            <div class="bs-success" id="bsSectionSuccess">
+              <div class="bs-success-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Đặt bàn thành công! 🎉</h3>
+              <p>Cảm ơn bạn đã đặt bàn tại AiiCafe.<br>Chúng tôi sẽ xác nhận và liên hệ với bạn sớm nhất.</p>
+              <button type="button" class="btn-primary" id="bsBookAgain">Đặt bàn khác</button>
+            </div>
           </div>
         </div>
       </div>
@@ -863,7 +1063,7 @@
         <div class="footer-col">
           <h5>Khám phá</h5>
           <a href="#schedule">Lịch sự kiện</a>
-          <a href="#">Đặt bàn</a>
+          <a href="#" data-booking>Đặt bàn</a>
           <a href="#">Membership</a>
           <a href="#">Blog</a>
         </div>
@@ -884,10 +1084,113 @@
 
   <!-- FLOATING CTA -->
   <div class="floating-cta hidden" id="floatingCta">
-    <a href="#">
+    <a href="#" data-booking>
       <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
       Đặt bàn
     </a>
+  </div>
+
+  <!-- RESERVATION MODAL -->
+  <div class="reservation-overlay" id="reservationOverlay">
+    <div class="reservation-modal" role="dialog" aria-labelledby="reservationTitle">
+      <div class="reservation-modal-header">
+        <div class="header-text">
+          <h3 id="reservationTitle">Đặt bàn tại AiiCafe</h3>
+          <p>Đặt bàn trước để có trải nghiệm tốt nhất</p>
+        </div>
+        <button class="reservation-close" id="reservationClose" aria-label="Đóng">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <form class="reservation-form" id="reservationForm" novalidate>
+        <div class="form-group">
+          <label>Họ và tên <span class="required">*</span></label>
+          <input type="text" id="resName" placeholder="Nguyễn Văn A" required>
+          <div class="error-msg" id="errName">Vui lòng nhập họ tên</div>
+        </div>
+
+        <div class="form-group">
+          <label>Số điện thoại <span class="required">*</span></label>
+          <input type="tel" id="resPhone" placeholder="0901 234 567" required>
+          <div class="error-msg" id="errPhone">Vui lòng nhập số điện thoại hợp lệ</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ngày đặt <span class="required">*</span></label>
+            <input type="date" id="resDate" required>
+            <div class="error-msg" id="errDate">Vui lòng chọn ngày</div>
+          </div>
+          <div class="form-group">
+            <label>Giờ đến <span class="required">*</span></label>
+            <select id="resTime" required>
+              <option value="">Chọn giờ</option>
+              <option>7:00</option><option>7:30</option>
+              <option>8:00</option><option>8:30</option>
+              <option>9:00</option><option>9:30</option>
+              <option>10:00</option><option>10:30</option>
+              <option>11:00</option><option>11:30</option>
+              <option>12:00</option><option>12:30</option>
+              <option>13:00</option><option>13:30</option>
+              <option>14:00</option><option>14:30</option>
+              <option>15:00</option><option>15:30</option>
+              <option>16:00</option><option>16:30</option>
+              <option>17:00</option><option>17:30</option>
+              <option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option>
+              <option>20:00</option><option>20:30</option>
+              <option>21:00</option>
+            </select>
+            <div class="error-msg" id="errTime">Vui lòng chọn giờ</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Số khách <span class="required">*</span></label>
+            <select id="resGuests" required>
+              <option value="">Chọn</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9</option><option>10</option>
+              <option value="11-15">11-15</option>
+              <option value="16-20">16-20</option>
+            </select>
+            <div class="error-msg" id="errGuests">Vui lòng chọn số khách</div>
+          </div>
+          <div class="form-group">
+            <label>Khu vực</label>
+            <select id="resArea">
+              <option value="indoor">Trong nhà</option>
+              <option value="outdoor">Ngoài trời</option>
+              <option value="kids">Khu vui chơi trẻ em</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <textarea id="resNote" placeholder="Yêu cầu đặc biệt, sinh nhật, ghế trẻ em..."></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
+            Xác nhận đặt bàn
+          </button>
+        </div>
+      </form>
+
+      <div class="reservation-success" id="reservationSuccess">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Đặt bàn thành công!</h3>
+        <p>Cảm ơn bạn đã đặt bàn tại AiiCafe.<br>Chúng tôi sẽ xác nhận và liên hệ với bạn sớm nhất.</p>
+        <button type="button" class="btn-primary" id="reservationDone">Đóng</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1002,6 +1305,189 @@
         if(vid){vid.pause();vid.remove()}
       });
     });
+
+    // Reservation Modal
+    var resOverlay=document.getElementById('reservationOverlay');
+    var resForm=document.getElementById('reservationForm');
+    var resSuccess=document.getElementById('reservationSuccess');
+    var resCloseBtn=document.getElementById('reservationClose');
+    var resDoneBtn=document.getElementById('reservationDone');
+
+    function openReservation(e){
+      if(e){e.preventDefault()}
+      resOverlay.classList.add('active');
+      document.body.style.overflow='hidden';
+      // Set min date to today
+      var today=new Date().toISOString().split('T')[0];
+      document.getElementById('resDate').setAttribute('min',today);
+      if(!document.getElementById('resDate').value){document.getElementById('resDate').value=today}
+    }
+
+    function closeReservation(){
+      resOverlay.classList.remove('active');
+      document.body.style.overflow='';
+      // Reset after animation
+      setTimeout(function(){
+        resForm.style.display='';
+        resSuccess.classList.remove('active');
+        resForm.reset();
+        resForm.querySelectorAll('.error').forEach(function(el){el.classList.remove('error')});
+        resForm.querySelectorAll('.error-msg').forEach(function(el){el.classList.remove('show')});
+      },300);
+    }
+
+    // Bind all booking buttons
+    document.querySelectorAll('[data-booking]').forEach(function(btn){
+      btn.addEventListener('click',openReservation);
+    });
+
+    resCloseBtn.addEventListener('click',closeReservation);
+    resDoneBtn.addEventListener('click',closeReservation);
+    resOverlay.addEventListener('click',function(e){
+      if(e.target===resOverlay)closeReservation();
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&resOverlay.classList.contains('active'))closeReservation();
+    });
+
+    // Form validation & submit
+    resForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var valid=true;
+      var fields=[
+        {id:'resName',err:'errName',check:function(v){return v.trim().length>=2}},
+        {id:'resPhone',err:'errPhone',check:function(v){return /^0\d{8,10}$/.test(v.replace(/\s/g,''))}},
+        {id:'resDate',err:'errDate',check:function(v){return v!==''}},
+        {id:'resTime',err:'errTime',check:function(v){return v!==''}},
+        {id:'resGuests',err:'errGuests',check:function(v){return v!==''}}
+      ];
+      fields.forEach(function(f){
+        var input=document.getElementById(f.id);
+        var err=document.getElementById(f.err);
+        if(!f.check(input.value)){
+          input.classList.add('error');
+          err.classList.add('show');
+          valid=false;
+        }else{
+          input.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+      if(!valid)return;
+
+      // Save to localStorage
+      var reservations=JSON.parse(localStorage.getItem('aiicafe_reservations')||'[]');
+      var booking={
+        id:Date.now().toString(36)+Math.random().toString(36).substr(2,4),
+        name:document.getElementById('resName').value.trim(),
+        phone:document.getElementById('resPhone').value.trim(),
+        date:document.getElementById('resDate').value,
+        time:document.getElementById('resTime').value,
+        guests:document.getElementById('resGuests').value,
+        area:document.getElementById('resArea').value,
+        note:document.getElementById('resNote').value.trim(),
+        status:'pending',
+        table:null,
+        createdAt:new Date().toISOString()
+      };
+      reservations.push(booking);
+      localStorage.setItem('aiicafe_reservations',JSON.stringify(reservations));
+
+      // Show success
+      resForm.style.display='none';
+      resSuccess.classList.add('active');
+    });
+
+    // Remove error on input
+    resForm.querySelectorAll('input,select').forEach(function(el){
+      el.addEventListener('input',function(){
+        el.classList.remove('error');
+        var errEl=el.parentElement.querySelector('.error-msg');
+        if(errEl)errEl.classList.remove('show');
+      });
+    });
+
+    // ---- BOOKING SECTION FORM ----
+    var bsForm=document.getElementById('bookingSectionForm');
+    var bsSuccess=document.getElementById('bsSectionSuccess');
+    var bsBookAgain=document.getElementById('bsBookAgain');
+
+    if(bsForm){
+      // Set min date to today
+      var bsToday=new Date().toISOString().split('T')[0];
+      var bsDateInput=document.getElementById('bsDate');
+      bsDateInput.setAttribute('min',bsToday);
+      bsDateInput.value=bsToday;
+
+      // Validation & submit
+      bsForm.addEventListener('submit',function(e){
+        e.preventDefault();
+        var valid=true;
+        var bsFields=[
+          {id:'bsName',  err:'bsErrName',  check:function(v){return v.trim().length>=2}},
+          {id:'bsPhone', err:'bsErrPhone', check:function(v){return /^0\d{8,10}$/.test(v.replace(/\s/g,''))}},
+          {id:'bsDate',  err:'bsErrDate',  check:function(v){return v!==''}},
+          {id:'bsTime',  err:'bsErrTime',  check:function(v){return v!==''}},
+          {id:'bsGuests',err:'bsErrGuests',check:function(v){return v!==''}}
+        ];
+        bsFields.forEach(function(f){
+          var input=document.getElementById(f.id);
+          var err=document.getElementById(f.err);
+          if(!f.check(input.value)){
+            input.classList.add('error');
+            err.classList.add('show');
+            valid=false;
+          }else{
+            input.classList.remove('error');
+            err.classList.remove('show');
+          }
+        });
+        if(!valid)return;
+
+        // Save to localStorage (same store as modal)
+        var reservations=JSON.parse(localStorage.getItem('aiicafe_reservations')||'[]');
+        var booking={
+          id:Date.now().toString(36)+Math.random().toString(36).substr(2,4),
+          name:document.getElementById('bsName').value.trim(),
+          phone:document.getElementById('bsPhone').value.trim(),
+          date:document.getElementById('bsDate').value,
+          time:document.getElementById('bsTime').value,
+          guests:document.getElementById('bsGuests').value,
+          area:document.getElementById('bsArea').value,
+          note:document.getElementById('bsNote').value.trim(),
+          status:'pending',
+          table:null,
+          createdAt:new Date().toISOString()
+        };
+        reservations.push(booking);
+        localStorage.setItem('aiicafe_reservations',JSON.stringify(reservations));
+
+        // Show success state
+        bsForm.style.display='none';
+        bsSuccess.classList.add('active');
+      });
+
+      // Remove error styling on input
+      bsForm.querySelectorAll('input,select').forEach(function(el){
+        el.addEventListener('input',function(){
+          el.classList.remove('error');
+          var errEl=el.parentElement.querySelector('.error-msg');
+          if(errEl)errEl.classList.remove('show');
+        });
+      });
+    }
+
+    // "Đặt bàn khác" button resets the section form
+    if(bsBookAgain){
+      bsBookAgain.addEventListener('click',function(){
+        bsSuccess.classList.remove('active');
+        bsForm.style.display='';
+        bsForm.reset();
+        var bsToday2=new Date().toISOString().split('T')[0];
+        document.getElementById('bsDate').setAttribute('min',bsToday2);
+        document.getElementById('bsDate').value=bsToday2;
+      });
+    }
   })();
   </script>
 </body>
