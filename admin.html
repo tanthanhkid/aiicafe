@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiiCafe Admin - Quản lý đặt bàn</title>
+  <style>
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+    @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Variable.ttf') format('truetype');font-weight:100 900;font-display:swap}
+
+    :root {
+      --navy: #0F1E44;
+      --navy-light: #1A2D5A;
+      --golden: #EFC14B;
+      --golden-hover: #D4A833;
+      --cream: #FDF8EE;
+      --cream-dark: #F5EDDF;
+      --white: #FFFFFF;
+      --text-primary: #0F1E44;
+      --text-body: #3D4663;
+      --text-muted: #7A829A;
+      --red: #FF3131;
+      --green: #4CAF72;
+      --orange: #FF9800;
+      --blue: #2196F3;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(15,30,68,.08);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--text-body);
+      min-height: 100vh;
+    }
+
+    /* Login Screen */
+    .login-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-overlay.hidden { display: none; }
+    .login-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      margin: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      text-align: center;
+    }
+    .login-card img { height: 40px; margin: 0 auto 24px; }
+    .login-card h2 {
+      font-family: 'Fraunces', serif;
+      color: var(--navy);
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .login-card p { color: var(--text-muted); font-size: .9rem; margin-bottom: 24px; }
+    .login-card input {
+      width: 100%; padding: 12px 16px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 8px;
+      font-size: .95rem;
+      font-family: inherit;
+      margin-bottom: 12px;
+      transition: border-color .2s;
+    }
+    .login-card input:focus { outline: none; border-color: var(--golden); }
+    .login-card button {
+      width: 100%; padding: 14px;
+      background: var(--golden);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: .95rem;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+      margin-top: 8px;
+    }
+    .login-card button:hover { background: var(--golden-hover); }
+    .login-error {
+      color: var(--red);
+      font-size: .85rem;
+      margin-top: 12px;
+      display: none;
+    }
+    .login-error.show { display: block; }
+
+    /* Header */
+    .admin-header {
+      background: var(--navy);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-header .logo { display: flex; align-items: center; gap: 12px; }
+    .admin-header img { height: 32px; }
+    .admin-header .badge {
+      background: var(--golden);
+      color: var(--navy);
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .admin-header .actions { display: flex; gap: 12px; align-items: center; }
+    .btn-refresh, .btn-logout {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      transition: all .2s;
+    }
+    .btn-refresh { background: rgba(255,255,255,.1); color: white; }
+    .btn-refresh:hover { background: rgba(255,255,255,.2); }
+    .btn-logout { background: var(--red); color: white; }
+    .btn-logout:hover { opacity: .9; }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .stat-card .number {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .stat-card .label { font-size: .85rem; color: var(--text-muted); margin-top: 4px; }
+    .stat-card.pending .number { color: var(--orange); }
+    .stat-card.confirmed .number { color: var(--green); }
+    .stat-card.cancelled .number { color: var(--red); }
+    .stat-card.today .number { color: var(--blue); }
+
+    /* Filters */
+    .filters-bar {
+      padding: 0 24px 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .filters-bar input, .filters-bar select {
+      padding: 10px 14px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .9rem;
+      background: var(--white);
+      transition: border-color .2s;
+    }
+    .filters-bar input:focus, .filters-bar select:focus { outline: none; border-color: var(--golden); }
+    .filters-bar input[type="text"] { min-width: 250px; }
+    .filter-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .filter-tab {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      transition: all .2s;
+    }
+    .filter-tab.active { background: var(--white); color: var(--navy); box-shadow: var(--shadow); }
+    .filter-tab:hover:not(.active) { color: var(--navy); }
+
+    /* Table */
+    .table-container {
+      padding: 0 24px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .booking-table {
+      width: 100%;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border-collapse: collapse;
+    }
+    .booking-table th {
+      background: var(--navy);
+      color: white;
+      padding: 14px 16px;
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .booking-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: .9rem;
+      vertical-align: middle;
+    }
+    .booking-table tr:last-child td { border-bottom: none; }
+    .booking-table tr:hover td { background: var(--cream); }
+
+    .booking-id {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: .8rem;
+      font-family: monospace;
+    }
+    .customer-info { display: flex; flex-direction: column; gap: 2px; }
+    .customer-info .name { font-weight: 600; color: var(--navy); }
+    .customer-info .phone { font-size: .8rem; color: var(--text-muted); }
+    .customer-info .email { font-size: .8rem; color: var(--blue); }
+
+    .badge-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: .78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-pending { background: #FFF3E0; color: #E65100; }
+    .badge-confirmed { background: #E8F5E9; color: #2E7D32; }
+    .badge-cancelled { background: #FFEBEE; color: #C62828; }
+    .badge-completed { background: #E3F2FD; color: #1565C0; }
+
+    .area-tag {
+      font-size: .8rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--cream-dark);
+      color: var(--text-body);
+      white-space: nowrap;
+    }
+
+    .action-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+    .action-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .action-btn.confirm { background: var(--green); color: white; }
+    .action-btn.confirm:hover { opacity: .85; }
+    .action-btn.cancel { background: var(--red); color: white; }
+    .action-btn.cancel:hover { opacity: .85; }
+    .action-btn.complete { background: var(--blue); color: white; }
+    .action-btn.complete:hover { opacity: .85; }
+    .action-btn.delete { background: transparent; color: var(--red); border: 1px solid var(--red); }
+    .action-btn.delete:hover { background: var(--red); color: white; }
+    .action-btn.table-btn { background: var(--golden); color: var(--navy); }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state svg { width: 64px; height: 64px; opacity: .3; margin-bottom: 16px; }
+    .empty-state h3 { color: var(--navy); margin-bottom: 8px; }
+
+    .table-input {
+      width: 60px;
+      padding: 4px 8px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: .85rem;
+      text-align: center;
+    }
+    .table-input:focus { outline: none; border-color: var(--golden); }
+
+    .note-text {
+      font-size: .8rem;
+      color: var(--text-muted);
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: help;
+    }
+
+    .email-icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .email-sent { color: var(--green); }
+    .email-not-sent { color: var(--text-muted); opacity: .4; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(15,30,68,.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: all .3s;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 500px;
+      margin: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+    .modal h3 { font-family: 'Fraunces', serif; color: var(--navy); margin-bottom: 20px; }
+    .modal-detail { margin-bottom: 12px; }
+    .modal-detail label { font-size: .8rem; color: var(--text-muted); display: block; margin-bottom: 4px; }
+    .modal-detail span { font-weight: 600; color: var(--navy); }
+    .modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
+    .modal-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: all .2s;
+    }
+    .modal-btn.primary { background: var(--golden); color: var(--navy); }
+    .modal-btn.secondary { background: var(--cream-dark); color: var(--text-body); }
+
+    /* Loading */
+    .loading { text-align: center; padding: 40px; color: var(--text-muted); }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--cream-dark);
+      border-top-color: var(--golden);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .filters-bar { flex-direction: column; }
+      .filters-bar input[type="text"] { min-width: auto; width: 100%; }
+      .table-container { overflow-x: auto; }
+      .booking-table { min-width: 900px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <img src="assets/images/Asset_9.png" alt="AiiCafe">
+      <h2>Admin Dashboard</h2>
+      <p>Quản lý đặt bàn AiiCafe</p>
+      <form id="loginForm">
+        <input type="text" id="loginUser" placeholder="Tên đăng nhập" required autocomplete="username">
+        <input type="password" id="loginPass" placeholder="Mật khẩu" required autocomplete="current-password">
+        <button type="submit">Đăng nhập</button>
+        <div class="login-error" id="loginError">Sai tài khoản hoặc mật khẩu</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Header -->
+  <header class="admin-header" id="adminHeader" style="display:none;">
+    <div class="logo">
+      <img src="assets/images/Asset_9.png" alt="AiiCafe">
+      <span class="badge">ADMIN</span>
+    </div>
+    <div class="actions">
+      <button class="btn-refresh" onclick="loadBookings()">Tải lại</button>
+      <button class="btn-logout" onclick="logout()">Đăng xuất</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="adminMain" style="display:none;">
+    <!-- Stats -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <div class="number" id="statTotal">0</div>
+        <div class="label">Tổng đặt bàn</div>
+      </div>
+      <div class="stat-card today">
+        <div class="number" id="statToday">0</div>
+        <div class="label">Hôm nay</div>
+      </div>
+      <div class="stat-card pending">
+        <div class="number" id="statPending">0</div>
+        <div class="label">Chờ xác nhận</div>
+      </div>
+      <div class="stat-card confirmed">
+        <div class="number" id="statConfirmed">0</div>
+        <div class="label">Đã xác nhận</div>
+      </div>
+      <div class="stat-card cancelled">
+        <div class="number" id="statCancelled">0</div>
+        <div class="label">Đã hủy</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên, SĐT, mã đặt bàn...">
+      <input type="date" id="filterDate">
+      <div class="filter-tabs" id="statusFilter">
+        <button class="filter-tab active" data-status="all">Tất cả</button>
+        <button class="filter-tab" data-status="pending">Chờ xác nhận</button>
+        <button class="filter-tab" data-status="confirmed">Đã xác nhận</button>
+        <button class="filter-tab" data-status="completed">Hoàn thành</button>
+        <button class="filter-tab" data-status="cancelled">Đã hủy</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div id="loadingState" class="loading">
+        <div class="spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+      <table class="booking-table" id="bookingTable" style="display:none;">
+        <thead>
+          <tr>
+            <th>Mã</th>
+            <th>Khách hàng</th>
+            <th>Ngày</th>
+            <th>Giờ</th>
+            <th>Số khách</th>
+            <th>Khu vực</th>
+            <th>Bàn</th>
+            <th>Ghi chú</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="bookingBody"></tbody>
+      </table>
+      <div id="emptyState" class="empty-state" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <h3>Chưa có đặt bàn nào</h3>
+        <p>Khi khách hàng đặt bàn, thông tin sẽ hiển thị ở đây</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal">
+      <h3>Chi tiết đặt bàn</h3>
+      <div id="detailContent"></div>
+      <div class="modal-actions">
+        <button class="modal-btn secondary" onclick="closeModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    'use strict';
+
+    var authToken = '';
+    var currentFilter = 'all';
+    var currentDate = '';
+    var currentSearch = '';
+    var refreshInterval = null;
+
+    // Elements
+    var loginOverlay = document.getElementById('loginOverlay');
+    var adminHeader = document.getElementById('adminHeader');
+    var adminMain = document.getElementById('adminMain');
+    var loginForm = document.getElementById('loginForm');
+    var loginError = document.getElementById('loginError');
+    var bookingBody = document.getElementById('bookingBody');
+    var bookingTable = document.getElementById('bookingTable');
+    var loadingState = document.getElementById('loadingState');
+    var emptyState = document.getElementById('emptyState');
+
+    // Check saved session
+    var saved = sessionStorage.getItem('aiicafe_admin');
+    if (saved) {
+      authToken = saved;
+      showDashboard();
+    }
+
+    // Login
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var user = document.getElementById('loginUser').value;
+      var pass = document.getElementById('loginPass').value;
+      authToken = 'Basic ' + btoa(user + ':' + pass);
+
+      // Test credentials
+      fetch('/api/admin/bookings', { headers: { 'Authorization': authToken } })
+        .then(function(r) {
+          if (r.ok) {
+            sessionStorage.setItem('aiicafe_admin', authToken);
+            loginError.classList.remove('show');
+            showDashboard();
+            return r.json();
+          } else {
+            throw new Error('Unauthorized');
+          }
+        })
+        .then(function(data) {
+          renderData(data);
+        })
+        .catch(function() {
+          loginError.classList.add('show');
+          authToken = '';
+        });
+    });
+
+    function showDashboard() {
+      loginOverlay.classList.add('hidden');
+      adminHeader.style.display = '';
+      adminMain.style.display = '';
+      loadBookings();
+      // Auto refresh every 30s
+      if (refreshInterval) clearInterval(refreshInterval);
+      refreshInterval = setInterval(loadBookings, 30000);
+    }
+
+    // Expose to global for onclick handlers
+    window.loadBookings = loadBookings;
+    window.logout = function() {
+      sessionStorage.removeItem('aiicafe_admin');
+      authToken = '';
+      if (refreshInterval) clearInterval(refreshInterval);
+      loginOverlay.classList.remove('hidden');
+      adminHeader.style.display = 'none';
+      adminMain.style.display = 'none';
+    };
+
+    function loadBookings() {
+      var params = [];
+      if (currentFilter !== 'all') params.push('status=' + currentFilter);
+      if (currentDate) params.push('date=' + currentDate);
+      if (currentSearch) params.push('search=' + encodeURIComponent(currentSearch));
+      var url = '/api/admin/bookings' + (params.length ? '?' + params.join('&') : '');
+
+      fetch(url, { headers: { 'Authorization': authToken } })
+        .then(function(r) {
+          if (!r.ok) throw new Error('Unauthorized');
+          return r.json();
+        })
+        .then(function(data) {
+          renderData(data);
+        })
+        .catch(function(err) {
+          if (err.message === 'Unauthorized') {
+            window.logout();
+          }
+        });
+    }
+
+    function renderData(data) {
+      // Stats
+      document.getElementById('statTotal').textContent = data.stats.total;
+      document.getElementById('statToday').textContent = data.stats.today;
+      document.getElementById('statPending').textContent = data.stats.pending;
+      document.getElementById('statConfirmed').textContent = data.stats.confirmed;
+      document.getElementById('statCancelled').textContent = data.stats.cancelled;
+
+      loadingState.style.display = 'none';
+
+      if (data.bookings.length === 0) {
+        bookingTable.style.display = 'none';
+        emptyState.style.display = '';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      bookingTable.style.display = '';
+
+      var areaMap = { indoor: 'Trong nhà', outdoor: 'Ngoài trời', kids: 'Khu trẻ em' };
+      var statusMap = { pending: 'Chờ xác nhận', confirmed: 'Đã xác nhận', cancelled: 'Đã hủy', completed: 'Hoàn thành' };
+
+      bookingBody.innerHTML = data.bookings.map(function(b) {
+        var emailHtml = b.email ? '<span class="email">' + escapeHtml(b.email) + '</span>' : '';
+        var emailIcon = b.email_sent ? '<span class="email-icon email-sent" title="Email đã gửi">&#10003;</span>' : '';
+
+        var actions = '';
+        if (b.status === 'pending') {
+          actions = '<button class="action-btn confirm" onclick="updateStatus(\'' + b.booking_id + '\',\'confirmed\')">Xác nhận</button>' +
+                    '<button class="action-btn cancel" onclick="updateStatus(\'' + b.booking_id + '\',\'cancelled\')">Hủy</button>';
+        } else if (b.status === 'confirmed') {
+          actions = '<button class="action-btn complete" onclick="updateStatus(\'' + b.booking_id + '\',\'completed\')">Hoàn thành</button>' +
+                    '<button class="action-btn cancel" onclick="updateStatus(\'' + b.booking_id + '\',\'cancelled\')">Hủy</button>';
+        }
+        actions += '<button class="action-btn delete" onclick="deleteBooking(\'' + b.booking_id + '\')">Xóa</button>';
+
+        return '<tr>' +
+          '<td><span class="booking-id">' + escapeHtml(b.booking_id) + '</span></td>' +
+          '<td><div class="customer-info"><span class="name">' + escapeHtml(b.name) + emailIcon + '</span><span class="phone">' + escapeHtml(b.phone) + '</span>' + emailHtml + '</div></td>' +
+          '<td>' + escapeHtml(b.date) + '</td>' +
+          '<td>' + escapeHtml(b.time) + '</td>' +
+          '<td>' + escapeHtml(b.guests) + '</td>' +
+          '<td><span class="area-tag">' + (areaMap[b.area] || b.area) + '</span></td>' +
+          '<td><input class="table-input" type="text" value="' + (b.table_number || '') + '" placeholder="—" onchange="setTable(\'' + b.booking_id + '\',this.value)"></td>' +
+          '<td>' + (b.note ? '<span class="note-text" title="' + escapeHtml(b.note) + '">' + escapeHtml(b.note) + '</span>' : '<span style="color:var(--text-muted);font-size:.8rem">—</span>') + '</td>' +
+          '<td><span class="badge-status badge-' + b.status + '">' + (statusMap[b.status] || b.status) + '</span></td>' +
+          '<td><div class="action-btns">' + actions + '</div></td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Actions
+    window.updateStatus = function(id, status) {
+      var confirmMsg = {
+        confirmed: 'Xác nhận đặt bàn này?',
+        cancelled: 'Hủy đặt bàn này?',
+        completed: 'Đánh dấu hoàn thành?'
+      };
+      if (!confirm(confirmMsg[status] || 'Cập nhật trạng thái?')) return;
+
+      fetch('/api/admin/bookings/' + id, {
+        method: 'PATCH',
+        headers: { 'Authorization': authToken, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: status })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() { loadBookings(); });
+    };
+
+    window.setTable = function(id, table) {
+      fetch('/api/admin/bookings/' + id, {
+        method: 'PATCH',
+        headers: { 'Authorization': authToken, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ table_number: table })
+      });
+    };
+
+    window.deleteBooking = function(id) {
+      if (!confirm('Xóa đặt bàn ' + id + '? Hành động này không thể hoàn tác.')) return;
+
+      fetch('/api/admin/bookings/' + id, {
+        method: 'DELETE',
+        headers: { 'Authorization': authToken }
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() { loadBookings(); });
+    };
+
+    window.closeModal = function() {
+      document.getElementById('detailModal').classList.remove('active');
+    };
+
+    // Filters
+    var statusFilter = document.getElementById('statusFilter');
+    statusFilter.addEventListener('click', function(e) {
+      var tab = e.target.closest('.filter-tab');
+      if (!tab) return;
+      statusFilter.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentFilter = tab.dataset.status;
+      loadBookings();
+    });
+
+    var searchInput = document.getElementById('searchInput');
+    var searchTimeout;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(function() {
+        currentSearch = searchInput.value.trim();
+        loadBookings();
+      }, 300);
+    });
+
+    document.getElementById('filterDate').addEventListener('change', function() {
+      currentDate = this.value;
+      loadBookings();
+    });
+  })();
+  </script>
+</body>
+</html>
