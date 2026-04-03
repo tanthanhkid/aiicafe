@@ -14,6 +14,15 @@
 # MOV originals in assets (converted to mp4)
 assets/videos/*.mov
 
+# Node
+node_modules/
+
+# Environment
+.env
+
+# Database
+data/
+
 # OS
 .DS_Store
 Thumbs.db
