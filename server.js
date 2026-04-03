@@ -4,6 +4,7 @@ const Database = require('better-sqlite3');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const crypto = require('crypto');
+const multer = require('multer');
 
 // Load .env manually (no dotenv dependency)
 function loadEnv() {
@@ -24,9 +25,41 @@ loadEnv();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ── Uploads Setup ──
+const uploadsDir = path.join(__dirname, 'assets', 'uploads');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) { cb(null, uploadsDir); },
+  filename: function(req, file, cb) {
+    const ext = path.extname(file.originalname);
+    const name = path.basename(file.originalname, ext).replace(/[^a-zA-Z0-9-_]/g, '_');
+    cb(null, name + '_' + Date.now() + ext);
+  }
+});
+const upload = multer({
+  storage,
+  limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
+  fileFilter: function(req, file, cb) {
+    const allowed = /jpeg|jpg|png|gif|webp|mp4|webm|mov/i;
+    if (allowed.test(path.extname(file.originalname))) cb(null, true);
+    else cb(new Error('File type not allowed'));
+  }
+});
+
+const mediaConfigPath = path.join(__dirname, 'data', 'media-config.json');
+function readMediaConfig() {
+  try { return JSON.parse(fs.readFileSync(mediaConfigPath, 'utf8')); }
+  catch(e) { return {}; }
+}
+function writeMediaConfig(config) {
+  fs.writeFileSync(mediaConfigPath, JSON.stringify(config, null, 2));
+}
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/assets/uploads', express.static(uploadsDir));
 app.use(express.static(path.join(__dirname), {
   index: 'index.html',
   extensions: ['html']
@@ -194,6 +227,22 @@ app.post('/api/bookings', (req, res) => {
     // Send emails asynchronously
     sendBookingEmails(booking).catch(err => console.error('Email error:', err));
 
+    // Send ntfy.sh push notification
+    const areaMap = { indoor: 'Trong nhà', outdoor: 'Ngoài trời', kids: 'Khu vui chơi trẻ em' };
+    const ntfyBody = `${name.trim()} - ${phone.replace(/\s/g, '')}\nNgày: ${date} | Giờ: ${time}\nSố khách: ${guests} | Khu vực: ${areaMap[area] || area}${note ? '\nGhi chú: ' + note.trim() : ''}`;
+    fetch('https://ntfy.sh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        topic: 'aiicafe-datban',
+        title: 'Đặt bàn mới - ' + bookingId,
+        message: ntfyBody,
+        tags: ['coffee', 'bell'],
+        priority: 4
+      })
+    }).then(r => console.log('ntfy.sh sent, status:', r.status))
+      .catch(err => console.error('ntfy.sh error:', err.message));
+
     res.json({ success: true, booking_id: bookingId, message: 'Đặt bàn thành công!' });
   } catch (err) {
     console.error('Booking error:', err);
@@ -323,6 +372,28 @@ app.delete('/api/admin/bookings/:id', adminAuth, (req, res) => {
   const result = db.prepare('DELETE FROM bookings WHERE booking_id = ?').run(req.params.id);
   if (result.changes === 0) return res.status(404).json({ error: 'Không tìm thấy đặt bàn' });
   res.json({ success: true });
+});
+
+// ── Media Config API ──
+
+// Public: get media config
+app.get('/api/media-config', (req, res) => {
+  res.json(readMediaConfig());
+});
+
+// Admin: update media config (full or partial)
+app.put('/api/admin/media-config', adminAuth, (req, res) => {
+  const current = readMediaConfig();
+  const updated = Object.assign(current, req.body);
+  writeMediaConfig(updated);
+  res.json({ success: true, config: updated });
+});
+
+// Admin: upload file
+app.post('/api/admin/upload', adminAuth, upload.single('file'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const url = 'assets/uploads/' + req.file.filename;
+  res.json({ success: true, url });
 });
 
 // Ensure data directory exists

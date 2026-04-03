@@ -129,6 +129,7 @@
     /* ---- HERO ---- */
     .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--navy)}
     .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero-static-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
     .hero-video--mobile{display:none}
     .hero-video--desktop{display:block}
     @media(max-width:768px){.hero-video--mobile{display:block}.hero-video--desktop{display:none}}
@@ -482,8 +483,8 @@
   <header>
     <nav class="navbar" id="navbar" aria-label="Main navigation">
       <a href="#" class="navbar-brand">
-        <img src="assets/images/Asset_9.png" alt="AiiCafe Logo" class="logo-white" width="114" height="38">
-        <img src="assets/images/Asset_6.png" alt="AiiCafe Logo" class="logo-blue" width="114" height="38">
+        <img src="assets/images/Asset_9.png" alt="AiiCafe Logo" class="logo-white" width="114" height="38" data-media-key="logo-white">
+        <img src="assets/images/Asset_6.png" alt="AiiCafe Logo" class="logo-blue" width="114" height="38" data-media-key="logo-blue">
       </a>
       <div class="navbar-links">
         <a href="#story">Câu chuyện</a>
@@ -509,14 +510,16 @@
   <main>
     <!-- HERO -->
     <section class="hero" id="hero">
-      <video class="hero-video hero-video--desktop" id="heroVideoDesktop" autoplay muted loop playsinline preload="auto" poster="assets/videos/opt/poster-chero.jpg">
+      <video class="hero-video hero-video--desktop" id="heroVideoDesktop" autoplay muted loop playsinline preload="auto" poster="assets/videos/opt/poster-chero.jpg" data-media-key="hero-desktop">
         <source src="assets/videos/opt/chero.webm" type="video/webm">
         <source src="assets/videos/opt/chero.mp4" type="video/mp4">
       </video>
-      <video class="hero-video hero-video--mobile" id="heroVideoMobile" autoplay muted loop playsinline preload="none" poster="assets/videos/opt/poster-mhero.jpg">
+      <img class="hero-video hero-video--desktop hero-static-img" id="heroImgDesktop" src="assets/videos/opt/poster-chero.jpg" alt="AiiCafe" style="display:none" data-media-key-img="hero-desktop">
+      <video class="hero-video hero-video--mobile" id="heroVideoMobile" autoplay muted loop playsinline preload="none" poster="assets/videos/opt/poster-mhero.jpg" data-media-key="hero-mobile">
         <source src="assets/videos/opt/mhero.webm" type="video/webm">
         <source src="assets/videos/opt/mhero.mp4" type="video/mp4">
       </video>
+      <img class="hero-video hero-video--mobile hero-static-img" id="heroImgMobile" src="assets/videos/opt/poster-mhero.jpg" alt="AiiCafe" style="display:none" data-media-key-img="hero-mobile">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-tagline">
@@ -549,7 +552,7 @@
         <div class="story-grid reveal">
           <div class="story-visual">
             <div class="story-visual-main">
-              <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video>
+              <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4" data-media-key="story-video"></video>
             </div>
             <div class="story-visual-accent">
               <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
@@ -676,7 +679,7 @@
         <!-- Coffee -->
         <div class="cafe-coffee reveal">
           <div class="cafe-video-wrap">
-            <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4"></video>
+            <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4" data-media-key="cafe-video"></video>
             <div class="cafe-video-badge">
               <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
               Specialty Coffee
@@ -724,14 +727,14 @@
             <h3>Không chỉ có cà phê</h3>
           </div>
           <div class="food-carousel" id="foodCarousel">
-            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/egg-benedict.jpg" alt="Egg Benedict" loading="lazy"></div><div class="food-card-body"><h4>Egg Benedict</h4><div class="food-price">89.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/avocado-toast.jpg" alt="Avocado Toast" loading="lazy"></div><div class="food-card-body"><h4>Avocado Toast</h4><div class="food-price">75.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/banh-mi-chao.jpg" alt="Bánh mì chảo" loading="lazy"></div><div class="food-card-body"><h4>Bánh mì chảo</h4><div class="food-price">65.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag kids">Kids Love</span><img src="assets/images/food/pancake.jpg" alt="Pancake Stack" loading="lazy"></div><div class="food-card-body"><h4>Pancake Stack</h4><div class="food-price">69.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag new">Mới</span><img src="assets/images/food/pho-cuon.jpg" alt="Phở cuốn" loading="lazy"></div><div class="food-card-body"><h4>Phở cuốn</h4><div class="food-price">55.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/salad-bowl.jpg" alt="Salad Bowl" loading="lazy"></div><div class="food-card-body"><h4>Salad Bowl</h4><div class="food-price">79.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/waffle.jpg" alt="Waffle &amp; Berries" loading="lazy"></div><div class="food-card-body"><h4>Waffle &amp; Berries</h4><div class="food-price">72.000 VND</div></div></div>
-            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/tiramisu.jpg" alt="Tiramisu" loading="lazy"></div><div class="food-card-body"><h4>Tiramisu</h4><div class="food-price">68.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/egg-benedict.jpg" alt="Egg Benedict" loading="lazy" data-media-key="food-1-img"></div><div class="food-card-body"><h4>Egg Benedict</h4><div class="food-price">89.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/avocado-toast.jpg" alt="Avocado Toast" loading="lazy" data-media-key="food-2-img"></div><div class="food-card-body"><h4>Avocado Toast</h4><div class="food-price">75.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/banh-mi-chao.jpg" alt="Bánh mì chảo" loading="lazy" data-media-key="food-3-img"></div><div class="food-card-body"><h4>Bánh mì chảo</h4><div class="food-price">65.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag kids">Kids Love</span><img src="assets/images/food/pancake.jpg" alt="Pancake Stack" loading="lazy" data-media-key="food-4-img"></div><div class="food-card-body"><h4>Pancake Stack</h4><div class="food-price">69.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag new">Mới</span><img src="assets/images/food/pho-cuon.jpg" alt="Phở cuốn" loading="lazy" data-media-key="food-5-img"></div><div class="food-card-body"><h4>Phở cuốn</h4><div class="food-price">55.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/salad-bowl.jpg" alt="Salad Bowl" loading="lazy" data-media-key="food-6-img"></div><div class="food-card-body"><h4>Salad Bowl</h4><div class="food-price">79.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/waffle.jpg" alt="Waffle &amp; Berries" loading="lazy" data-media-key="food-7-img"></div><div class="food-card-body"><h4>Waffle &amp; Berries</h4><div class="food-price">72.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/tiramisu.jpg" alt="Tiramisu" loading="lazy" data-media-key="food-8-img"></div><div class="food-card-body"><h4>Tiramisu</h4><div class="food-price">68.000 VND</div></div></div>
           </div>
           <div class="food-carousel-nav">
             <button class="carousel-btn" id="carouselPrev" aria-label="Trước"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -759,12 +762,12 @@
           <p class="subtitle">Từ ly cà phê sáng đến buổi tối sáng tạo</p>
         </div>
         <div class="timeline-track reveal">
-          <div class="timeline-item"><div class="timeline-time">7:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Espresso đầu ngày" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Espresso đầu ngày</div></div>
-          <div class="timeline-item" id="kids"><div class="timeline-time">9:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Lớp rèn chữ cho bé" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Lớp rèn chữ cho bé</div></div>
-          <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster3.jpg" alt="Brunch cuối tuần" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Brunch cuối tuần</div></div>
-          <div class="timeline-item" id="work"><div class="timeline-time">14:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster4.jpg" alt="Workshop" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Workshop &amp; Co-working</div></div>
-          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Cà phê chiều" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Cà phê chiều &amp; đọc sách</div></div>
-          <div class="timeline-item"><div class="timeline-time">19:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" width="160" height="284"></div><div class="timeline-caption">Demo Day sản phẩm</div></div>
+          <div class="timeline-item"><div class="timeline-time">7:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Espresso đầu ngày" loading="lazy" width="160" height="284" data-media-key="timeline-1-img"></div><div class="timeline-caption">Espresso đầu ngày</div></div>
+          <div class="timeline-item" id="kids"><div class="timeline-time">9:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Lớp rèn chữ cho bé" loading="lazy" width="160" height="284" data-media-key="timeline-2-img"></div><div class="timeline-caption">Lớp rèn chữ cho bé</div></div>
+          <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster3.jpg" alt="Brunch cuối tuần" loading="lazy" width="160" height="284" data-media-key="timeline-3-img"></div><div class="timeline-caption">Brunch cuối tuần</div></div>
+          <div class="timeline-item" id="work"><div class="timeline-time">14:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster4.jpg" alt="Workshop" loading="lazy" width="160" height="284" data-media-key="timeline-4-img"></div><div class="timeline-caption">Workshop &amp; Co-working</div></div>
+          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Cà phê chiều" loading="lazy" width="160" height="284" data-media-key="timeline-5-img"></div><div class="timeline-caption">Cà phê chiều &amp; đọc sách</div></div>
+          <div class="timeline-item"><div class="timeline-time">19:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" width="160" height="284" data-media-key="timeline-6-img"></div><div class="timeline-caption">Demo Day sản phẩm</div></div>
         </div>
       </div>
     </section>
@@ -789,18 +792,18 @@
           <button class="filter-tab" data-filter="kids" role="tab">Kids</button>
         </div>
         <div class="showcase-grid" id="showcaseGrid">
-          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Espresso art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Espresso art buổi sáng</span></div></div>
-          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Brunch" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Brunch đặc biệt</span></div></div>
-          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Workshop cuối tuần</span></div></div>
-          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="Demo Day" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Demo Day</span></div></div>
-          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Cold brew" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Cold brew on ice</span></div></div>
-          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Latte art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Latte art</span></div></div>
-          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Avocado toast" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Avocado toast</span></div></div>
-          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="Lớp rèn chữ" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Lớp rèn chữ</span></div></div>
-          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4"><img src="assets/videos/opt/poster2.jpg" alt="Tiramisu" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Tiramisu handmade</span></div></div>
-          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v1.mp4"><img src="assets/videos/opt/poster1.jpg" alt="Coffee cupping" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Coffee cupping</span></div></div>
-          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v3.mp4"><img src="assets/videos/opt/poster3.jpg" alt="Art class" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Art class cho bé</span></div></div>
-          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v4.mp4"><img src="assets/videos/opt/poster4.jpg" alt="AI Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">AI Workshop</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-1"><img src="assets/videos/opt/poster1.jpg" alt="Espresso art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Espresso art buổi sáng</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-2"><img src="assets/videos/opt/poster2.jpg" alt="Brunch" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Brunch đặc biệt</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-3"><img src="assets/videos/opt/poster3.jpg" alt="Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Workshop cuối tuần</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-4"><img src="assets/videos/opt/poster4.jpg" alt="Demo Day" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Demo Day</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-5"><img src="assets/videos/opt/poster2.jpg" alt="Cold brew" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Cold brew on ice</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-6"><img src="assets/videos/opt/poster1.jpg" alt="Latte art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Latte art</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-7"><img src="assets/videos/opt/poster3.jpg" alt="Avocado toast" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Avocado toast</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-8"><img src="assets/videos/opt/poster4.jpg" alt="Lớp rèn chữ" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Lớp rèn chữ</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-9"><img src="assets/videos/opt/poster2.jpg" alt="Tiramisu" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Tiramisu handmade</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-10"><img src="assets/videos/opt/poster1.jpg" alt="Coffee cupping" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Coffee cupping</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-11"><img src="assets/videos/opt/poster3.jpg" alt="Art class" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Art class cho bé</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-12"><img src="assets/videos/opt/poster4.jpg" alt="AI Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">AI Workshop</span></div></div>
         </div>
         <div class="showcase-cta reveal">
           <p>Chia sẻ khoảnh khắc của bạn &mdash; tag #AiiCafe</p>
@@ -830,7 +833,7 @@
         </div>
         <div class="schedule-grid" id="scheduleGrid">
           <div class="event-card reveal" data-category="kids">
-            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Lớp rèn chữ" loading="lazy"></div>
+            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Lớp rèn chữ" loading="lazy" data-media-key="event-1-img"></div>
             <div class="event-card-body">
               <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 3, 9:30</div>
               <h4>Lớp rèn chữ đẹp (5&ndash;7 tuổi)</h4>
@@ -840,7 +843,7 @@
             </div>
           </div>
           <div class="event-card reveal" data-category="adult">
-            <div class="event-card-video"><img src="assets/videos/opt/poster4.jpg" alt="Workshop AI" loading="lazy"></div>
+            <div class="event-card-video"><img src="assets/videos/opt/poster4.jpg" alt="Workshop AI" loading="lazy" data-media-key="event-2-img"></div>
             <div class="event-card-body">
               <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 4, 14:00</div>
               <h4>Workshop AI cơ bản</h4>
@@ -850,7 +853,7 @@
             </div>
           </div>
           <div class="event-card reveal" data-category="kids">
-            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Toán tư duy" loading="lazy"></div>
+            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Toán tư duy" loading="lazy" data-media-key="event-3-img"></div>
             <div class="event-card-body">
               <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 5, 10:00</div>
               <h4>Toán tư duy quốc tế (8&ndash;10 tuổi)</h4>
@@ -860,7 +863,7 @@
             </div>
           </div>
           <div class="event-card reveal" data-category="adult">
-            <div class="event-card-video"><img src="assets/videos/opt/poster1.jpg" alt="Coffee Cupping" loading="lazy"></div>
+            <div class="event-card-video"><img src="assets/videos/opt/poster1.jpg" alt="Coffee Cupping" loading="lazy" data-media-key="event-4-img"></div>
             <div class="event-card-body">
               <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 6, 18:00</div>
               <h4>Coffee Cupping Experience</h4>
@@ -870,7 +873,7 @@
             </div>
           </div>
           <div class="event-card reveal" data-category="adult">
-            <div class="event-card-video"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy"></div>
+            <div class="event-card-video"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" data-media-key="event-5-img"></div>
             <div class="event-card-body">
               <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 7, 15:00</div>
               <h4>Demo Day &mdash; Sản phẩm sáng tạo</h4>
@@ -1049,7 +1052,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/Asset_9.png" alt="AiiCafe" height="46">
+          <img src="assets/images/Asset_9.png" alt="AiiCafe" height="46" data-media-key="logo-white">
           <p class="brand-tagline">Không gian cà phê giáo dục cho mọi gia đình.</p>
           <p class="brand-slogan">&ldquo;Where love brews and dreams grow&rdquo;</p>
           <div class="footer-social">
@@ -1564,6 +1567,67 @@
       });
     }
   })();
+  </script>
+  <script>
+(function(){
+  fetch('/api/media-config').then(function(r){return r.json();}).then(function(cfg){
+    if(!cfg||typeof cfg!=='object')return;
+    // Patch images
+    document.querySelectorAll('img[data-media-key]').forEach(function(el){
+      var key=el.getAttribute('data-media-key');
+      if(cfg[key])el.src=cfg[key];
+    });
+    // Patch hero videos (special: replace source elements + reload)
+    ['hero-desktop','hero-mobile'].forEach(function(k){
+      var vid=document.querySelector('video[data-media-key="'+k+'"]');
+      var img=document.querySelector('img[data-media-key-img="'+k+'"]');
+      if(!vid)return;
+      var srcKey=k+'-src', posterKey=k+'-poster', modeKey=k+'-mode';
+      if(cfg[posterKey]){
+        vid.poster=cfg[posterKey];
+        if(img)img.src=cfg[posterKey];
+      }
+      if(cfg[srcKey]){
+        var sources=vid.querySelectorAll('source');
+        sources.forEach(function(s){if(s.type==='video/mp4')s.src=cfg[srcKey];});
+        vid.load();
+      }
+      // Toggle video/image mode
+      if(cfg[modeKey]==='image'){
+        vid.style.display='none';
+        vid.pause();
+        if(img)img.style.display='block';
+      } else {
+        vid.style.display='';
+        if(img)img.style.display='none';
+      }
+    });
+    // Patch cafe video
+    var cafeVid=document.querySelector('video[data-media-key="cafe-video"]');
+    if(cafeVid){
+      if(cfg['cafe-video-poster'])cafeVid.poster=cfg['cafe-video-poster'];
+      if(cfg['cafe-video-src']){cafeVid.dataset.src=cfg['cafe-video-src'];if(cafeVid.src&&cafeVid.src!==window.location.href){cafeVid.src=cfg['cafe-video-src'];cafeVid.load();}}
+    }
+    // Patch story video
+    var storyVid=document.querySelector('video[data-media-key="story-video"]');
+    if(storyVid){
+      if(cfg['story-video-poster'])storyVid.poster=cfg['story-video-poster'];
+      if(cfg['story-video-src']){storyVid.dataset.src=cfg['story-video-src'];if(storyVid.src&&storyVid.src!==window.location.href){storyVid.src=cfg['story-video-src'];storyVid.load();}}
+    }
+    // Patch showcase items
+    document.querySelectorAll('[data-media-key^="showcase-"]').forEach(function(el){
+      var n=el.getAttribute('data-media-key').replace('showcase-','');
+      var imgKey='showcase-'+n+'-img';
+      var vidKey='showcase-'+n+'-video';
+      var capKey='showcase-'+n+'-caption';
+      var catKey='showcase-'+n+'-category';
+      if(cfg[imgKey]){var img=el.querySelector('img');if(img)img.src=cfg[imgKey];}
+      if(cfg[vidKey])el.setAttribute('data-video',cfg[vidKey]);
+      if(cfg[capKey]){var cap=el.querySelector('.item-caption');if(cap)cap.textContent=cfg[capKey];}
+      if(cfg[catKey])el.setAttribute('data-category',cfg[catKey]);
+    });
+  }).catch(function(){});
+})();
   </script>
 </body>
 </html>

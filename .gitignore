@@ -26,3 +26,9 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+
+# Playwright
+.playwright-mcp/
+
+# Uploads (user content)
+assets/uploads/

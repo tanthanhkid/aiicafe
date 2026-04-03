@@ -1,0 +1,24 @@
+name = "aiicafe"
+main = "src/worker.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./public"
+
+[vars]
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "aiicafe2026"
+GMAIL_USER = "tanthanhkid@gmail.com"
+ADMIN_EMAIL = "info@aiicafe.vn"
+NTFY_TOPIC = "aiicafe-datban"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aiicafe-db"
+database_id = "e9b4c98d-1410-4e63-bec6-268f8ba583a8"
+
+# R2 will be added after enabling in dashboard
+# [[r2_buckets]]
+# binding = "R2"
+# bucket_name = "aiicafe-uploads"

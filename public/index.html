@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiiCafe — Where love brews and dreams grow</title>
+  <meta name="description" content="AiiCafe — Không gian cà phê giáo dục cho mọi gia đình. Nơi mỗi tách cà phê kể một câu chuyện về yêu thương.">
+
+  <link rel="preload" href="assets/videos/opt/poster-chero.jpg" as="image" fetchpriority="high" media="(min-width:769px)">
+  <link rel="preload" href="assets/videos/opt/poster-mhero.jpg" as="image" fetchpriority="high" media="(max-width:768px)">
+  <link rel="preload" href="assets/images/Asset_9.png" as="image">
+  <link rel="preload" href="assets/fonts/Fraunces-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin>
+
+  <style>
+    @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Variable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+    @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Italic-Variable.ttf') format('truetype');font-weight:100 900;font-style:italic;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+    @font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+
+    :root {
+      --navy: #0F1E44;
+      --navy-light: #1A2D5A;
+      --golden: #EFC14B;
+      --golden-hover: #D4A833;
+      --golden-light: rgba(239,193,75,.12);
+      --golden-glow: rgba(239,193,75,.25);
+      --cream: #FDF8EE;
+      --cream-dark: #F5EDDF;
+      --white: #FFFFFF;
+      --black: #0A0A0A;
+      --text-primary: #0F1E44;
+      --text-body: #3D4663;
+      --text-muted: #7A829A;
+      --red-accent: #FF3131;
+      --green-accent: #4CAF72;
+      --shadow-sm: 0 2px 8px rgba(15,30,68,.06);
+      --shadow-md: 0 4px 16px rgba(15,30,68,.08);
+      --shadow-lg: 0 8px 32px rgba(15,30,68,.12);
+      --shadow-golden: 0 4px 20px rgba(239,193,75,.3);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 100px;
+      --nav-h: 72px;
+      --ease: .35s cubic-bezier(.4,0,.2,1);
+      --ease-spring: .5s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:var(--text-body);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    button{border:none;background:none;cursor:pointer;font-family:inherit}
+    ul{list-style:none}
+
+    /* SVG icon sprites - hidden */
+    .svg-defs{position:absolute;width:0;height:0;overflow:hidden}
+
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+
+    h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;line-height:1.2;color:var(--navy)}
+    h2{font-size:clamp(1.75rem,3.5vw,2.5rem)}
+
+    /* Brand icon helper */
+    .brand-icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+    .brand-icon svg{width:100%;height:100%}
+
+    .section-label{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--golden-hover);margin-bottom:16px}
+    .section-label .brand-icon{width:16px;height:20px}
+    .section-label .brand-icon svg{fill:var(--golden)}
+
+    .section-header{text-align:center;margin-bottom:56px}
+    .section-header h2{margin-bottom:12px}
+    .section-header .subtitle{font-size:1rem;color:var(--text-muted);max-width:520px;margin:0 auto}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--golden);color:var(--navy);font-size:.9rem;font-weight:700;border-radius:var(--radius-full);transition:all var(--ease);box-shadow:var(--shadow-golden)}
+    .btn-primary:hover{background:var(--golden-hover);transform:translateY(-2px);box-shadow:0 6px 24px rgba(239,193,75,.4)}
+    .btn-primary svg{width:18px;height:18px}
+    .btn-navy{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--navy);color:var(--white);font-size:.9rem;font-weight:700;border-radius:var(--radius-full);transition:all var(--ease)}
+    .btn-navy:hover{background:var(--navy-light);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+    .btn-navy svg{width:18px;height:18px}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;background:transparent;color:var(--navy);font-size:.9rem;font-weight:600;border:2px solid rgba(15,30,68,.15);border-radius:var(--radius-full);transition:all var(--ease)}
+    .btn-outline:hover{border-color:var(--navy);transform:translateY(-1px)}
+    .btn-outline svg{width:16px;height:16px}
+
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}
+    .reveal-delay-2{transition-delay:.2s}
+    .reveal-delay-3{transition-delay:.3s}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation-duration:0s!important;transition-duration:0s!important}}
+
+    /* ---- NAVBAR ---- */
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 32px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;transition:all var(--ease)}
+    .navbar.scrolled{background:rgba(253,248,238,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(15,30,68,.06)}
+    .navbar-brand{display:flex;align-items:center;gap:10px;z-index:1001}
+    .navbar-brand img{height:38px;width:auto}
+    .navbar-brand .logo-white{display:block}.navbar-brand .logo-blue{display:none}
+    .navbar.scrolled .logo-white{display:none}.navbar.scrolled .logo-blue{display:block}
+    .navbar-brand img{height:38px;width:auto}
+    .navbar-links{display:flex;align-items:center;gap:32px}
+    .navbar-links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.8);transition:color var(--ease)}
+    .navbar-links a:hover{color:#fff}
+    .navbar.scrolled .navbar-links a{color:var(--text-muted)}
+    .navbar.scrolled .navbar-links a:hover{color:var(--navy)}
+    .navbar-cta{padding:10px 24px!important;background:var(--golden)!important;color:var(--navy)!important;border-radius:var(--radius-full)!important;font-weight:700!important;font-size:.85rem!important;transition:all var(--ease)!important}
+    .navbar-cta:hover{background:var(--golden-hover)!important;box-shadow:var(--shadow-golden)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;z-index:1001;padding:4px}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all var(--ease)}
+    .navbar.scrolled .hamburger span{background:var(--navy)}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-menu{display:none;position:fixed;top:0;right:-100%;width:300px;height:100vh;background:var(--cream);padding:100px 36px 40px;transition:right var(--ease);z-index:1000;box-shadow:-8px 0 32px rgba(0,0,0,.1)}
+    .mobile-menu.open{right:0}
+    .mobile-menu a{display:block;padding:16px 0;font-size:1.05rem;font-weight:500;color:var(--navy);border-bottom:1px solid rgba(15,30,68,.06)}
+    .mobile-menu .navbar-cta{display:block;text-align:center;margin-top:24px;border-bottom:none}
+    .mobile-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,30,68,.25);z-index:999;opacity:0;transition:opacity var(--ease)}
+    .mobile-overlay.active{opacity:1}
+    @media(max-width:768px){.navbar-links{display:none}.hamburger{display:flex}.mobile-menu{display:block}}
+
+    /* ---- HERO ---- */
+    .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--navy)}
+    .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero-static-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero-video--mobile{display:none}
+    .hero-video--desktop{display:block}
+    @media(max-width:768px){.hero-video--mobile{display:block}.hero-video--desktop{display:none}}
+    .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(15,30,68,.4) 0%,rgba(15,30,68,.3) 40%,rgba(15,30,68,.55) 100%);z-index:1}
+    .hero-content{position:relative;z-index:2;text-align:center;max-width:760px;padding:0 24px}
+    .hero-tagline{display:inline-flex;align-items:center;gap:8px;background:rgba(239,193,75,.15);backdrop-filter:blur(10px);border:1px solid rgba(239,193,75,.3);border-radius:var(--radius-full);padding:8px 20px;font-size:.8rem;font-weight:600;color:var(--golden);margin-bottom:24px;letter-spacing:.05em}
+    .hero-tagline .brand-icon{width:14px;height:18px}
+    .hero-tagline .brand-icon svg{fill:var(--golden)}
+    .hero-content h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--white);margin-bottom:20px;line-height:1.15}
+    .hero-content h1 em{font-style:italic;color:var(--golden)}
+    .hero-subtitle{font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,.65);margin-bottom:40px;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto}
+    .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+    .hero-mute{position:absolute;bottom:24px;right:24px;z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all var(--ease)}
+    .hero-mute:hover{background:rgba(255,255,255,.2)}
+    .hero-mute svg{width:18px;height:18px}
+    .scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;animation:bounce 2.5s ease-in-out infinite;color:rgba(255,255,255,.5)}
+    .scroll-indicator svg{width:24px;height:24px}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+    /* ---- BRAND STORY ---- */
+    .story-section{background:var(--white);padding:100px 0;position:relative;overflow:hidden}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .story-visual{position:relative}
+    .story-visual-main{border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;background:var(--cream)}
+    .story-visual-main img,.story-visual-main video{width:100%;height:100%;object-fit:cover}
+    .story-visual-accent{position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;background:var(--golden);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-golden)}
+    .story-visual-accent .brand-icon{width:48px;height:48px}
+    .story-visual-accent .brand-icon svg{fill:var(--navy)}
+    .story-text .section-label{justify-content:flex-start}
+    .story-text h2{margin-bottom:20px}
+    .story-text h2 em{font-style:italic;color:var(--golden-hover)}
+    .story-text .lead{font-size:1.05rem;color:var(--text-body);line-height:1.8;margin-bottom:24px}
+    .story-text blockquote{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;color:var(--navy);padding-left:20px;border-left:3px solid var(--golden);line-height:1.6;margin-bottom:28px}
+    .mission-text{font-size:1.15rem;line-height:1.9}
+    .mission-text .mt-navy{color:var(--navy);font-weight:700}
+    .mission-text .mt-golden{color:var(--golden-hover);font-weight:700}
+    @media(max-width:768px){.story-grid{grid-template-columns:1fr;gap:40px}.story-visual-accent{width:90px;height:90px;bottom:-10px;right:-10px}.story-visual-accent .brand-icon{width:36px;height:36px}}
+
+    /* ---- VALUES (C.A.R.E.S) ---- */
+    .values-section{background:var(--navy);padding:100px 0;position:relative;overflow:hidden}
+    .values-section .section-header h2{color:var(--white)}
+    .values-section .section-header .subtitle{color:rgba(255,255,255,.5)}
+    .values-section .section-label{color:var(--golden)}
+    .values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .value-card{border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:all var(--ease);position:relative;overflow:hidden;color:var(--white)}
+    .value-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .value-card-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.2)}
+    .value-card-icon .brand-icon{width:28px;height:28px}
+    .value-card-icon .brand-icon svg{fill:#fff}
+    .value-card h4{font-size:1rem;color:var(--white);margin-bottom:4px}
+    .value-card .value-vn{font-size:.8rem;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:12px}
+    .value-card p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.6}
+    .value-card:nth-child(1){background:#D94452}
+    .value-card:nth-child(2){background:var(--golden)}
+    .value-card:nth-child(2) h4,.value-card:nth-child(2) .value-vn{color:var(--navy)}
+    .value-card:nth-child(2) p{color:rgba(15,30,68,.7)}
+    .value-card:nth-child(2) .value-card-icon{background:rgba(15,30,68,.15)}
+    .value-card:nth-child(2) .value-card-icon .brand-icon svg{fill:var(--navy)}
+    .value-card:nth-child(3){background:#7B4FB5}
+    .value-card:nth-child(4){background:#1A3068}
+    .value-card:nth-child(5){background:#3A8F5C}
+    /* Deco */
+    .values-section .deco-bookmark{position:absolute;top:40px;right:60px;width:40px;height:52px;background:rgba(239,193,75,.08);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%)}
+    .values-section .deco-circle{position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;border:2px solid rgba(255,255,255,.04)}
+    @media(max-width:1024px){.values-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.values-grid{grid-template-columns:1fr 1fr}.value-card{padding:24px 16px}}
+    @media(max-width:400px){.values-grid{grid-template-columns:1fr}}
+
+    /* ---- AUDIENCE ---- */
+    .audience-section{background:var(--cream);padding:100px 0;overflow:hidden}
+    .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .audience-card{background:var(--white);border-radius:var(--radius-xl);padding:40px 32px;text-align:center;transition:all var(--ease);border:1px solid rgba(15,30,68,.04);position:relative;overflow:hidden}
+    .audience-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(239,193,75,.2)}
+    .audience-card-icon{width:72px;height:72px;border-radius:var(--radius-lg);margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+    .audience-card-icon .brand-icon{width:36px;height:36px}
+    .audience-card:nth-child(1) .audience-card-icon{background:linear-gradient(135deg,var(--golden-light),rgba(239,193,75,.25))}
+    .audience-card:nth-child(1) .brand-icon svg{fill:var(--golden-hover)}
+    .audience-card:nth-child(2) .audience-card-icon{background:linear-gradient(135deg,rgba(76,175,114,.08),rgba(76,175,114,.18))}
+    .audience-card:nth-child(2) .brand-icon svg{fill:#4CAF72}
+    .audience-card:nth-child(3) .audience-card-icon{background:linear-gradient(135deg,rgba(66,165,245,.08),rgba(66,165,245,.18))}
+    .audience-card:nth-child(3) .brand-icon svg{fill:#42A5F5}
+    .audience-card h3{font-size:1.2rem;margin-bottom:8px}
+    .audience-card .audience-age{font-size:.8rem;font-weight:600;color:var(--golden-hover);margin-bottom:14px}
+    .audience-card p{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+    .audience-card .audience-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+    .audience-tag{padding:5px 14px;border-radius:var(--radius-full);font-size:.75rem;font-weight:600;background:var(--cream);color:var(--text-body)}
+    @media(max-width:768px){.audience-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+
+    /* ---- CAFE & FOOD ---- */
+    .cafe-section{background:var(--white);padding:100px 0}
+    .cafe-coffee{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start;margin-bottom:80px}
+    .cafe-video-wrap{position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:16/9;background:var(--navy)}
+    .cafe-video-wrap video{width:100%;height:100%;object-fit:cover}
+    .cafe-video-badge{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:6px;background:var(--golden);color:var(--navy);font-size:.72rem;font-weight:700;padding:6px 14px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.1em}
+    .cafe-video-badge .brand-icon{width:14px;height:14px}
+    .cafe-video-badge .brand-icon svg{fill:var(--navy)}
+    .cafe-info .section-label{justify-content:flex-start}
+    .cafe-info h3{font-size:1.8rem;margin-bottom:12px}
+    .cafe-info p{color:var(--text-body);font-size:.92rem;line-height:1.8;margin-bottom:24px}
+    .drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+    .drink-card{background:var(--cream);border-radius:var(--radius-md);padding:16px;transition:all var(--ease);border:1px solid transparent;display:flex;align-items:center;gap:12px}
+    .drink-card:hover{border-color:var(--golden);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+    .drink-card .drink-icon{width:36px;height:36px;border-radius:50%;background:var(--golden-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .drink-card .drink-icon .brand-icon{width:18px;height:18px}
+    .drink-card .drink-icon .brand-icon svg{fill:var(--golden-hover)}
+    .drink-card .drink-info{flex:1}
+    .drink-card .drink-name{font-size:.85rem;font-weight:600;color:var(--navy)}
+    .drink-card .drink-price{font-size:.8rem;color:var(--text-muted);margin-top:2px}
+
+    .food-section-header h3{font-size:1.8rem;margin-bottom:4px}
+    .food-carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px;cursor:grab}
+    .food-carousel::-webkit-scrollbar{display:none}
+    .food-carousel.dragging{cursor:grabbing;scroll-snap-type:none}
+    .food-card{flex:0 0 220px;background:var(--cream);border-radius:var(--radius-lg);overflow:hidden;scroll-snap-align:start;transition:all var(--ease);border:1px solid transparent}
+    .food-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:rgba(239,193,75,.2)}
+    .food-card-img{width:100%;aspect-ratio:1;overflow:hidden;position:relative}
+    .food-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+    .food-card:hover .food-card-img img{transform:scale(1.06)}
+    .food-tag{position:absolute;top:12px;left:12px;z-index:1;display:inline-block;padding:6px 16px;border-radius:var(--radius-full);font-size:.75rem;font-weight:700;letter-spacing:.02em}
+    .food-tag.bestseller{background:var(--golden);color:var(--white)}
+    .food-tag.new{background:var(--white);color:var(--navy)}
+    .food-tag.healthy{background:#4CAF72;color:var(--white)}
+    .food-tag.kids{background:#FF5757;color:var(--white)}
+    .food-tag.special{background:var(--golden);color:var(--white)}
+    .food-card-body{padding:14px 16px 18px}
+    .food-card-body h4{font-family:'Be Vietnam Pro',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:8px;color:var(--navy)}
+    .food-card-body .food-price{font-size:1.1rem;font-weight:800;color:var(--golden)}
+    .food-carousel-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+    .carousel-btn{width:44px;height:44px;border-radius:50%;border:2px solid rgba(15,30,68,.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--ease)}
+    .carousel-btn:hover{border-color:var(--navy);color:var(--navy);background:var(--cream)}
+    @media(max-width:768px){.cafe-coffee{grid-template-columns:1fr;gap:32px}.food-card{flex:0 0 180px}}
+
+    /* ---- TIMELINE ---- */
+    .timeline-section{background:var(--cream);padding:100px 0}
+    .timeline-track{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+    .timeline-item{text-align:center}
+    .timeline-time{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+    .timeline-time::after{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--golden);margin:10px auto 0;box-shadow:0 0 0 4px var(--golden-light)}
+    .timeline-video-wrap{width:100%;aspect-ratio:9/16;max-width:160px;margin:0 auto 12px;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--cream-dark)}
+    .timeline-video-wrap img,.timeline-video-wrap video{width:100%;height:100%;object-fit:cover}
+    .timeline-caption{font-size:.82rem;font-weight:500;color:var(--text-muted)}
+    @media(max-width:768px){
+      .timeline-track{grid-template-columns:1fr;gap:0;padding-left:44px;position:relative}
+      .timeline-track::before{content:'';position:absolute;left:17px;top:0;bottom:0;width:2px;background:var(--golden-light)}
+      .timeline-item{display:grid;grid-template-columns:auto 1fr;gap:16px;text-align:left;padding-bottom:32px;position:relative}
+      .timeline-item::before{content:'';position:absolute;left:-31px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--golden);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--golden-light)}
+      .timeline-time{margin-bottom:0}.timeline-time::after{display:none}
+      .timeline-video-wrap{max-width:120px;margin:0}
+      .timeline-caption{grid-column:1/-1}
+    }
+
+    /* ---- SHOWCASE ---- */
+    .showcase-section{background:var(--white);padding:100px 0}
+    .filter-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:40px}
+    .filter-tab{padding:9px 20px;border-radius:var(--radius-full);font-size:.82rem;font-weight:600;color:var(--text-muted);background:var(--cream);transition:all var(--ease);cursor:pointer;border:1px solid transparent}
+    .filter-tab:hover{color:var(--navy);border-color:rgba(15,30,68,.1)}
+    .filter-tab.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+    .showcase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .showcase-item{aspect-ratio:9/16;border-radius:var(--radius-md);overflow:hidden;position:relative;cursor:pointer;transition:all var(--ease);background:var(--cream)}
+    .showcase-item:hover{transform:scale(1.02);box-shadow:var(--shadow-lg)}
+    .showcase-item.hidden{display:none}
+    .showcase-item video,.showcase-item img{width:100%;height:100%;object-fit:cover}
+    .showcase-item .item-overlay{position:absolute;bottom:0;left:0;width:100%;padding:48px 14px 14px;background:linear-gradient(transparent,rgba(15,30,68,.6))}
+    .showcase-item .item-caption{font-size:.78rem;color:var(--white);font-weight:500}
+    .showcase-item .item-heart{position:absolute;top:10px;right:10px;width:20px;height:20px;color:rgba(255,255,255,.6);transition:color var(--ease)}
+    .showcase-item .item-heart svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2}
+    .showcase-item:hover .item-heart{color:var(--golden)}
+    .showcase-cta{text-align:center;margin-top:48px}
+    .showcase-cta p{font-size:.95rem;color:var(--text-muted);margin-bottom:14px}
+    .social-icons{display:inline-flex;gap:12px}
+    .social-icons a{width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--ease)}
+    .social-icons a:hover{background:var(--navy);color:var(--golden)}
+    .social-icons a svg{width:16px;height:16px}
+    @media(max-width:1024px){.showcase-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.showcase-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* ---- SCHEDULE ---- */
+    .schedule-section{background:var(--cream);padding:100px 0}
+    .schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .event-card{background:var(--white);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--ease);border:1px solid rgba(15,30,68,.04)}
+    .event-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(239,193,75,.2)}
+    .event-card.hidden{display:none}
+    .event-card-video{width:100%;height:180px;overflow:hidden;background:var(--cream-dark)}
+    .event-card-video video,.event-card-video img{width:100%;height:100%;object-fit:cover}
+    .event-card-body{padding:24px}
+    .event-date{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--golden-hover);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+    .event-date .brand-icon{width:12px;height:15px}
+    .event-date .brand-icon svg{fill:var(--golden)}
+    .event-card-body h4{font-size:1.05rem;margin-bottom:8px}
+    .event-desc{font-size:.85rem;color:var(--text-muted);margin-bottom:14px;line-height:1.6}
+    .event-slots{display:inline-flex;align-items:center;gap:4px;padding:5px 14px;border-radius:var(--radius-full);font-size:.72rem;font-weight:700;margin-bottom:18px}
+    .event-slots.plenty{background:rgba(76,175,114,.1);color:#2F855A}
+    .event-slots.limited{background:rgba(255,152,0,.1);color:#E65100}
+    .event-register{display:block;width:100%;padding:13px;background:var(--navy);color:var(--white);text-align:center;border-radius:var(--radius-full);font-size:.88rem;font-weight:700;transition:all var(--ease)}
+    .event-register:hover{background:var(--navy-light);box-shadow:var(--shadow-md)}
+    @media(max-width:1024px){.schedule-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.schedule-grid{grid-template-columns:1fr}}
+
+    /* ---- CTA BANNER ---- */
+    .cta-banner{background:var(--navy);padding:80px 0;position:relative;overflow:hidden}
+    .cta-inner{text-align:center;position:relative;z-index:1}
+    .cta-inner h2{color:var(--white);font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:12px}
+    .cta-inner h2 em{color:var(--golden);font-style:italic}
+    .cta-inner p{color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+    .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .cta-banner .deco-house{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:220px;height:200px;background:rgba(239,193,75,.06);clip-path:polygon(50% 0%,100% 40%,100% 100%,0 100%,0 40%)}
+
+    /* ---- FOOTER ---- */
+    .footer{background:var(--navy);padding:72px 0 0;color:rgba(255,255,255,.5)}
+    .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px}
+    .footer-brand img{height:46px;width:auto;object-fit:contain;margin-bottom:16px}
+    .footer-brand .brand-tagline{font-size:.88rem;line-height:1.6;margin-bottom:8px}
+    .footer-brand .brand-slogan{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--golden);margin-bottom:24px}
+    .footer-social{display:flex;gap:10px}
+    .footer-social a{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);transition:all var(--ease)}
+    .footer-social a:hover{color:var(--golden);border-color:var(--golden)}
+    .footer-social a svg{width:16px;height:16px}
+    .footer-col h5{font-family:'Be Vietnam Pro',sans-serif;font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+    .footer-col a,.footer-col p{display:block;font-size:.88rem;margin-bottom:12px;transition:color var(--ease)}
+    .footer-col a:hover{color:var(--golden)}
+    .footer-col .footer-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;font-size:.88rem}
+    .footer-col .footer-item .brand-icon{width:14px;height:14px;margin-top:3px;flex-shrink:0}
+    .footer-col .footer-item .brand-icon svg{fill:rgba(255,255,255,.3)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:24px 0;display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+    .footer-bottom a{margin-left:16px}.footer-bottom a:hover{color:var(--golden)}
+    @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+    /* ---- FLOATING CTA ---- */
+    .floating-cta{display:none;position:fixed;bottom:20px;right:20px;z-index:999}
+    .floating-cta a{display:flex;align-items:center;gap:8px;padding:14px 24px;background:var(--golden);color:var(--navy);border-radius:var(--radius-full);font-size:.88rem;font-weight:700;box-shadow:var(--shadow-golden);transition:all var(--ease)}
+    .floating-cta a:hover{background:var(--golden-hover);transform:translateY(-2px)}
+    .floating-cta a .brand-icon{width:16px;height:16px}
+    .floating-cta a .brand-icon svg{fill:var(--navy)}
+    @media(max-width:768px){.floating-cta{display:block}.floating-cta.hidden{display:none}}
+
+    /* Performance */
+    .navbar{will-change:background-color;contain:layout style}
+    video{content-visibility:auto;contain-intrinsic-size:270px 480px}
+
+    /* Reservation Modal */
+    .reservation-overlay{position:fixed;inset:0;background:rgba(15,30,68,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s ease}
+    .reservation-overlay.active{display:flex;opacity:1}
+    .reservation-modal{background:var(--cream);border-radius:var(--radius-xl);max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(15,30,68,.2);transform:translateY(24px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);position:relative}
+    .reservation-overlay.active .reservation-modal{transform:translateY(0)}
+    .reservation-modal-header{padding:28px 28px 0;display:flex;align-items:flex-start;justify-content:space-between}
+    .reservation-modal-header .header-text h3{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--navy);font-weight:700}
+    .reservation-modal-header .header-text p{font-size:.9rem;color:var(--text-muted);margin-top:4px}
+    .reservation-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(15,30,68,.06);transition:all var(--ease);flex-shrink:0;margin-left:12px;cursor:pointer}
+    .reservation-close:hover{background:rgba(15,30,68,.12)}
+    .reservation-close svg{width:18px;height:18px;stroke:var(--navy);stroke-width:2.5;fill:none}
+    .reservation-form{padding:24px 28px 28px}
+    .reservation-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .reservation-form .form-group{margin-bottom:16px}
+    .reservation-form label{display:block;font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.02em}
+    .reservation-form label .required{color:var(--red-accent)}
+    .reservation-form input,.reservation-form select,.reservation-form textarea{width:100%;padding:12px 14px;border:1.5px solid rgba(15,30,68,.12);border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;color:var(--text-primary);background:var(--white);transition:border-color var(--ease),box-shadow var(--ease);outline:none}
+    .reservation-form input:focus,.reservation-form select:focus,.reservation-form textarea:focus{border-color:var(--golden);box-shadow:0 0 0 3px rgba(239,193,75,.12)}
+    .reservation-form input.error,.reservation-form select.error{border-color:var(--red-accent)}
+    .reservation-form .error-msg{font-size:.75rem;color:var(--red-accent);margin-top:4px;display:none}
+    .reservation-form .error-msg.show{display:block}
+    .reservation-form textarea{resize:vertical;min-height:72px}
+    .reservation-form .form-submit{margin-top:8px}
+    .reservation-form .form-submit .btn-primary{width:100%;justify-content:center;padding:16px;font-size:.95rem}
+    .reservation-success{display:none;text-align:center;padding:48px 28px}
+    .reservation-success.active{display:block}
+    .reservation-success .success-icon{width:64px;height:64px;margin:0 auto 20px;background:rgba(239,193,75,.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .reservation-success .success-icon svg{width:32px;height:32px;stroke:var(--golden-hover);stroke-width:2.5;fill:none}
+    .reservation-success h3{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:var(--navy);margin-bottom:8px}
+    .reservation-success p{color:var(--text-muted);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+    .reservation-success .btn-primary{display:inline-flex}
+    @media(max-width:480px){
+      .reservation-form .form-row{grid-template-columns:1fr}
+      .reservation-modal-header{padding:20px 20px 0}
+      .reservation-form{padding:20px}
+      .reservation-success{padding:36px 20px}
+    }
+
+    /* ---- BOOKING SECTION ---- */
+    .booking-section{padding:100px 0;background:var(--navy);position:relative;overflow:hidden}
+    .booking-section::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;background:radial-gradient(circle,rgba(239,193,75,.07) 0%,transparent 70%);pointer-events:none}
+    .booking-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(239,193,75,.05) 0%,transparent 70%);pointer-events:none}
+    .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+    .booking-info .section-label{color:var(--golden)}
+    .booking-info h2{color:var(--white);margin-bottom:16px}
+    .booking-info h2 em{color:var(--golden);font-style:italic}
+    .booking-info>p{color:rgba(255,255,255,.65);font-size:.97rem;line-height:1.75}
+    .booking-features{margin-top:36px;display:flex;flex-direction:column;gap:14px}
+    .booking-feature{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.8)}
+    .booking-feature-icon{width:40px;height:40px;background:rgba(239,193,75,.1);border:1px solid rgba(239,193,75,.2);border-radius:var(--radius-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .booking-feature-icon svg{width:18px;height:18px;stroke:var(--golden);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .booking-feature span{font-size:.88rem;line-height:1.4}
+    .booking-form-card{background:var(--cream);border-radius:var(--radius-xl);padding:36px 36px 40px;box-shadow:0 32px 72px rgba(0,0,0,.35);position:relative;z-index:1}
+    .booking-form-card .bfc-header{margin-bottom:24px}
+    .booking-form-card .bfc-header h3{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;color:var(--navy);font-weight:700;margin-bottom:4px}
+    .booking-form-card .bfc-header p{font-size:.82rem;color:var(--text-muted)}
+    .booking-form-card .reservation-form{padding:0}
+    .bs-success{display:none;text-align:center;padding:24px 0}
+    .bs-success.active{display:block}
+    .bs-success .bs-success-icon{width:72px;height:72px;margin:0 auto 20px;background:rgba(239,193,75,.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .bs-success .bs-success-icon svg{width:36px;height:36px;stroke:var(--golden-hover);stroke-width:2.5;fill:none}
+    .bs-success h3{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:var(--navy);margin-bottom:8px}
+    .bs-success p{color:var(--text-muted);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+    @media(max-width:900px){.booking-grid{grid-template-columns:1fr;gap:48px}}
+    @media(max-width:768px){.booking-section{padding:72px 0}.booking-form-card{padding:28px 24px 32px}}
+  </style>
+</head>
+
+<body>
+  <!-- SVG Symbol Defs — Brand icons from branding guide -->
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Bookmark (from branding) -->
+      <symbol id="ic-bookmark" viewBox="0 0 18 24"><path d="M1 1h16v21l-8-5-8 5V1z"/></symbol>
+      <!-- Water drop / Logo shape -->
+      <symbol id="ic-drop" viewBox="0 0 24 32"><path d="M12 0C12 0 0 14 0 20a12 12 0 0024 0C24 14 12 0 12 0zM12 28a8 8 0 01-8-8c0-4.4 8-14.7 8-14.7S20 15.6 20 20a8 8 0 01-8 8z"/></symbol>
+      <!-- House (from branding) -->
+      <symbol id="ic-house" viewBox="0 0 24 24"><path d="M12 2L2 10v12h8v-6h4v6h8V10L12 2z"/></symbol>
+      <!-- Clover / Plant (from branding) -->
+      <symbol id="ic-clover" viewBox="0 0 24 24"><path d="M12 2c-2.2 0-4 1.8-4 4 0 1.1.4 2.1 1.2 2.8C7.3 9.5 6 11.1 6 13c0 2.2 1.8 4 4 4 .7 0 1.4-.2 2-.5.6.3 1.3.5 2 .5 2.2 0 4-1.8 4-4 0-1.9-1.3-3.5-3.2-3.8.8-.8 1.2-1.8 1.2-2.8 0-2.2-1.8-3.4-4-3.4z"/><path d="M11 17v5h2v-5"/></symbol>
+      <!-- Flower / Sunflower (from branding golden) -->
+      <symbol id="ic-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2c-1.1 0-2 .9-2 2 0 .7.4 1.4 1 1.7-.6.3-1 1-1 1.7V8c-1.3 0-2.5.5-3.4 1.3.1-.5-.2-1-.6-1.4-.7-.7-1.8-.7-2.5 0s-.7 1.8 0 2.5c.4.4.9.7 1.4.6C4.5 11.9 4 13 4 14.3h.6c-.7.3-1.2 1-1.2 1.7 0 1.1.9 2 2 2 .7 0 1.4-.4 1.7-1 .3.6 1 1 1.7 1H9.3c.5 1.3 1.7 2.2 3.1 2.7-.2.4-.3.9-.3 1.3 0 1.1.9 2 2 2s2-.9 2-2c0-.5-.1-.9-.3-1.3 1.4-.5 2.6-1.4 3.1-2.7h.6c.7 0 1.4-.4 1.7-1 .6-.3 1-1 1-1.7 0-1.1-.9-2-2-2-.5 0-.9.1-1.2.4.1-.5-.2-1-.6-1.4-.7-.7-1.8-.7-2.5 0s-.7 1.8 0 2.5c.4.4.9.6 1.4.6-.9-.8-2.1-1.3-3.4-1.3v-.6c0-.7-.4-1.4-1-1.7.6-.3 1-1 1-1.7 0-1.1-.9-2-2-2z"/></symbol>
+      <!-- Heart -->
+      <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+      <!-- Fire / Spark -->
+      <symbol id="ic-fire" viewBox="0 0 24 24"><path d="M12 23c-4.97 0-9-3.58-9-8 0-3.19 2.13-6.03 3.5-7.5.31-.33.85-.09.85.35 0 1.26.62 2.43 1.65 3.15.18-.67.44-1.31.78-1.9C11.08 6.71 12 4.33 12 1.5c0-.46.55-.7.88-.39C15.5 3.59 21 8.91 21 15c0 4.42-4.03 8-9 8z"/></symbol>
+      <!-- Coffee cup -->
+      <symbol id="ic-coffee" viewBox="0 0 24 24"><path d="M18 8h2a3 3 0 010 6h-2M2 8h16v10a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="6" y1="1" x2="6" y2="4" stroke="currentColor" stroke-width="2"/><line x1="10" y1="1" x2="10" y2="4" stroke="currentColor" stroke-width="2"/><line x1="14" y1="1" x2="14" y2="4" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Seedling / Sprout -->
+      <symbol id="ic-sprout" viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 8 4 3 4c0 5 3 8 9 8zM12 12c0-5 4-8 9-8-0 5-3 8-9 8z"/></symbol>
+      <!-- Star -->
+      <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+      <!-- Globe / Accessibility -->
+      <symbol id="ic-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2c2.76 4 4 8 4 10s-1.24 6-4 10c-2.76-4-4-8-4-10s1.24-6 4-10z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Map pin -->
+      <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></symbol>
+      <!-- Mail -->
+      <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Phone -->
+      <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.97.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.84.57 2.81.7A2 2 0 0122 16.92z"/></symbol>
+      <!-- Clock -->
+      <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Calendar -->
+      <symbol id="ic-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Arrow right -->
+      <symbol id="ic-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a href="#" class="navbar-brand">
+        <img src="assets/images/Asset_9.png" alt="AiiCafe Logo" class="logo-white" width="114" height="38" data-media-key="logo-white">
+        <img src="assets/images/Asset_6.png" alt="AiiCafe Logo" class="logo-blue" width="114" height="38" data-media-key="logo-blue">
+      </a>
+      <div class="navbar-links">
+        <a href="#story">Câu chuyện</a>
+        <a href="#cafe">Thực đơn</a>
+        <a href="#experience">Trải nghiệm</a>
+        <a href="#schedule">Lịch tuần</a>
+        <a href="#contact">Liên hệ</a>
+        <a href="#booking" class="navbar-cta">Đặt bàn</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#story">Câu chuyện</a>
+      <a href="#cafe">Thực đơn</a>
+      <a href="#experience">Trải nghiệm</a>
+      <a href="#schedule">Lịch tuần</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="#booking" class="navbar-cta">Đặt bàn</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <video class="hero-video hero-video--desktop" id="heroVideoDesktop" autoplay muted loop playsinline preload="auto" poster="assets/videos/opt/poster-chero.jpg" data-media-key="hero-desktop">
+        <source src="assets/videos/opt/chero.webm" type="video/webm">
+        <source src="assets/videos/opt/chero.mp4" type="video/mp4">
+      </video>
+      <img class="hero-video hero-video--desktop hero-static-img" id="heroImgDesktop" src="assets/videos/opt/poster-chero.jpg" alt="AiiCafe" style="display:none" data-media-key-img="hero-desktop">
+      <video class="hero-video hero-video--mobile" id="heroVideoMobile" autoplay muted loop playsinline preload="none" poster="assets/videos/opt/poster-mhero.jpg" data-media-key="hero-mobile">
+        <source src="assets/videos/opt/mhero.webm" type="video/webm">
+        <source src="assets/videos/opt/mhero.mp4" type="video/mp4">
+      </video>
+      <img class="hero-video hero-video--mobile hero-static-img" id="heroImgMobile" src="assets/videos/opt/poster-mhero.jpg" alt="AiiCafe" style="display:none" data-media-key-img="hero-mobile">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tagline">
+          <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+          Where love brews and dreams grow
+        </div>
+        <h1>Nơi <em>mỗi tách cà phê</em><br>kể một câu chuyện về<br><em>yêu thương</em></h1>
+        <p class="hero-subtitle">Không gian cà phê giáo dục cho mọi gia đình. Nơi thế hệ tương lai được ươm mầm từ những điều giản dị nhất.</p>
+        <div class="hero-actions">
+          <a href="#cafe" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ic-coffee"/></svg>
+            Khám phá thực đơn
+          </a>
+          <a href="#schedule" class="btn-navy">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ic-calendar"/></svg>
+            Lịch sự kiện tuần này
+          </a>
+        </div>
+      </div>
+      <button class="hero-mute" id="muteBtn" aria-label="Bật/Tắt tiếng">
+        <svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        <svg id="unmuteIcon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path></svg>
+      </button>
+      <div class="scroll-indicator" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </section>
+
+    <!-- BRAND STORY -->
+    <section class="story-section" id="story">
+      <div class="container">
+        <div class="story-grid reveal">
+          <div class="story-visual">
+            <div class="story-visual-main">
+              <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4" data-media-key="story-video"></video>
+            </div>
+            <div class="story-visual-accent">
+              <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
+            </div>
+          </div>
+          <div class="story-text">
+            <div class="section-label">
+              <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+              Câu chuyện AiiCafe
+            </div>
+            <h2>Cà phê &ndash; Tri thức &ndash; <em>Nuôi dưỡng</em></h2>
+            <p class="lead mission-text">Biến <strong class="mt-navy">mỗi khoảnh khắc gia đình</strong> thành <strong class="mt-golden">cơ hội ươm mầm</strong> qua <strong class="mt-navy">một ly cà phê</strong>, <strong class="mt-golden">một trải nghiệm mới</strong>, <strong class="mt-navy">một tài năng được thắp sáng</strong>.</p>
+            <p class="lead">Là thương hiệu cà phê thuộc hệ sinh thái AiiHouse, AiiCafe kiến tạo không gian nơi phụ huynh thư thái, các con khám phá, và cả gia đình cùng lớn lên.</p>
+            <blockquote>&ldquo;Bởi tại AiiCafe, chúng tôi tin: mỗi thiên thần nhỏ đều mang trong mình ánh sáng riêng. Việc của chúng tôi chỉ đơn giản là giúp ánh sáng ấy toả sáng.&rdquo;</blockquote>
+            <a href="#audience" class="btn-outline">
+              Tìm hiểu thêm
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ic-arrow-right"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES C.A.R.E.S -->
+    <section class="values-section" id="values">
+      <div class="deco-bookmark"></div>
+      <div class="deco-circle"></div>
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content:center">
+            <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+            Giá trị cốt lõi
+          </div>
+          <h2>C.A.R.E.S</h2>
+          <p class="subtitle">Năm giá trị định hướng mọi hành động của AiiCafe</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-card-icon"><span class="brand-icon"><svg><use href="#ic-heart"/></svg></span></div>
+            <h4>Cherish</h4>
+            <div class="value-vn">Nâng niu</div>
+            <p>Mỗi đứa trẻ là thiên thần, mỗi gia đình là câu chuyện. Chúng tôi nâng niu thế hệ tương lai bằng tình yêu thương và sự tin tưởng.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-card-icon"><span class="brand-icon"><svg><use href="#ic-globe"/></svg></span></div>
+            <h4>Accessibility</h4>
+            <div class="value-vn">Tiếp cận</div>
+            <p>Mọi người đều được chào đón &ndash; không phân biệt tuổi tác, mọi thử thách hay phương diện điểm. Từ em nhỏ ở tự định huyện, cũng làm được.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-card-icon"><span class="brand-icon"><svg><use href="#ic-sprout"/></svg></span></div>
+            <h4>Readiness</h4>
+            <div class="value-vn">Sẵn sàng</div>
+            <p>Trang bị cho thế hệ trẻ sự tự tin và năng lực để khởi đầu. Mỗi trải nghiệm tại AiiCafe là một viên gạch cho tương lai.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-card-icon"><span class="brand-icon"><svg><use href="#ic-star"/></svg></span></div>
+            <h4>Excellence</h4>
+            <div class="value-vn">Xuất sắc</div>
+            <p>Từ cà phê đến chương trình giáo dục, mọi thứ đều được chăm chút và tinh chỉnh đến chất lượng cao nhất.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-card-icon"><span class="brand-icon"><svg><use href="#ic-fire"/></svg></span></div>
+            <h4>Spark</h4>
+            <div class="value-vn">Khơi mới</div>
+            <p>Khuyến khích sự tò mò, khả năng sáng tạo. Tại trong mỗi đám con nhỏ là một tài năng đang chờ cơ hội toả sáng.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="audience-section" id="audience">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content:center">
+            <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+            Dành cho bạn
+          </div>
+          <h2>AiiCafe chào đón tất cả</h2>
+          <p class="subtitle">Dù bạn là ai, AiiCafe luôn có một góc nhỏ dành riêng cho bạn</p>
+        </div>
+        <div class="audience-grid">
+          <div class="audience-card reveal">
+            <div class="audience-card-icon"><span class="brand-icon"><svg><use href="#ic-house"/></svg></span></div>
+            <h3>Những bậc phụ huynh yêu thương</h3>
+            <div class="audience-age">25 &ndash; 40 tuổi</div>
+            <p>Tại AiiCafe, ba mẹ tìm thấy sự thư thái &ndash; con cái chăn chuộc cho những cảm hứng đang dần hiện. Một không gian nơi tất cả đều tự nhiên, không gượng ép.</p>
+            <div class="audience-tags">
+              <span class="audience-tag">Cà phê chất lượng</span>
+              <span class="audience-tag">Không gian gia đình</span>
+              <span class="audience-tag">Giáo dục sớm</span>
+            </div>
+          </div>
+          <div class="audience-card reveal reveal-delay-1">
+            <div class="audience-card-icon"><span class="brand-icon"><svg><use href="#ic-clover"/></svg></span></div>
+            <h3>Những thiên thần nhỏ</h3>
+            <div class="audience-age">4 &ndash; 15 tuổi</div>
+            <p>Các con &ndash; trung tâm của điều AiiCafe hướng tới. Thông qua AiiLab, các con được trải nghiệm khoa học, công nghệ, nghệ thuật và kỹ năng sống theo cách mới và sáng tạo.</p>
+            <div class="audience-tags">
+              <span class="audience-tag">Workshop</span>
+              <span class="audience-tag">Lớp học sáng tạo</span>
+              <span class="audience-tag">STEM</span>
+            </div>
+          </div>
+          <div class="audience-card reveal reveal-delay-2">
+            <div class="audience-card-icon"><span class="brand-icon"><svg><use href="#ic-fire"/></svg></span></div>
+            <h3>Người trẻ kiến tạo</h3>
+            <div class="audience-age">18 &ndash; 28 tuổi</div>
+            <p>Sinh viên, freelancer, người trẻ sáng tạo &ndash; những người tìm kiếm không gian truyền cảm hứng để làm việc, học hỏi và kết nối.</p>
+            <div class="audience-tags">
+              <span class="audience-tag">Co-working</span>
+              <span class="audience-tag">Demo Day</span>
+              <span class="audience-tag">Networking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAFE & FOOD -->
+    <section class="cafe-section" id="cafe">
+      <div class="container">
+        <!-- Coffee -->
+        <div class="cafe-coffee reveal">
+          <div class="cafe-video-wrap">
+            <video muted loop playsinline poster="assets/videos/opt/poster1.jpg" data-src="assets/videos/opt/v1.mp4" data-media-key="cafe-video"></video>
+            <div class="cafe-video-badge">
+              <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
+              Specialty Coffee
+            </div>
+          </div>
+          <div class="cafe-info">
+            <div class="section-label">
+              <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+              Cà phê đặc sản
+            </div>
+            <h3>Mỗi tách là một câu chuyện</h3>
+            <p>Hạt cà phê Arabica được chọn lọc từ cao nguyên Việt Nam, rang thủ công theo profile riêng. Từ espresso đậm đà đến cold brew thanh mát &ndash; mỗi ly đều chứa đựng sự tận tâm.</p>
+            <div class="drink-grid">
+              <div class="drink-card">
+                <div class="drink-icon"><span class="brand-icon"><svg><use href="#ic-drop"/></svg></span></div>
+                <div class="drink-info"><div class="drink-name">Espresso</div><div class="drink-price">45k</div></div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-icon"><span class="brand-icon"><svg><use href="#ic-drop"/></svg></span></div>
+                <div class="drink-info"><div class="drink-name">Cold Brew</div><div class="drink-price">55k</div></div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-icon"><span class="brand-icon"><svg><use href="#ic-clover"/></svg></span></div>
+                <div class="drink-info"><div class="drink-name">Matcha Latte</div><div class="drink-price">60k</div></div>
+              </div>
+              <div class="drink-card">
+                <div class="drink-icon"><span class="brand-icon"><svg><use href="#ic-drop"/></svg></span></div>
+                <div class="drink-info"><div class="drink-name">Cappuccino</div><div class="drink-price">50k</div></div>
+              </div>
+            </div>
+            <a href="#" class="btn-outline">
+              Xem full menu
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ic-arrow-right"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Food -->
+        <div id="food" class="reveal">
+          <div class="food-section-header" style="margin-bottom:32px">
+            <div class="section-label">
+              <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+              Ẩm thực sáng tạo
+            </div>
+            <h3>Không chỉ có cà phê</h3>
+          </div>
+          <div class="food-carousel" id="foodCarousel">
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/egg-benedict.jpg" alt="Egg Benedict" loading="lazy" data-media-key="food-1-img"></div><div class="food-card-body"><h4>Egg Benedict</h4><div class="food-price">89.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/avocado-toast.jpg" alt="Avocado Toast" loading="lazy" data-media-key="food-2-img"></div><div class="food-card-body"><h4>Avocado Toast</h4><div class="food-price">75.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/banh-mi-chao.jpg" alt="Bánh mì chảo" loading="lazy" data-media-key="food-3-img"></div><div class="food-card-body"><h4>Bánh mì chảo</h4><div class="food-price">65.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag kids">Kids Love</span><img src="assets/images/food/pancake.jpg" alt="Pancake Stack" loading="lazy" data-media-key="food-4-img"></div><div class="food-card-body"><h4>Pancake Stack</h4><div class="food-price">69.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag new">Mới</span><img src="assets/images/food/pho-cuon.jpg" alt="Phở cuốn" loading="lazy" data-media-key="food-5-img"></div><div class="food-card-body"><h4>Phở cuốn</h4><div class="food-price">55.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag healthy">Healthy</span><img src="assets/images/food/salad-bowl.jpg" alt="Salad Bowl" loading="lazy" data-media-key="food-6-img"></div><div class="food-card-body"><h4>Salad Bowl</h4><div class="food-price">79.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag bestseller">Best Seller</span><img src="assets/images/food/waffle.jpg" alt="Waffle &amp; Berries" loading="lazy" data-media-key="food-7-img"></div><div class="food-card-body"><h4>Waffle &amp; Berries</h4><div class="food-price">72.000 VND</div></div></div>
+            <div class="food-card"><div class="food-card-img"><span class="food-tag special">Đặc biệt</span><img src="assets/images/food/tiramisu.jpg" alt="Tiramisu" loading="lazy" data-media-key="food-8-img"></div><div class="food-card-body"><h4>Tiramisu</h4><div class="food-price">68.000 VND</div></div></div>
+          </div>
+          <div class="food-carousel-nav">
+            <button class="carousel-btn" id="carouselPrev" aria-label="Trước"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <button class="carousel-btn" id="carouselNext" aria-label="Sau"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          </div>
+          <div style="text-align:center;margin-top:36px">
+            <a href="#" class="btn-outline">
+              Xem full menu
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ic-arrow-right"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content:center">
+            <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+            Trải nghiệm
+          </div>
+          <h2>Một ngày ở AiiCafe</h2>
+          <p class="subtitle">Từ ly cà phê sáng đến buổi tối sáng tạo</p>
+        </div>
+        <div class="timeline-track reveal">
+          <div class="timeline-item"><div class="timeline-time">7:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Espresso đầu ngày" loading="lazy" width="160" height="284" data-media-key="timeline-1-img"></div><div class="timeline-caption">Espresso đầu ngày</div></div>
+          <div class="timeline-item" id="kids"><div class="timeline-time">9:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Lớp rèn chữ cho bé" loading="lazy" width="160" height="284" data-media-key="timeline-2-img"></div><div class="timeline-caption">Lớp rèn chữ cho bé</div></div>
+          <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster3.jpg" alt="Brunch cuối tuần" loading="lazy" width="160" height="284" data-media-key="timeline-3-img"></div><div class="timeline-caption">Brunch cuối tuần</div></div>
+          <div class="timeline-item" id="work"><div class="timeline-time">14:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster4.jpg" alt="Workshop" loading="lazy" width="160" height="284" data-media-key="timeline-4-img"></div><div class="timeline-caption">Workshop &amp; Co-working</div></div>
+          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster1.jpg" alt="Cà phê chiều" loading="lazy" width="160" height="284" data-media-key="timeline-5-img"></div><div class="timeline-caption">Cà phê chiều &amp; đọc sách</div></div>
+          <div class="timeline-item"><div class="timeline-time">19:30</div><div class="timeline-video-wrap"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" width="160" height="284" data-media-key="timeline-6-img"></div><div class="timeline-caption">Demo Day sản phẩm</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="showcase-section" id="showcase">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content:center">
+            <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+            Khoảnh khắc
+          </div>
+          <h2>Khoảnh khắc AiiCafe</h2>
+          <p class="subtitle">Khách hàng chia sẻ trải nghiệm tại đây</p>
+        </div>
+        <div class="filter-tabs reveal" id="showcaseFilter" role="tablist">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+          <button class="filter-tab" data-filter="cafe" role="tab">Cà phê</button>
+          <button class="filter-tab" data-filter="food" role="tab">Ẩm thực</button>
+          <button class="filter-tab" data-filter="class" role="tab">Lớp học</button>
+          <button class="filter-tab" data-filter="event" role="tab">Sự kiện</button>
+          <button class="filter-tab" data-filter="kids" role="tab">Kids</button>
+        </div>
+        <div class="showcase-grid" id="showcaseGrid">
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-1"><img src="assets/videos/opt/poster1.jpg" alt="Espresso art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Espresso art buổi sáng</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-2"><img src="assets/videos/opt/poster2.jpg" alt="Brunch" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Brunch đặc biệt</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-3"><img src="assets/videos/opt/poster3.jpg" alt="Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Workshop cuối tuần</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-4"><img src="assets/videos/opt/poster4.jpg" alt="Demo Day" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Demo Day</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-5"><img src="assets/videos/opt/poster2.jpg" alt="Cold brew" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Cold brew on ice</span></div></div>
+          <div class="showcase-item" data-category="cafe" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-6"><img src="assets/videos/opt/poster1.jpg" alt="Latte art" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Latte art</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-7"><img src="assets/videos/opt/poster3.jpg" alt="Avocado toast" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Avocado toast</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-8"><img src="assets/videos/opt/poster4.jpg" alt="Lớp rèn chữ" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Lớp rèn chữ</span></div></div>
+          <div class="showcase-item" data-category="food" data-video="assets/videos/opt/v2.mp4" data-media-key="showcase-9"><img src="assets/videos/opt/poster2.jpg" alt="Tiramisu" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Tiramisu handmade</span></div></div>
+          <div class="showcase-item" data-category="event" data-video="assets/videos/opt/v1.mp4" data-media-key="showcase-10"><img src="assets/videos/opt/poster1.jpg" alt="Coffee cupping" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Coffee cupping</span></div></div>
+          <div class="showcase-item" data-category="kids" data-video="assets/videos/opt/v3.mp4" data-media-key="showcase-11"><img src="assets/videos/opt/poster3.jpg" alt="Art class" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">Art class cho bé</span></div></div>
+          <div class="showcase-item" data-category="class" data-video="assets/videos/opt/v4.mp4" data-media-key="showcase-12"><img src="assets/videos/opt/poster4.jpg" alt="AI Workshop" loading="lazy" width="360" height="640"><span class="item-heart"><svg viewBox="0 0 24 24"><use href="#ic-heart"/></svg></span><div class="item-overlay"><span class="item-caption">AI Workshop</span></div></div>
+        </div>
+        <div class="showcase-cta reveal">
+          <p>Chia sẻ khoảnh khắc của bạn &mdash; tag #AiiCafe</p>
+          <div class="social-icons">
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.87a8.28 8.28 0 004.76 1.49V6.91a4.84 4.84 0 01-1-.22z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="schedule-section" id="schedule">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label" style="justify-content:center">
+            <span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span>
+            Lịch tuần
+          </div>
+          <h2>Tuần này ở AiiCafe</h2>
+          <p class="subtitle">Đăng ký ngay &mdash; số lượng có hạn</p>
+        </div>
+        <div class="filter-tabs reveal" id="scheduleFilter" role="tablist">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+          <button class="filter-tab" data-filter="kids" role="tab">Cho bé</button>
+          <button class="filter-tab" data-filter="adult" role="tab">Cho người lớn</button>
+        </div>
+        <div class="schedule-grid" id="scheduleGrid">
+          <div class="event-card reveal" data-category="kids">
+            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Lớp rèn chữ" loading="lazy" data-media-key="event-1-img"></div>
+            <div class="event-card-body">
+              <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 3, 9:30</div>
+              <h4>Lớp rèn chữ đẹp (5&ndash;7 tuổi)</h4>
+              <p class="event-desc">Bé luyện viết chữ chuẩn với cô Minh Anh</p>
+              <span class="event-slots plenty">Còn 4 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video"><img src="assets/videos/opt/poster4.jpg" alt="Workshop AI" loading="lazy" data-media-key="event-2-img"></div>
+            <div class="event-card-body">
+              <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 4, 14:00</div>
+              <h4>Workshop AI cơ bản</h4>
+              <p class="event-desc">Tìm hiểu ChatGPT &amp; ứng dụng thực tế</p>
+              <span class="event-slots plenty">Còn 6 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+          <div class="event-card reveal" data-category="kids">
+            <div class="event-card-video"><img src="assets/videos/opt/poster3.jpg" alt="Toán tư duy" loading="lazy" data-media-key="event-3-img"></div>
+            <div class="event-card-body">
+              <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 5, 10:00</div>
+              <h4>Toán tư duy quốc tế (8&ndash;10 tuổi)</h4>
+              <p class="event-desc">Phương pháp Singapore Math</p>
+              <span class="event-slots limited">Còn 2 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video"><img src="assets/videos/opt/poster1.jpg" alt="Coffee Cupping" loading="lazy" data-media-key="event-4-img"></div>
+            <div class="event-card-body">
+              <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 6, 18:00</div>
+              <h4>Coffee Cupping Experience</h4>
+              <p class="event-desc">Thử 5 loại cà phê đặc sản cùng barista</p>
+              <span class="event-slots plenty">Còn 8 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+          <div class="event-card reveal" data-category="adult">
+            <div class="event-card-video"><img src="assets/videos/opt/poster2.jpg" alt="Demo Day" loading="lazy" data-media-key="event-5-img"></div>
+            <div class="event-card-body">
+              <div class="event-date"><span class="brand-icon"><svg><use href="#ic-bookmark"/></svg></span> Thứ 7, 15:00</div>
+              <h4>Demo Day &mdash; Sản phẩm sáng tạo</h4>
+              <p class="event-desc">Trình bày ý tưởng &amp; nhận feedback từ mentor</p>
+              <span class="event-slots plenty">Còn 10 slot</span>
+              <a href="#" class="event-register">Đăng ký</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+      <div class="deco-house"></div>
+      <div class="container">
+        <div class="cta-inner reveal">
+          <h2>Sẵn sàng trải nghiệm <em>AiiCafe</em>?</h2>
+          <p>Đặt bàn ngay để tận hưởng không gian cà phê giáo dục độc đáo nhất Việt Nam.</p>
+          <div class="cta-actions">
+            <a href="#booking" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
+              Đặt bàn ngay
+            </a>
+            <a href="tel:0900000000" class="btn-navy" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
+              <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-phone"/></svg>
+              Gọi ngay
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="booking-grid">
+          <!-- Left: Info -->
+          <div class="booking-info reveal">
+            <div class="section-label">
+              <span class="brand-icon"><svg><use href="#ic-pin"/></svg></span>
+              ĐẶT BÀN
+            </div>
+            <h2>Đặt bàn tại<br><em>AiiCafe</em></h2>
+            <p>Đặt trước để có trải nghiệm tốt nhất. Chúng tôi sẽ xác nhận và liên hệ lại với bạn trong vòng 30 phút.</p>
+            <div class="booking-features">
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.97.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.84.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <span>Xác nhận qua điện thoại trong 30 phút</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span>Mở cửa 7:00 – 22:00 tất cả các ngày trong tuần</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <span>Phù hợp cho gia đình, nhóm bạn & sự kiện</span>
+              </div>
+              <div class="booking-feature">
+                <div class="booking-feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span>Không gian an toàn & thân thiện cho trẻ em</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form Card -->
+          <div class="booking-form-card reveal reveal-delay-1">
+            <div class="bfc-header">
+              <h3>Điền thông tin đặt bàn</h3>
+              <p>Tất cả trường có dấu <span style="color:var(--red-accent)">*</span> là bắt buộc</p>
+            </div>
+
+            <form class="reservation-form" id="bookingSectionForm" novalidate>
+              <div class="form-group">
+                <label>Họ và tên <span class="required">*</span></label>
+                <input type="text" id="bsName" placeholder="Nguyễn Văn A" required>
+                <div class="error-msg" id="bsErrName">Vui lòng nhập họ tên (ít nhất 2 ký tự)</div>
+              </div>
+              <div class="form-group">
+                <label>Số điện thoại <span class="required">*</span></label>
+                <input type="tel" id="bsPhone" placeholder="0901 234 567" required>
+                <div class="error-msg" id="bsErrPhone">Vui lòng nhập số điện thoại hợp lệ (VD: 0901234567)</div>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="bsEmail" placeholder="email@example.com">
+                <div class="error-msg" id="bsErrEmail">Email không hợp lệ</div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Ngày đặt <span class="required">*</span></label>
+                  <input type="date" id="bsDate" required>
+                  <div class="error-msg" id="bsErrDate">Vui lòng chọn ngày</div>
+                </div>
+                <div class="form-group">
+                  <label>Giờ đến <span class="required">*</span></label>
+                  <select id="bsTime" required>
+                    <option value="">Chọn giờ</option>
+                    <option>7:00</option><option>7:30</option>
+                    <option>8:00</option><option>8:30</option>
+                    <option>9:00</option><option>9:30</option>
+                    <option>10:00</option><option>10:30</option>
+                    <option>11:00</option><option>11:30</option>
+                    <option>12:00</option><option>12:30</option>
+                    <option>13:00</option><option>13:30</option>
+                    <option>14:00</option><option>14:30</option>
+                    <option>15:00</option><option>15:30</option>
+                    <option>16:00</option><option>16:30</option>
+                    <option>17:00</option><option>17:30</option>
+                    <option>18:00</option><option>18:30</option>
+                    <option>19:00</option><option>19:30</option>
+                    <option>20:00</option><option>20:30</option>
+                    <option>21:00</option>
+                  </select>
+                  <div class="error-msg" id="bsErrTime">Vui lòng chọn giờ</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Số khách <span class="required">*</span></label>
+                  <select id="bsGuests" required>
+                    <option value="">Chọn</option>
+                    <option>1</option><option>2</option><option>3</option><option>4</option>
+                    <option>5</option><option>6</option><option>7</option><option>8</option>
+                    <option>9</option><option>10</option>
+                    <option value="11-15">11–15 khách</option>
+                    <option value="16-20">16–20 khách</option>
+                  </select>
+                  <div class="error-msg" id="bsErrGuests">Vui lòng chọn số khách</div>
+                </div>
+                <div class="form-group">
+                  <label>Khu vực</label>
+                  <select id="bsArea">
+                    <option value="indoor">Trong nhà</option>
+                    <option value="outdoor">Ngoài trời</option>
+                    <option value="kids">Khu vui chơi trẻ em</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Ghi chú</label>
+                <textarea id="bsNote" placeholder="Yêu cầu đặc biệt: sinh nhật, ghế trẻ em, dị ứng thực phẩm..."></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn-primary">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
+                  Xác nhận đặt bàn
+                </button>
+              </div>
+            </form>
+
+            <div class="bs-success" id="bsSectionSuccess">
+              <div class="bs-success-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Đặt bàn thành công! 🎉</h3>
+              <p>Cảm ơn bạn đã đặt bàn tại AiiCafe.<br>Chúng tôi sẽ xác nhận và liên hệ với bạn sớm nhất.</p>
+              <button type="button" class="btn-primary" id="bsBookAgain">Đặt bàn khác</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/Asset_9.png" alt="AiiCafe" height="46" data-media-key="logo-white">
+          <p class="brand-tagline">Không gian cà phê giáo dục cho mọi gia đình.</p>
+          <p class="brand-slogan">&ldquo;Where love brews and dreams grow&rdquo;</p>
+          <div class="footer-social">
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.87a8.28 8.28 0 004.76 1.49V6.91a4.84 4.84 0 01-1-.22z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Dịch vụ</h5>
+          <a href="#cafe">Cà phê đặc sản</a>
+          <a href="#food">Menu ẩm thực</a>
+          <a href="#schedule">Workshop &amp; Lớp học</a>
+          <a href="#work">Co-working</a>
+        </div>
+        <div class="footer-col">
+          <h5>Khám phá</h5>
+          <a href="#schedule">Lịch sự kiện</a>
+          <a href="#" data-booking>Đặt bàn</a>
+          <a href="#">Membership</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h5>Liên hệ</h5>
+          <div class="footer-item"><span class="brand-icon"><svg><use href="#ic-pin"/></svg></span><span>123 Đường ABC, Quận 1, TP.HCM</span></div>
+          <div class="footer-item"><span class="brand-icon"><svg><use href="#ic-mail"/></svg></span><span>hello@aiicafe.vn</span></div>
+          <div class="footer-item"><span class="brand-icon"><svg><use href="#ic-phone"/></svg></span><span>0900 xxx xxx</span></div>
+          <div class="footer-item"><span class="brand-icon"><svg><use href="#ic-clock"/></svg></span><span>7:00 &ndash; 22:00 hàng ngày</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AiiCafe &mdash; Hệ sinh thái AiiHouse. All rights reserved.</span>
+        <div><a href="#">Chính sách bảo mật</a><a href="#">Điều khoản</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CTA -->
+  <div class="floating-cta hidden" id="floatingCta">
+    <a href="#" data-booking>
+      <span class="brand-icon"><svg><use href="#ic-drop"/></svg></span>
+      Đặt bàn
+    </a>
+  </div>
+
+  <!-- RESERVATION MODAL -->
+  <div class="reservation-overlay" id="reservationOverlay">
+    <div class="reservation-modal" role="dialog" aria-labelledby="reservationTitle">
+      <div class="reservation-modal-header">
+        <div class="header-text">
+          <h3 id="reservationTitle">Đặt bàn tại AiiCafe</h3>
+          <p>Đặt bàn trước để có trải nghiệm tốt nhất</p>
+        </div>
+        <button class="reservation-close" id="reservationClose" aria-label="Đóng">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <form class="reservation-form" id="reservationForm" novalidate>
+        <div class="form-group">
+          <label>Họ và tên <span class="required">*</span></label>
+          <input type="text" id="resName" placeholder="Nguyễn Văn A" required>
+          <div class="error-msg" id="errName">Vui lòng nhập họ tên</div>
+        </div>
+
+        <div class="form-group">
+          <label>Số điện thoại <span class="required">*</span></label>
+          <input type="tel" id="resPhone" placeholder="0901 234 567" required>
+          <div class="error-msg" id="errPhone">Vui lòng nhập số điện thoại hợp lệ</div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="resEmail" placeholder="email@example.com">
+          <div class="error-msg" id="errEmail">Email không hợp lệ</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ngày đặt <span class="required">*</span></label>
+            <input type="date" id="resDate" required>
+            <div class="error-msg" id="errDate">Vui lòng chọn ngày</div>
+          </div>
+          <div class="form-group">
+            <label>Giờ đến <span class="required">*</span></label>
+            <select id="resTime" required>
+              <option value="">Chọn giờ</option>
+              <option>7:00</option><option>7:30</option>
+              <option>8:00</option><option>8:30</option>
+              <option>9:00</option><option>9:30</option>
+              <option>10:00</option><option>10:30</option>
+              <option>11:00</option><option>11:30</option>
+              <option>12:00</option><option>12:30</option>
+              <option>13:00</option><option>13:30</option>
+              <option>14:00</option><option>14:30</option>
+              <option>15:00</option><option>15:30</option>
+              <option>16:00</option><option>16:30</option>
+              <option>17:00</option><option>17:30</option>
+              <option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option>
+              <option>20:00</option><option>20:30</option>
+              <option>21:00</option>
+            </select>
+            <div class="error-msg" id="errTime">Vui lòng chọn giờ</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Số khách <span class="required">*</span></label>
+            <select id="resGuests" required>
+              <option value="">Chọn</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9</option><option>10</option>
+              <option value="11-15">11-15</option>
+              <option value="16-20">16-20</option>
+            </select>
+            <div class="error-msg" id="errGuests">Vui lòng chọn số khách</div>
+          </div>
+          <div class="form-group">
+            <label>Khu vực</label>
+            <select id="resArea">
+              <option value="indoor">Trong nhà</option>
+              <option value="outdoor">Ngoài trời</option>
+              <option value="kids">Khu vui chơi trẻ em</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <textarea id="resNote" placeholder="Yêu cầu đặc biệt, sinh nhật, ghế trẻ em..."></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg>
+            Xác nhận đặt bàn
+          </button>
+        </div>
+      </form>
+
+      <div class="reservation-success" id="reservationSuccess">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Đặt bàn thành công!</h3>
+        <p>Cảm ơn bạn đã đặt bàn tại AiiCafe.<br>Chúng tôi sẽ xác nhận và liên hệ với bạn sớm nhất.</p>
+        <button type="button" class="btn-primary" id="reservationDone">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var navbar=document.getElementById('navbar'),floatCta=document.getElementById('floatingCta');
+    var heroVidDesktop=document.getElementById('heroVideoDesktop'),heroVidMobile=document.getElementById('heroVideoMobile');
+    function getActiveHeroVid(){return window.innerWidth<=768?heroVidMobile:heroVidDesktop}
+    if(window.innerWidth<=768&&heroVidMobile){heroVidMobile.preload='auto';heroVidMobile.load()}
+
+    // Scroll handler
+    var ticking=false;
+    function onScroll(){
+      if(ticking)return;
+      ticking=true;
+      requestAnimationFrame(function(){
+        var y=window.scrollY;
+        navbar.classList.toggle('scrolled',y>50);
+        floatCta.classList.toggle('hidden',y<300);
+        ticking=false;
+      });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
+
+    // Hamburger
+    var hamBtn=document.getElementById('hamburgerBtn'),mobMenu=document.getElementById('mobileMenu'),mobOverlay=document.getElementById('mobileOverlay');
+    function toggleMenu(){
+      var open=mobMenu.classList.toggle('open');
+      hamBtn.classList.toggle('active',open);
+      mobOverlay.classList.toggle('active',open);
+      hamBtn.setAttribute('aria-expanded',open);
+      document.body.style.overflow=open?'hidden':'';
+    }
+    hamBtn.addEventListener('click',toggleMenu);
+    mobOverlay.addEventListener('click',toggleMenu);
+    mobMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(mobMenu.classList.contains('open'))toggleMenu()})});
+
+    // Mute toggle
+    var muteBtn=document.getElementById('muteBtn'),muteIcon=document.getElementById('muteIcon'),unmuteIcon=document.getElementById('unmuteIcon');
+    muteBtn.addEventListener('click',function(){
+      var vid=getActiveHeroVid();
+      if(!vid)return;
+      vid.muted=!vid.muted;
+      muteIcon.style.display=vid.muted?'block':'none';
+      unmuteIcon.style.display=vid.muted?'none':'block';
+    });
+
+    // Reveal on scroll
+    var revealEls=document.querySelectorAll('.reveal');
+    var revealObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}});
+    },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){revealObs.observe(el)});
+
+    // Lazy video loading
+    var lazyVids=document.querySelectorAll('video[data-src]');
+    var vidObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var v=e.target;v.src=v.dataset.src;v.load();v.play().catch(function(){});vidObs.unobserve(v);
+        }
+      });
+    },{rootMargin:'200px'});
+    lazyVids.forEach(function(v){vidObs.observe(v)});
+
+    // Food carousel
+    var carousel=document.getElementById('foodCarousel');
+    if(carousel){
+      var prevBtn=document.getElementById('carouselPrev'),nextBtn=document.getElementById('carouselNext');
+      var scrollAmt=240;
+      if(prevBtn)prevBtn.addEventListener('click',function(){carousel.scrollBy({left:-scrollAmt,behavior:'smooth'})});
+      if(nextBtn)nextBtn.addEventListener('click',function(){carousel.scrollBy({left:scrollAmt,behavior:'smooth'})});
+      var isDown=false,startX,scrollLeft;
+      carousel.addEventListener('mousedown',function(e){isDown=true;carousel.classList.add('dragging');startX=e.pageX-carousel.offsetLeft;scrollLeft=carousel.scrollLeft});
+      carousel.addEventListener('mouseleave',function(){isDown=false;carousel.classList.remove('dragging')});
+      carousel.addEventListener('mouseup',function(){isDown=false;carousel.classList.remove('dragging')});
+      carousel.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-carousel.offsetLeft;carousel.scrollLeft=scrollLeft-(x-startX)*1.5});
+    }
+
+    // Filter functionality
+    function setupFilter(filterContainerId,gridId){
+      var filterEl=document.getElementById(filterContainerId),gridEl=document.getElementById(gridId);
+      if(!filterEl||!gridEl)return;
+      filterEl.addEventListener('click',function(e){
+        var tab=e.target.closest('.filter-tab');
+        if(!tab)return;
+        filterEl.querySelectorAll('.filter-tab').forEach(function(t){t.classList.remove('active');t.setAttribute('aria-selected','false')});
+        tab.classList.add('active');tab.setAttribute('aria-selected','true');
+        var f=tab.dataset.filter;
+        gridEl.querySelectorAll('[data-category]').forEach(function(item){
+          item.classList.toggle('hidden',f!=='all'&&item.dataset.category!==f);
+        });
+      });
+    }
+    setupFilter('showcaseFilter','showcaseGrid');
+    setupFilter('scheduleFilter','scheduleGrid');
+
+    // Showcase hover video
+    var showcaseItems=document.querySelectorAll('.showcase-item[data-video]');
+    showcaseItems.forEach(function(item){
+      item.addEventListener('mouseenter',function(){
+        var img=item.querySelector('img');
+        if(!img||item.querySelector('video'))return;
+        var vid=document.createElement('video');
+        vid.src=item.dataset.video;vid.muted=true;vid.loop=true;vid.playsInline=true;
+        vid.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1';
+        item.style.position='relative';item.appendChild(vid);vid.play().catch(function(){});
+      });
+      item.addEventListener('mouseleave',function(){
+        var vid=item.querySelector('video');
+        if(vid){vid.pause();vid.remove()}
+      });
+    });
+
+    // Reservation Modal
+    var resOverlay=document.getElementById('reservationOverlay');
+    var resForm=document.getElementById('reservationForm');
+    var resSuccess=document.getElementById('reservationSuccess');
+    var resCloseBtn=document.getElementById('reservationClose');
+    var resDoneBtn=document.getElementById('reservationDone');
+
+    function openReservation(e){
+      if(e){e.preventDefault()}
+      resOverlay.classList.add('active');
+      document.body.style.overflow='hidden';
+      // Set min date to today
+      var today=new Date().toISOString().split('T')[0];
+      document.getElementById('resDate').setAttribute('min',today);
+      if(!document.getElementById('resDate').value){document.getElementById('resDate').value=today}
+    }
+
+    function closeReservation(){
+      resOverlay.classList.remove('active');
+      document.body.style.overflow='';
+      // Reset after animation
+      setTimeout(function(){
+        resForm.style.display='';
+        resSuccess.classList.remove('active');
+        resForm.reset();
+        resForm.querySelectorAll('.error').forEach(function(el){el.classList.remove('error')});
+        resForm.querySelectorAll('.error-msg').forEach(function(el){el.classList.remove('show')});
+      },300);
+    }
+
+    // Bind all booking buttons
+    document.querySelectorAll('[data-booking]').forEach(function(btn){
+      btn.addEventListener('click',openReservation);
+    });
+
+    resCloseBtn.addEventListener('click',closeReservation);
+    resDoneBtn.addEventListener('click',closeReservation);
+    resOverlay.addEventListener('click',function(e){
+      if(e.target===resOverlay)closeReservation();
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&resOverlay.classList.contains('active'))closeReservation();
+    });
+
+    // Helper: submit booking to API
+    function submitBooking(data, onSuccess, onError) {
+      fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+      .then(function(result) {
+        if (result.ok) {
+          // Also save to localStorage as backup
+          var reservations = JSON.parse(localStorage.getItem('aiicafe_reservations') || '[]');
+          data.id = result.data.booking_id;
+          data.status = 'pending';
+          data.createdAt = new Date().toISOString();
+          reservations.push(data);
+          localStorage.setItem('aiicafe_reservations', JSON.stringify(reservations));
+          onSuccess(result.data);
+        } else {
+          onError(result.data.error || 'Có lỗi xảy ra');
+        }
+      })
+      .catch(function() {
+        // Fallback: save to localStorage if server unavailable
+        var reservations = JSON.parse(localStorage.getItem('aiicafe_reservations') || '[]');
+        data.id = Date.now().toString(36) + Math.random().toString(36).substr(2, 4);
+        data.status = 'pending';
+        data.createdAt = new Date().toISOString();
+        reservations.push(data);
+        localStorage.setItem('aiicafe_reservations', JSON.stringify(reservations));
+        onSuccess({ booking_id: data.id, message: 'Đặt bàn thành công!' });
+      });
+    }
+
+    // Form validation & submit
+    resForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var valid=true;
+      var fields=[
+        {id:'resName',err:'errName',check:function(v){return v.trim().length>=2}},
+        {id:'resPhone',err:'errPhone',check:function(v){return /^0\d{8,10}$/.test(v.replace(/\s/g,''))}},
+        {id:'resDate',err:'errDate',check:function(v){return v!==''}},
+        {id:'resTime',err:'errTime',check:function(v){return v!==''}},
+        {id:'resGuests',err:'errGuests',check:function(v){return v!==''}}
+      ];
+      // Validate email if provided
+      var emailVal=document.getElementById('resEmail').value.trim();
+      if(emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){
+        document.getElementById('resEmail').classList.add('error');
+        document.getElementById('errEmail').classList.add('show');
+        valid=false;
+      }else{
+        document.getElementById('resEmail').classList.remove('error');
+        document.getElementById('errEmail').classList.remove('show');
+      }
+      fields.forEach(function(f){
+        var input=document.getElementById(f.id);
+        var err=document.getElementById(f.err);
+        if(!f.check(input.value)){
+          input.classList.add('error');
+          err.classList.add('show');
+          valid=false;
+        }else{
+          input.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+      if(!valid)return;
+
+      var booking={
+        name:document.getElementById('resName').value.trim(),
+        email:emailVal,
+        phone:document.getElementById('resPhone').value.trim(),
+        date:document.getElementById('resDate').value,
+        time:document.getElementById('resTime').value,
+        guests:document.getElementById('resGuests').value,
+        area:document.getElementById('resArea').value,
+        note:document.getElementById('resNote').value.trim()
+      };
+
+      // Disable submit button
+      var submitBtn=resForm.querySelector('button[type="submit"]');
+      submitBtn.disabled=true;
+      submitBtn.innerHTML='<span>Đang xử lý...</span>';
+
+      submitBooking(booking, function(){
+        submitBtn.disabled=false;
+        submitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg> Xác nhận đặt bàn';
+        resForm.style.display='none';
+        resSuccess.classList.add('active');
+      }, function(err){
+        submitBtn.disabled=false;
+        submitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg> Xác nhận đặt bàn';
+        alert(err);
+      });
+    });
+
+    // Remove error on input
+    resForm.querySelectorAll('input,select').forEach(function(el){
+      el.addEventListener('input',function(){
+        el.classList.remove('error');
+        var errEl=el.parentElement.querySelector('.error-msg');
+        if(errEl)errEl.classList.remove('show');
+      });
+    });
+
+    // ---- BOOKING SECTION FORM ----
+    var bsForm=document.getElementById('bookingSectionForm');
+    var bsSuccess=document.getElementById('bsSectionSuccess');
+    var bsBookAgain=document.getElementById('bsBookAgain');
+
+    if(bsForm){
+      // Set min date to today
+      var bsToday=new Date().toISOString().split('T')[0];
+      var bsDateInput=document.getElementById('bsDate');
+      bsDateInput.setAttribute('min',bsToday);
+      bsDateInput.value=bsToday;
+
+      // Validation & submit
+      bsForm.addEventListener('submit',function(e){
+        e.preventDefault();
+        var valid=true;
+        var bsFields=[
+          {id:'bsName',  err:'bsErrName',  check:function(v){return v.trim().length>=2}},
+          {id:'bsPhone', err:'bsErrPhone', check:function(v){return /^0\d{8,10}$/.test(v.replace(/\s/g,''))}},
+          {id:'bsDate',  err:'bsErrDate',  check:function(v){return v!==''}},
+          {id:'bsTime',  err:'bsErrTime',  check:function(v){return v!==''}},
+          {id:'bsGuests',err:'bsErrGuests',check:function(v){return v!==''}}
+        ];
+        // Validate email if provided
+        var bsEmailVal=document.getElementById('bsEmail').value.trim();
+        if(bsEmailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bsEmailVal)){
+          document.getElementById('bsEmail').classList.add('error');
+          document.getElementById('bsErrEmail').classList.add('show');
+          valid=false;
+        }else{
+          document.getElementById('bsEmail').classList.remove('error');
+          document.getElementById('bsErrEmail').classList.remove('show');
+        }
+        bsFields.forEach(function(f){
+          var input=document.getElementById(f.id);
+          var err=document.getElementById(f.err);
+          if(!f.check(input.value)){
+            input.classList.add('error');
+            err.classList.add('show');
+            valid=false;
+          }else{
+            input.classList.remove('error');
+            err.classList.remove('show');
+          }
+        });
+        if(!valid)return;
+
+        var booking={
+          name:document.getElementById('bsName').value.trim(),
+          email:bsEmailVal,
+          phone:document.getElementById('bsPhone').value.trim(),
+          date:document.getElementById('bsDate').value,
+          time:document.getElementById('bsTime').value,
+          guests:document.getElementById('bsGuests').value,
+          area:document.getElementById('bsArea').value,
+          note:document.getElementById('bsNote').value.trim()
+        };
+
+        // Disable submit button
+        var bsSubmitBtn=bsForm.querySelector('button[type="submit"]');
+        bsSubmitBtn.disabled=true;
+        bsSubmitBtn.innerHTML='<span>Đang xử lý...</span>';
+
+        submitBooking(booking, function(){
+          bsSubmitBtn.disabled=false;
+          bsSubmitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg> Xác nhận đặt bàn';
+          bsForm.style.display='none';
+          bsSuccess.classList.add('active');
+        }, function(err){
+          bsSubmitBtn.disabled=false;
+          bsSubmitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><use href="#ic-pin"/></svg> Xác nhận đặt bàn';
+          alert(err);
+        });
+      });
+
+      // Remove error styling on input
+      bsForm.querySelectorAll('input,select').forEach(function(el){
+        el.addEventListener('input',function(){
+          el.classList.remove('error');
+          var errEl=el.parentElement.querySelector('.error-msg');
+          if(errEl)errEl.classList.remove('show');
+        });
+      });
+    }
+
+    // "Đặt bàn khác" button resets the section form
+    if(bsBookAgain){
+      bsBookAgain.addEventListener('click',function(){
+        bsSuccess.classList.remove('active');
+        bsForm.style.display='';
+        bsForm.reset();
+        var bsToday2=new Date().toISOString().split('T')[0];
+        document.getElementById('bsDate').setAttribute('min',bsToday2);
+        document.getElementById('bsDate').value=bsToday2;
+      });
+    }
+  })();
+  </script>
+  <script>
+(function(){
+  fetch('/api/media-config').then(function(r){return r.json();}).then(function(cfg){
+    if(!cfg||typeof cfg!=='object')return;
+    // Patch images
+    document.querySelectorAll('img[data-media-key]').forEach(function(el){
+      var key=el.getAttribute('data-media-key');
+      if(cfg[key])el.src=cfg[key];
+    });
+    // Patch hero videos (special: replace source elements + reload)
+    ['hero-desktop','hero-mobile'].forEach(function(k){
+      var vid=document.querySelector('video[data-media-key="'+k+'"]');
+      var img=document.querySelector('img[data-media-key-img="'+k+'"]');
+      if(!vid)return;
+      var srcKey=k+'-src', posterKey=k+'-poster', modeKey=k+'-mode';
+      if(cfg[posterKey]){
+        vid.poster=cfg[posterKey];
+        if(img)img.src=cfg[posterKey];
+      }
+      if(cfg[srcKey]){
+        var sources=vid.querySelectorAll('source');
+        sources.forEach(function(s){if(s.type==='video/mp4')s.src=cfg[srcKey];});
+        vid.load();
+      }
+      // Toggle video/image mode
+      if(cfg[modeKey]==='image'){
+        vid.style.display='none';
+        vid.pause();
+        if(img)img.style.display='block';
+      } else {
+        vid.style.display='';
+        if(img)img.style.display='none';
+      }
+    });
+    // Patch cafe video
+    var cafeVid=document.querySelector('video[data-media-key="cafe-video"]');
+    if(cafeVid){
+      if(cfg['cafe-video-poster'])cafeVid.poster=cfg['cafe-video-poster'];
+      if(cfg['cafe-video-src']){cafeVid.dataset.src=cfg['cafe-video-src'];if(cafeVid.src&&cafeVid.src!==window.location.href){cafeVid.src=cfg['cafe-video-src'];cafeVid.load();}}
+    }
+    // Patch story video
+    var storyVid=document.querySelector('video[data-media-key="story-video"]');
+    if(storyVid){
+      if(cfg['story-video-poster'])storyVid.poster=cfg['story-video-poster'];
+      if(cfg['story-video-src']){storyVid.dataset.src=cfg['story-video-src'];if(storyVid.src&&storyVid.src!==window.location.href){storyVid.src=cfg['story-video-src'];storyVid.load();}}
+    }
+    // Patch showcase items
+    document.querySelectorAll('[data-media-key^="showcase-"]').forEach(function(el){
+      var n=el.getAttribute('data-media-key').replace('showcase-','');
+      var imgKey='showcase-'+n+'-img';
+      var vidKey='showcase-'+n+'-video';
+      var capKey='showcase-'+n+'-caption';
+      var catKey='showcase-'+n+'-category';
+      if(cfg[imgKey]){var img=el.querySelector('img');if(img)img.src=cfg[imgKey];}
+      if(cfg[vidKey])el.setAttribute('data-video',cfg[vidKey]);
+      if(cfg[capKey]){var cap=el.querySelector('.item-caption');if(cap)cap.textContent=cfg[capKey];}
+      if(cfg[catKey])el.setAttribute('data-category',cfg[catKey]);
+    });
+  }).catch(function(){});
+})();
+  </script>
+</body>
+</html>
